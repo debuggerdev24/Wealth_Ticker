@@ -43,32 +43,41 @@ class MySubmitButtonFilled extends StatelessWidget {
 class MySubmitButtonOutlined extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
-  final double? width, fontSize;
+  final double? height,width, fontSize, marginTop, marginBottom, padding;
 
   const MySubmitButtonOutlined(
       {super.key,
       required this.title,
       required this.onPressed,
       this.width,
-      this.fontSize});
+      this.fontSize,
+      this.marginTop,
+      this.marginBottom,
+      this.padding, this.height});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 52.h,
+        width: width,
+        height: height ?? 52.h,
         alignment: Alignment.center,
-        margin: EdgeInsets.only(top: 0.h),
-      //21
+        margin: EdgeInsets.only(
+          top: marginTop ?? 0.h,
+          bottom: marginBottom ?? 0.h,
+        ),
+        //21
         decoration: BoxDecoration(
             border: Border.all(
               color: greenColor,
             ),
-            borderRadius: BorderRadius.circular(10.r)),
+          borderRadius: BorderRadius.circular(10.r),
+        ),
         child: Text(
           title,
-          style: textStyleW700.copyWith(fontSize: fontSize ?? 20.sp, color: greenColor),
+          style: textStyleW700.copyWith(
+              fontSize: fontSize ?? 20.sp, color: greenColor),
         ),
       ),
     );

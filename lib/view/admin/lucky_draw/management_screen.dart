@@ -147,9 +147,14 @@ class LuckyDrawManagementScreenAdmin extends StatelessWidget {
                       fontSize: 16.sp,
                     ),
                   ),
-                  Text(
-                    "View All",
-                    style: textStyleW700.copyWith(color: lightGreenColor),
+                  GestureDetector(
+                    onTap: () {
+                      context.push(AppRoutes.manageParticipantsScreen.path);
+                    },
+                    child: Text(
+                      "View All",
+                      style: textStyleW700.copyWith(color: lightGreenColor),
+                    ),
                   ),
                 ],
               ),

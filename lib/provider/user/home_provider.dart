@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:wealth_ticker_main/model/post_model.dart';
+import 'package:wealth_ticker_main/model/user/post_model.dart';
 
 class HomeProvider extends ChangeNotifier {
   List<PostModel> postList = [

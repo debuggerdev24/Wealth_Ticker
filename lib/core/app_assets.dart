@@ -35,4 +35,6 @@ class AppAssets extends Assets {
   static String get payOutIcon => "${Assets.base}/payOut.svg";
   static String get staffsIcon => "${Assets.base}/staff.svg";
   static String get luckyDrawIcon => "${Assets.base}/luckyDrawIcon.svg";
+  static String get userCrossDelete => "${Assets.base}/user_cross_delete.svg";
+  static String get creditCard => "${Assets.base}/credit_card.svg";
 }

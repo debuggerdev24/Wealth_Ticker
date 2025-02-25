@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
-import 'package:wealth_ticker_main/model/post_model.dart';
+import 'package:wealth_ticker_main/model/user/post_model.dart';
 import 'package:wealth_ticker_main/provider/user/post_provider.dart';
 
 class PurchasedPost extends StatelessWidget {

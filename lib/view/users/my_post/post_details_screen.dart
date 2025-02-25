@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
-import 'package:wealth_ticker_main/model/post_model.dart';
+import 'package:wealth_ticker_main/model/user/post_model.dart';
 
 class PostDetailsScreen extends StatelessWidget {
   final PurchasedPostModel post;

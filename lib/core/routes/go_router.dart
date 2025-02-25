@@ -1,8 +1,11 @@
 import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
-import 'package:wealth_ticker_main/model/post_model.dart';
-import 'package:wealth_ticker_main/view/admin/lucky_draw_manager/lucky_draw_details_screen.dart';
-import 'package:wealth_ticker_main/view/admin/lucky_draw_manager/manage_particpant_screen.dart';
+import 'package:wealth_ticker_main/model/user/post_model.dart';
+import 'package:wealth_ticker_main/view/admin/lucky_draw/confirm_winner_screen.dart';
+import 'package:wealth_ticker_main/view/admin/lucky_draw/past_winners_screen.dart';
+import 'package:wealth_ticker_main/view/admin/lucky_draw/winner_selected_screen.dart';
+import 'package:wealth_ticker_main/view/admin/pay_out/process_payout_screen.dart';
+import 'package:wealth_ticker_main/view/admin/pay_out/select_payment_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/bank_details_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/week_lucky_draw_screen.dart';
 import 'package:wealth_ticker_main/view/users/my_post/post_details_screen.dart';
@@ -10,7 +13,9 @@ import 'package:wealth_ticker_main/view/users/subscription/lucky_draw_screen.dar
 import 'package:wealth_ticker_main/view/users/subscription/success_payment_screen.dart';
 import 'package:wealth_ticker_main/view/users/user_dashboard_screen.dart';
 import '../../view/admin/admin_dashboard_screen.dart';
-import '../../view/admin/lucky_draw_manager/lucky_draw_management.dart';
+import '../../view/admin/lucky_draw/details_screen.dart';
+import '../../view/admin/lucky_draw/manage_particpant_screen.dart';
+import '../../view/admin/lucky_draw/management_screen.dart';
 import '../../view/auth/error_msg_screen.dart';
 import '../../view/auth/forgot_password.dart';
 import '../../view/auth/otp_screen.dart';
@@ -292,6 +297,41 @@ final GoRouter goRouter = GoRouter(
       name: AppRoutes.manageParticipantsScreen.name,
       builder: (context, state) {
         return ManageParticipantScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.confirmWinner.path,
+      name: AppRoutes.confirmWinner.name,
+      builder: (context, state) {
+        return ConfirmWinner();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.winnerSelected.path,
+      name: AppRoutes.winnerSelected.name,
+      builder: (context, state) {
+        return WinnerSelectedScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.pastWinnersScreenAdmin.path,
+      name: AppRoutes.pastWinnersScreenAdmin.name,
+      builder: (context, state) {
+        return PastWinnersScreenAdmin();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.processPayoutScreen.path,
+      name: AppRoutes.processPayoutScreen.name,
+      builder: (context, state) {
+        return ProcessPayoutScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.selectPaymentScreen.path,
+      name: AppRoutes.selectPaymentScreen.name,
+      builder: (context, state) {
+        return SelectPaymentScreen();
       },
     ),
   ],

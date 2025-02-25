@@ -1,5 +1,4 @@
-
-enum AppRoutes{
+enum AppRoutes {
   splashScreen,
   signUpScreen,
   signInScreen,
@@ -30,9 +29,14 @@ enum AppRoutes{
   luckyDrawScreen,
   userFlowScreen,
   postDetailsScreen,
-  weekLuckyDrawScreen, pastWinnersScreen, bankDetailsScreen, luckyDrawManagementScreenAdmin, luckyDrawDetailsScreen, manageParticipantsScreen
+  weekLuckyDrawScreen,
+  pastWinnersScreen,
+  bankDetailsScreen,
+  luckyDrawManagementScreenAdmin,
+  luckyDrawDetailsScreen,
+  manageParticipantsScreen, confirmWinner, winnerSelected, pastWinnersScreenAdmin, processPayoutScreen, selectPaymentScreen
 }
 
-extension AppRouteExtension on AppRoutes{
+extension AppRouteExtension on AppRoutes {
   String get path => this == AppRoutes.homeScreen ? "/" : "/$name";
 }

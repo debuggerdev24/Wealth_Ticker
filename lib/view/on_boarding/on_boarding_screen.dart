@@ -115,7 +115,7 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 35.h)
+            35.h.verticalSpace,
           ],
         ),
       ),

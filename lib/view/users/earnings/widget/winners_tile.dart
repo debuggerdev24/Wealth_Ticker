@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wealth_ticker_main/model/earning_model.dart';
+import 'package:wealth_ticker_main/model/user/earning_model.dart';
 
 import '../../../../core/text_styls.dart';
+import '../../../../model/admin/lucky_draw_model.dart';
 
 class WinnersTile extends StatelessWidget {
   final PastWinnersModel winner;

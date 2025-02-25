@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:wealth_ticker_main/view/admin/home/home_screen.dart';
+import 'package:wealth_ticker_main/view/admin/pay_out/payout_list_screen.dart';
 import '../../core/app_assets.dart';
 import '../../core/utils/global.dart';
 import '../../core/widgets/svg_images.dart';
-import 'lucky_draw_manager/lucky_draw_management.dart';
+import 'lucky_draw/management_screen.dart';
 
 final ValueNotifier<int> index = ValueNotifier<int>(0);
 
 List pages = [
   HomeScreenAdmin(),
   LuckyDrawManagementScreenAdmin(),
+  PayoutListScreen(),
   LuckyDrawManagementScreenAdmin(),
-  LuckyDrawManagementScreenAdmin(),
-  LuckyDrawManagementScreenAdmin(),
+  // LuckyDrawManagementScreenAdmin(),
 ];
 
 class AdminDashboardScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class AdminDashboardScreen extends StatelessWidget {
               _item(AppAssets.luckyDrawIcon, "Lucky draw"),
               _item(AppAssets.payOutIcon, "Pay Out"),
               _item(AppAssets.myPostIcon, "My Post"),
-              _item(AppAssets.staffsIcon, "Staffs"),
+              // _item(AppAssets.staffsIcon, "Staffs"),
             ],
             onTap: (value) {
               // provider.changeTab(value);

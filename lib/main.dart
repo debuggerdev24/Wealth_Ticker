@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:wealth_ticker_main/provider/admin/lucky_draw_provider.dart';
+import 'package:wealth_ticker_main/provider/admin/pay_out_provider.dart';
 import 'package:wealth_ticker_main/provider/auth/auth_provider.dart';
 import 'package:wealth_ticker_main/provider/auth/on_boarding_provider.dart';
 import 'package:wealth_ticker_main/provider/chat_provider.dart';
@@ -31,6 +33,8 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => HomeProvider()),
         ChangeNotifierProvider(create: (_) => PurchasedPostProvider()),
         ChangeNotifierProvider(create: (_) => EarningsProvider()),
+        ChangeNotifierProvider(create: (_) => LuckyDrawProvider()),
+        ChangeNotifierProvider(create: (_) => PayOutProvider()),
       ],
       child: const MyApp(),
     ),
@@ -77,6 +81,6 @@ class _MyAppState extends State<MyApp> {
 }
 //Use .w and .h for width and height.
 // Use .sp for font sizes.
+// t k c l h
 // Use .r for border radius.
 
-//Worked on developing lucky draw details, manage participants, confirm lucky draw winner selection, lucky draw winner, payout list

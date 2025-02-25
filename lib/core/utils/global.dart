@@ -15,7 +15,6 @@ EdgeInsets appPadding(){
 Color greenColor = Color(0xff013024);
 Color lightGreenColor = Color(0xff329687);
 
-class AppColor{}
 
 showToast(String msg) {
   Fluttertoast.showToast(
