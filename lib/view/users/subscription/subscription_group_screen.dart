@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import '../../../core/routes/routes.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 import '../../../core/widgets/auth_screen_text.dart';
 import '../../../core/widgets/my_app_layout.dart';
@@ -33,7 +34,7 @@ class SubscriptionGroupScreen extends StatelessWidget {
                   "Unlock Wealth Tickers Excellence With Premium",
                   textAlign: TextAlign.center,
                   style: textStyleW700.copyWith(
-                      color: greenColor,
+                      color: AppColors.darkGreenColor,
                       fontSize: 18.sp,),
                 ),
               ),
@@ -59,7 +60,7 @@ class SubscriptionGroupScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(14.r),
                             color: index % 2 == 0
                                 ? Color(0xffe6ebe9)
-                                : greenColor),
+                                : AppColors.darkGreenColor),
                         padding: EdgeInsets.symmetric(
                             horizontal: 16.w, vertical: 12.h),
                         child: Column(
@@ -72,7 +73,7 @@ class SubscriptionGroupScreen extends StatelessWidget {
                                   provider.subscriptionPlans[0].planName,
                                   style: textStyleW700.copyWith(
                                     color: index % 2 == 0
-                                        ? greenColor
+                                        ? AppColors.darkGreenColor
                                         : Color(0xff66b3a7),
                                     fontSize: 16.sp,
                                   ),
@@ -115,7 +116,7 @@ class SubscriptionGroupScreen extends StatelessWidget {
                                   child: FilledButton(
                                       style: FilledButton.styleFrom(
                                           backgroundColor: index % 2 == 0
-                                              ? greenColor
+                                              ? AppColors.darkGreenColor
                                               : Colors.white,
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 14.w)),
@@ -125,7 +126,7 @@ class SubscriptionGroupScreen extends StatelessWidget {
                                         style: TextStyle(
                                             color: index % 2 == 0
                                                 ? Colors.white
-                                                : greenColor),
+                                                : AppColors.darkGreenColor),
                                       )),
                                 ),
                               ],

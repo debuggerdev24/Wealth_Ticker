@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import '../theme/app_colors.dart';
 import '../utils/global.dart';
 
 class AuthTitle extends StatelessWidget {
@@ -14,7 +15,7 @@ class AuthTitle extends StatelessWidget {
       title,
       style: textStyleW700.copyWith(
           fontSize: 36.sp,
-          color: greenColor,
+          color: AppColors.darkGreenColor,
           ),
     );
   }

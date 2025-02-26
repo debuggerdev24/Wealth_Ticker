@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/my_button.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/global.dart';
 import 'active_user_details.dart';
 
@@ -27,7 +28,7 @@ class PendingUserDetails extends StatelessWidget {
           padding:
               EdgeInsets.only(top: 16.h, left: 14.h, right: 10.w, bottom: 16.h),
           decoration: BoxDecoration(
-            border: Border.all(color: greenColor),
+            border: Border.all(color: AppColors.darkGreenColor),
             borderRadius: BorderRadius.circular(10.r),
           ),
           child: Column(
@@ -63,14 +64,14 @@ class PendingUserDetails extends StatelessWidget {
                 //21
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: greenColor,
+                      color: AppColors.darkGreenColor,
                     ),
                     borderRadius: BorderRadius.circular(10.r)),
                 child: Text(
                   "Reject",
                   style: textStyleW700.copyWith(
                       fontSize: 18.sp,
-                      color: greenColor),
+                      color: AppColors.darkGreenColor),
                 ),
               ),
             )),

@@ -27,7 +27,7 @@ class PastWinnersScreen extends StatelessWidget {
           ),
           child: GestureDetector(onTap: () {
             context.push(AppRoutes.bankDetailsScreen.path);
-          },child: SVGImages(iconPath: AppAssets.bankEdit)),
+          },child: SVGImages(path: AppAssets.bankEdit)),
         ),
 
         // IconButton(

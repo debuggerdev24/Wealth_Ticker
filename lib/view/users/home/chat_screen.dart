@@ -6,6 +6,7 @@ import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/view/users/home/widgets/chat_bubble.dart';
 
 import '../../../core/routes/routes.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class ChatScreen extends StatelessWidget {
       appBar: AppBar(
         titleSpacing: 7,
         centerTitle: false,
-        backgroundColor: greenColor,
+        backgroundColor: AppColors.darkGreenColor,
         leading: GestureDetector(
           onTap: () {
             context.pop();
@@ -68,7 +69,7 @@ class ChatScreen extends StatelessWidget {
                   child: Text(
                     "Today",
                     style: textStyleW700.copyWith(
-                        color: greenColor),
+                        color: AppColors.darkGreenColor),
                   ),
                 ),
                 20.h.verticalSpace,
@@ -88,7 +89,7 @@ class ChatScreen extends StatelessWidget {
               height: 46.h,
               width: 1.sw,
               padding: EdgeInsets.symmetric(vertical: 4.h),
-              color: greenColor,
+              color: AppColors.darkGreenColor,
               child: RichText(
                 text: TextSpan(
                   children: [

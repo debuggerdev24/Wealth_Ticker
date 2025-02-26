@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 import '../../../core/widgets/my_app_layout.dart';
 import '../../../provider/notification_provider.dart';
@@ -33,7 +34,7 @@ class NotificationScreen extends StatelessWidget {
                     onChanged: (value) {
                       provider.toggleSwitch(title);
                     },
-                    activeTrackColor: greenColor,
+                    activeTrackColor: AppColors.darkGreenColor,
                   ),
                 );
               },
@@ -75,7 +76,7 @@ class NotificationScreen extends StatelessWidget {
                     child: Text(
                       "10 m ago",
                       style: TextStyle(
-                        color: greenColor,
+                        color: AppColors.darkGreenColor,
                         fontSize: 14.sp,
                       ),
                     ),
@@ -119,7 +120,7 @@ class NotificationScreen extends StatelessWidget {
                     child: Text(
                       "1 h ago",
                       style: TextStyle(
-                        color: greenColor,
+                        color: AppColors.darkGreenColor,
                         fontSize: 14.sp,
                       ),
                     ),

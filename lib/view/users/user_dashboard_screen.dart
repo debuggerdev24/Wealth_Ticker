@@ -5,6 +5,7 @@ import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import 'package:wealth_ticker_main/view/users/earnings/week_lucky_draw_screen.dart';
 import 'package:wealth_ticker_main/view/users/home/home_screen.dart';
 import 'package:wealth_ticker_main/view/users/profile/profile_screen.dart';
+import '../../core/theme/app_colors.dart';
 import 'my_post/purchased_post_list_screen.dart';
 
 final ValueNotifier<int> index = ValueNotifier<int>(0);
@@ -27,7 +28,7 @@ class UserDashBoardScreen extends StatelessWidget {
         return Scaffold(
           body: pages[value],
           bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: greenColor,
+            backgroundColor: AppColors.darkGreenColor,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.grey,
             showUnselectedLabels: false,
@@ -52,7 +53,7 @@ class UserDashBoardScreen extends StatelessWidget {
   BottomNavigationBarItem _item(String icon, String label) {
     return BottomNavigationBarItem(
       label: label,
-      icon: SVGImages(iconPath: icon),
+      icon: SVGImages(path: icon),
     );
   }
 }

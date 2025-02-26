@@ -23,7 +23,7 @@ class SupportScreen extends StatelessWidget {
             SizedBox(height: 50.h),
             //todo img comes here
             SVGImages(
-                iconPath: AppAssets.headPhone,//"assets/images/headPhone.svg",
+                path: AppAssets.headPhone,//"assets/images/headPhone.svg",
                 height: 90.h,
                 width: 90.w),
             SizedBox(height: 6.h),

@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wealth_ticker_main/core/app_assets.dart';
+import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import '../../core/routes/routes.dart';
 import '../../core/widgets/auth_screen_text.dart';
 import '../../core/widgets/my_button.dart';
 import '../../core/widgets/my_textfield.dart';
 
-TextEditingController textEmail = TextEditingController();
+TextEditingController _textEmail = TextEditingController();
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -29,8 +31,13 @@ class ForgotPassword extends StatelessWidget {
                 child: MyTextField(
                   title: "Email",
                   hintText: "Enter your email",
-                  controller: textEmail,
-                  prefix: Icon(CupertinoIcons.mail),
+                  controller: _textEmail,
+                  prefix: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 16.h,
+                    ),
+                    child: SVGImages(path: AppAssets.mailIcon),
+                  ),
                 ),
               ),
               MySubmitButtonFilled(

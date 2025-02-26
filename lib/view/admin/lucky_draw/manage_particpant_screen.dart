@@ -24,7 +24,7 @@ class ManageParticipantScreen extends StatelessWidget {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 10),
-          child: SVGImages(iconPath: AppAssets.userCrossDelete),
+          child: SVGImages(path: AppAssets.userCrossDelete),
         )
       ],
       body: Padding(

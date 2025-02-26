@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
@@ -18,7 +19,7 @@ class LuckyDrawManagementScreenAdmin extends StatelessWidget {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 10.r),
-          child: SVGImages(iconPath: AppAssets.editIcon),
+          child: SVGImages(path: AppAssets.editIcon),
         ),
       ],
       body: Padding(
@@ -153,7 +154,8 @@ class LuckyDrawManagementScreenAdmin extends StatelessWidget {
                     },
                     child: Text(
                       "View All",
-                      style: textStyleW700.copyWith(color: lightGreenColor),
+                      style: textStyleW700.copyWith(
+                          color: AppColors.lightCreamColor),
                     ),
                   ),
                 ],

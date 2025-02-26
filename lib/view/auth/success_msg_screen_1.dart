@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import '../../core/routes/routes.dart';
+import '../../core/theme/app_colors.dart';
 import '../../core/utils/global.dart';
 import '../../core/widgets/my_button.dart';
 import '../../core/widgets/svg_images.dart';
@@ -20,7 +21,7 @@ class SuccessMsgScreen1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SuccessMsgBox(
-              offer: '“You get a 10% discount on your subscription."',
+              text: '“You get a 10% discount on your subscription."',
               img: AppAssets.successMsg1,
             ),
             // SVGImages(iconPath: "assets/images/auth_screen/error_msg.svg"),
@@ -38,9 +39,9 @@ class SuccessMsgScreen1 extends StatelessWidget {
 }
 
 class SuccessMsgBox extends StatelessWidget {
-  final String offer, img;
+  final String text, img;
 
-  const SuccessMsgBox({super.key, required this.offer, required this.img});
+  const SuccessMsgBox({super.key, required this.text, required this.img});
 
   @override
   Widget build(BuildContext context) {
@@ -71,13 +72,13 @@ class SuccessMsgBox extends StatelessWidget {
             style: textStyleW600.copyWith(color: Colors.grey.shade700),
           ),
           SVGImages(
-            iconPath: img,
+            path: img,
             height: 80.h,
           ),
           Text(
-            offer,
+            text,
             textAlign: TextAlign.center,
-            style: textStyleW700.copyWith(fontSize: 20.sp, color: greenColor),
+            style: textStyleW700.copyWith(fontSize: 20.sp, color: AppColors.darkGreenColor),
           ),
         ],
       ),

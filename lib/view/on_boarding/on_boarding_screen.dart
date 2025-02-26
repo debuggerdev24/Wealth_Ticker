@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import '../../core/theme/app_colors.dart';
 import '../../core/utils/global.dart';
 import '../../core/routes/routes.dart';
 import '../../core/widgets/auth_screen_text.dart';
@@ -39,31 +40,36 @@ class OnBoardingScreen extends StatelessWidget {
                       MyOnBoardingWidget(
                         img: AppAssets.onBoarding1,
                         title: "Welcome to\nWealth Tickers",
-                        description: "“Stay ahead in the stock market with real-time updates on our trades”",
+                        description:
+                            "“Stay ahead in the stock market with real-time updates on our trades”",
                         pageController: pageController,
                       ),
                       MyOnBoardingWidget(
                         img: AppAssets.onBoarding2,
                         title: "Live Market Updates",
-                        description: "“Track our trades, stock prices, trends, and news in real-time.”",
+                        description:
+                            "“Track our trades, stock prices, trends, and news in real-time.”",
                         pageController: pageController,
                       ),
                       MyOnBoardingWidget(
                         img: AppAssets.onBoarding3,
                         title: "Chat with our Team",
-                        description: "“Have any doubts? Don’t worry. Message us directly and we’ll answer all your questions”",
+                        description:
+                            "“Have any doubts? Don’t worry. Message us directly and we’ll answer all your questions”",
                         pageController: pageController,
                       ),
                       MyOnBoardingWidget(
                         img: AppAssets.onBoarding4,
                         title: "Custom Watchlists & Alerts",
-                        description: "“Get instant alerts for our favorite stocks.”",
+                        description:
+                            "“Get instant alerts for our favorite stocks.”",
                         pageController: pageController,
                       ),
                       MyOnBoardingWidget(
                         img: AppAssets.onBoarding5,
                         title: "You’re Ready to Go!",
-                        description: "“Start tracking our trades and learn more about markets”",
+                        description:
+                            "“Start tracking our trades and learn more about markets”",
                         pageController: pageController,
                       ),
                       // MyOnBoardingWidget(img: "assets/images/auth_screen/on_b1.png", title: "cecece", description: "cee"),
@@ -83,9 +89,9 @@ class OnBoardingScreen extends StatelessWidget {
                       dotHeight: 12.h,
                       dotWidth: 12.w,
                       type: WormType.thin,
-                      activeDotColor: greenColor),
+                      activeDotColor: AppColors.darkGreenColor),
                 ),
-                SizedBox(height: 70.h),
+                70.h.verticalSpace,
                 MySubmitButtonFilled(
                   title: onBoardingProviderTrue.currentPage == 0
                       ? "Get Started"
@@ -94,12 +100,14 @@ class OnBoardingScreen extends StatelessWidget {
                           : "Next",
                   onPressed: () {
                     onBoardingProviderTrue.currentPage == 4
-                        ? context.pushNamed(AppRoutes.homeScreen.name)
+                        ? context.push(AppRoutes.userDashBoard.path)
+
                         : pageController.nextPage(
                             duration: const Duration(milliseconds: 500),
                             curve: Curves.easeInOut);
                   },
                 ),
+                20.h.verticalSpace,
               ],
             ),
             //todo -----------> Skip button
@@ -133,7 +141,8 @@ class MyOnBoardingWidget extends StatelessWidget {
       required this.img,
       required this.title,
       required this.description,
-      required this.pageController, this.height});
+      required this.pageController,
+      this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +153,7 @@ class MyOnBoardingWidget extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: textStyleW700.copyWith(color: greenColor, fontSize: 28.sp),
+          style: textStyleW700.copyWith(color: AppColors.darkGreenColor, fontSize: 28.sp),
         ),
         5.h.verticalSpace,
         Text(

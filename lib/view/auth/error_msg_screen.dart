@@ -42,7 +42,7 @@ class ErrorMsgScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SVGImages(
-                    iconPath: AppAssets.invalidRef,
+                    path: AppAssets.invalidRef,
                     height: 108.h,
                   ),
                   Text(

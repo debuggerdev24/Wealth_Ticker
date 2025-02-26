@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import '../utils/global.dart';
 
 class MyTextField extends StatelessWidget {
@@ -72,10 +73,10 @@ class MyTextField extends StatelessWidget {
           onTap: onTap,
           readOnly: readOnly!,
           obscureText: obscureText!,
-          textInputAction: TextInputAction.next,
+          textInputAction: textInputAction ?? TextInputAction.next,
           keyboardType: keyboardType,
           validator: validator,
-          cursorColor: greenColor,
+          cursorColor: AppColors.darkGreenColor,
           textAlignVertical: TextAlignVertical.center,
           maxLines: maxLine,
           onTapOutside: (event) {
@@ -91,7 +92,7 @@ class MyTextField extends StatelessWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(5.r)),
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: greenColor, width: 1.5))),
+                  borderSide: BorderSide(color: AppColors.darkGreenColor, width: 1.5))),
         ),
       ],
     );

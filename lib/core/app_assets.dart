@@ -37,4 +37,14 @@ class AppAssets extends Assets {
   static String get luckyDrawIcon => "${Assets.base}/luckyDrawIcon.svg";
   static String get userCrossDelete => "${Assets.base}/user_cross_delete.svg";
   static String get creditCard => "${Assets.base}/credit_card.svg";
+  static String get warning => "${Assets.base}/warning.svg";
+  static String get successTick => "${Assets.base}/success_tick.svg";
+  static String get failedCross => "${Assets.base}/failed.svg";
+  static String get deleteBucket => "${Assets.base}/delete.svg";
+  static String get userIcon => "${Assets.base}/userIcon.svg";
+  static String get mailIcon => "${Assets.base}/email.svg";
+  static String get phoneIcon => "${Assets.base}/phone.svg";
+  static String get openLockIcon => "${Assets.base}/open_lock.svg";
+  static String get logOutIcon => "${Assets.base}/log_out.svg";
+  static String get refCodeProfileIcon => "${Assets.base}/ref_code_profile.svg";
 }

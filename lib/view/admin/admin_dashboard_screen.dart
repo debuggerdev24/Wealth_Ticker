@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wealth_ticker_main/view/admin/home/home_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/payout_list_screen.dart';
+import 'package:wealth_ticker_main/view/admin/post/post_management_screen.dart';
 import '../../core/app_assets.dart';
+import '../../core/theme/app_colors.dart';
 import '../../core/utils/global.dart';
 import '../../core/widgets/svg_images.dart';
 import 'lucky_draw/management_screen.dart';
@@ -12,7 +14,7 @@ List pages = [
   HomeScreenAdmin(),
   LuckyDrawManagementScreenAdmin(),
   PayoutListScreen(),
-  LuckyDrawManagementScreenAdmin(),
+  PostManagementScreen(),
   // LuckyDrawManagementScreenAdmin(),
 ];
 
@@ -27,7 +29,7 @@ class AdminDashboardScreen extends StatelessWidget {
         return Scaffold(
           body: pages[value],
           bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: greenColor,
+            backgroundColor: AppColors.darkGreenColor,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.grey,
             showUnselectedLabels: false,
@@ -53,7 +55,7 @@ class AdminDashboardScreen extends StatelessWidget {
   BottomNavigationBarItem _item(String icon, String label) {
     return BottomNavigationBarItem(
       label: label,
-      icon: SVGImages(iconPath: icon),
+      icon: SVGImages(path: icon),
     );
   }
 }

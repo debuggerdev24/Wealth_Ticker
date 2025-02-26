@@ -5,6 +5,8 @@ import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/model/user/post_model.dart';
 
+import '../../../core/theme/app_colors.dart';
+
 class PostDetailsScreen extends StatelessWidget {
   final PurchasedPostModel post;
 
@@ -93,6 +95,6 @@ Padding _detailsWidget({required String date, required String title}) {
 Text _postDetailsTitle(title) {
   return Text(
     title,
-    style: textStyleW600.copyWith(fontSize: 18.sp, color: greenColor),
+    style: textStyleW600.copyWith(fontSize: 18.sp, color: AppColors.darkGreenColor),
   );
 }

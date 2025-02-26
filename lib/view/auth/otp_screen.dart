@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import '../../core/routes/routes.dart';
+import '../../core/theme/app_colors.dart';
 import '../../core/utils/global.dart';
 import '../../core/widgets/auth_screen_text.dart';
 import '../../core/widgets/my_button.dart';
@@ -54,7 +55,7 @@ class OTPScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       // color: Colors.white,
                       borderRadius: BorderRadius.circular(8.r), // Less Radius
-                      border: Border.all(color: greenColor, width: 2),
+                      border: Border.all(color: AppColors.darkGreenColor, width: 2),
                     ),
                   ),
                   submittedPinTheme: PinTheme(

@@ -61,7 +61,7 @@ class SelectPaymentMethodeScreen extends StatelessWidget {
       ),
       child: ListTile(
         onTap: onTap,
-        leading: SVGImages(iconPath: image),
+        leading: SVGImages(path: image),
         title: Text(
           paymentName,
           style: TextStyle(fontSize: 16.sp),

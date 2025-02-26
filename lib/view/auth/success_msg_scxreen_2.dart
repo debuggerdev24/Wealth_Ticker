@@ -19,7 +19,7 @@ class SuccessMsgScreen2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SuccessMsgBox(
-              offer: '“You get 7 extra days free!"',
+              text: '“You get 7 extra days free!"',
               img: AppAssets.successMsg2, //"assets/images/auth_screen/success_msg_2.svg"
             ),
             // SVGImages(iconPath: "assets/images/auth_screen/error_msg.svg"),

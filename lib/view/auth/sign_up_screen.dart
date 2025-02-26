@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:wealth_ticker_main/core/app_assets.dart';
+import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import '../../core/field_validator.dart';
 import '../../core/routes/routes.dart';
+import '../../core/theme/app_colors.dart';
 import '../../core/utils/global.dart';
 import '../../core/widgets/auth_screen_text.dart';
 import '../../core/widgets/my_button.dart';
@@ -61,14 +65,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: "Enter your fullname",
                         controller: _textFullName,
                         title: "Full Name",
-                        prefix: Icon(CupertinoIcons.person),
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                          ),
+                          child: SVGImages(
+                              path: AppAssets.userIcon,
+                              color: AppColors.authIconsColor),
+                        ),
+                        //Icon(CupertinoIcons.person),
                         validator: FieldValidators().required,
                       ),
                       MyTextField(
                         hintText: "Enter your email",
                         controller: _textEmail,
                         title: "Email",
-                        prefix: Icon(CupertinoIcons.mail),
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                          ),
+                          child: SVGImages(
+                              path: AppAssets.mailIcon,
+                              color: AppColors.authIconsColor),
+                        ),
+                        //Icon(CupertinoIcons.mail),
                         validator: (value) {
                           return FieldValidators().multiCheck(
                             value,
@@ -84,20 +104,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: "(415) 892-5302",
                         controller: _textPhone,
                         title: "Mobile Number",
-                        prefix: Icon(CupertinoIcons.phone),
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                          ),
+                          child: SVGImages(path: AppAssets.phoneIcon,color: AppColors.authIconsColor),
+                        ),
+                        //Icon(CupertinoIcons.phone),
                         suffix: TextButton(
                           onPressed: () {
                             countryPicker(context, providerFalse);
                           },
                           child: Text(
                             providerTrue.countryPhoneCode,
-                            style: TextStyle(color: greenColor),
+                            style: TextStyle(color: AppColors.darkGreenColor),
                           ),
                         ),
                         validator: (value) {
+                          myLog(msg: value!);
                           return FieldValidators().phoneNumber(
-                              "${providerTrue.countryPhoneCode} ${value!}",
-                              providerTrue.phoneNumLength);
+                            value,
+                            providerTrue.phoneNumLength,
+                          );
                         },
                       ),
                       MyTextField(
@@ -106,13 +134,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: "Referral Code",
                         hintText: "Enter your referral code",
                         controller: _textReferralCode,
-                        prefix: Icon(Icons.lock_open_outlined),
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 11.h,
+                          ),
+                          child: SVGImages(path: AppAssets.openLockIcon),
+                        ), //Icon(Icons.lock_open_outlined),
                       ),
                       MyTextField(
                         title: "Password",
                         hintText: "Enter your password",
                         controller: _textPassword,
-                        prefix: Icon(CupertinoIcons.lock),
+                        prefix: Icon(CupertinoIcons.lock,color: AppColors.authIconsColor),
                         obscureText: providerTrue.obSecureText,
                         suffix: IconButton(
                             onPressed: () {
@@ -132,10 +165,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                       ),
                       MyTextField(
+                        textInputAction: TextInputAction.done,
                         title: "Confirm password",
                         hintText: "Enter your confirm password",
                         controller: _textConfirmPassword,
-                        prefix: Icon(CupertinoIcons.lock),
+                        prefix: Icon(CupertinoIcons.lock,color: AppColors.authIconsColor),
                         obscureText: true,
                         validator: FieldValidators().required,
                       ),
@@ -146,23 +180,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 MySubmitButtonFilled(
                   title: "Sign Up",
                   onPressed: () {
-                    // if (_formKey.currentState!.validate()) {
-                    if (_textPassword.text.trim() ==
-                        _textConfirmPassword.text.trim()) {
-                      FocusScope.of(context).unfocus();
-                      // providerFalse.signUp(
-                      //     context: context,
-                      //     email: _textEmail.text.trim(),
-                      //     password: _textPassword.text.trim(),
-                      //     fullName: _textFullName.text.trim(),
-                      //     phoneNumber: _textPhone.text.trim(),
-                      //     referralCode: _textReferralCode.text.trim());
-                      context
-                          .pushReplacementNamed(AppRoutes.userFlowScreen.name);
-                    } else {
-                      showToast("Password not matched !!");
+                    if (_formKey.currentState!.validate()) {
+                      if (_textPassword.text.trim() ==
+                          _textConfirmPassword.text.trim()) {
+                        FocusScope.of(context).unfocus();
+                        // providerFalse.signUp(
+                        //     context: context,o
+                        //     email: _textEmail.text.trim(),
+                        //     password: _textPassword.text.trim(),
+                        //     fullName: _textFullName.text.trim(),
+                        //     phoneNumber: _textPhone.text.trim(),
+                        //     referralCode: _textReferralCode.text.trim());
+                        context.push(
+                          //pushReplacementNamed
+                          AppRoutes.onBoardingScreen.path,
+                        );
+                        // context.pushReplacementNamed(AppRoutes.userFlowScreen.name);
+                      } else {
+                        showToast("Password not matched !!");
+                      }
                     }
-                    // }
                   },
                 ),
                 16.h.verticalSpace,
@@ -185,7 +222,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextSpan(
                             text: "Login",
                             style: textStyleW700.copyWith(
-                                fontSize: 15.sp, color: greenColor)
+                                fontSize: 15.sp,
+                                color: AppColors.darkGreenColor)
                             // GoogleFonts.openSans(
                             //     fontSize: 15.sp,
                             //   fontWeight: FontWeight.bold,
@@ -205,9 +243,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
-
-
-
 
 // CountryCodePicker(
 //   initialSelection: 'IN',
@@ -238,3 +273,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
 //     myLog(msg: _textPhone.text);
 //   },
 // ),
+
+class ReferralFieldSuffix extends StatelessWidget {
+  const ReferralFieldSuffix({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 0,
+      alignment: Alignment.center,
+      margin: EdgeInsets.fromLTRB(0.w, 10.h, 14.h, 10.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(
+          color: Colors.grey.shade700,
+        ),
+      ),
+      child: Icon(
+        Icons.keyboard_arrow_right_rounded,
+        color: Colors.grey.shade700,
+      ),
+    );
+  }
+}

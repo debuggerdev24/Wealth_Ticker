@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import '../../core/routes/routes.dart';
 import '../../core/utils/global.dart';
 
@@ -25,10 +26,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: greenColor,
+      backgroundColor: AppColors.darkGreenColor,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(15.r),
+          padding: EdgeInsets.all(10.r),
           child: Image.asset("assets/images/app_logo/logo.png"),
         ),
       ),

@@ -5,15 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../provider/auth/auth_provider.dart';
+import '../theme/app_colors.dart';
 
-EdgeInsets appPadding(){
+EdgeInsets appPadding() {
   return EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h);
-
 }
 
-
 Color greenColor = Color(0xff013024);
-Color lightGreenColor = Color(0xff329687);
 
 
 showToast(String msg) {
@@ -28,8 +26,10 @@ showToast(String msg) {
   );
 }
 
-
-void countryPicker(BuildContext context, AuthProvider providerFalse,) {
+void countryPicker(
+  BuildContext context,
+  AuthProvider providerFalse,
+) {
   showCountryPicker(
     context: context,
     showPhoneCode: true,
@@ -42,8 +42,9 @@ void countryPicker(BuildContext context, AuthProvider providerFalse,) {
     ),
     onSelect: (Country country) {
       providerFalse.updateCountryPhoneCode(
-          phoneCode: "+ ${country.phoneCode}",
-          length: country.example.length);
+        phoneCode: "+ ${country.phoneCode}",
+        length: country.example.length,
+      );
     },
   );
 }
@@ -59,7 +60,7 @@ InputDecoration countryInputDecoration() {
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: greenColor, width: 1.5),
+      borderSide: BorderSide(color: AppColors.darkGreenColor, width: 1.5),
     ),
   );
 }

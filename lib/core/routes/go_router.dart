@@ -4,8 +4,12 @@ import 'package:wealth_ticker_main/model/user/post_model.dart';
 import 'package:wealth_ticker_main/view/admin/lucky_draw/confirm_winner_screen.dart';
 import 'package:wealth_ticker_main/view/admin/lucky_draw/past_winners_screen.dart';
 import 'package:wealth_ticker_main/view/admin/lucky_draw/winner_selected_screen.dart';
+import 'package:wealth_ticker_main/view/admin/pay_out/confirm_section_screen.dart';
+import 'package:wealth_ticker_main/view/admin/pay_out/failure_popup_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/process_payout_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/select_payment_screen.dart';
+import 'package:wealth_ticker_main/view/admin/pay_out/success_popup_screen.dart';
+import 'package:wealth_ticker_main/view/admin/post/edit_post_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/bank_details_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/week_lucky_draw_screen.dart';
 import 'package:wealth_ticker_main/view/users/my_post/post_details_screen.dart';
@@ -42,7 +46,7 @@ import '../../view/users/support/send_email_screen.dart';
 import '../../view/users/support/support_screen.dart';
 
 final GoRouter goRouter = GoRouter(
-  initialLocation: AppRoutes.adminDashBoardScreen.path, //splashScreen
+  initialLocation: AppRoutes.adminDashBoardScreen.path, //splash
   routes: <RouteBase>[
     GoRoute(
       path: AppRoutes.splashScreen.path,
@@ -243,8 +247,8 @@ final GoRouter goRouter = GoRouter(
     //   },
     // ),
     GoRoute(
-      path: AppRoutes.userFlowScreen.path,
-      name: AppRoutes.userFlowScreen.name,
+      path: AppRoutes.userDashBoard.path,
+      name: AppRoutes.userDashBoard.name,
       builder: (context, state) {
         return UserDashBoardScreen();
       },
@@ -332,6 +336,34 @@ final GoRouter goRouter = GoRouter(
       name: AppRoutes.selectPaymentScreen.name,
       builder: (context, state) {
         return SelectPaymentScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.confirmationSectionScreen.path,
+      name: AppRoutes.confirmationSectionScreen.name,
+      builder: (context, state) {
+        return ConfirmSectionScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.successPopUpScreen.path,
+      name: AppRoutes.successPopUpScreen.name,
+      builder: (context, state) {
+        return SuccessPopupScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.failurePopupScreen.path,
+      name: AppRoutes.failurePopupScreen.name,
+      builder: (context, state) {
+        return FailurePopupScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.editPostScreen.path,
+      name: AppRoutes.editPostScreen.name,
+      builder: (context, state) {
+        return EditPostScreen();
       },
     ),
   ],

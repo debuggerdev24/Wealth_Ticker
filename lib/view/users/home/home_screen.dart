@@ -8,6 +8,7 @@ import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/my_button.dart';
 import 'package:wealth_ticker_main/provider/user/home_provider.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,9 +18,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: greenColor,
+        statusBarColor: AppColors.darkGreenColor,
         statusBarIconBrightness:
-        Brightness.light, // Light icons for dark background
+            Brightness.light, // Light icons for dark background
       ),
     );
     HomeProvider providerTrue =
@@ -32,12 +33,12 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              24.h.verticalSpace,
+              18.h.verticalSpace,
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: Text("Welcome Daniel...",
                     style: textStyleW700.copyWith(
-                        color: greenColor, fontSize: 20.sp)),
+                        color: AppColors.darkGreenColor, fontSize: 20.sp)),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -46,6 +47,8 @@ class HomeScreen extends StatelessWidget {
                         context.push(AppRoutes.profileScreen.path);
                       },
                       child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://s3-alpha-sig.figma.com/img/631a/e9d1/8913573857117663f71ac91bd6180688?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IXXFUJ-l84XxqJgy95pyOjsqAoNEGChTWDNwJlanDN3I4RxlQSJIfnNBWEwb4kGHfYOHGut188SUsG~9uTEJUyrAZtez9Akyhw3xVNDfOuSAC7FcYETVPUyou2I-azHDH5RpOjDVB3slFVNUnfUojhUbbtg6Ib8q1DSX0M-UcqqvzbM~hid784~ImURB~M9jeKT5GYtS~wImwpSkrOCinhb4Xt-bj4GK5sgF~cw5ZevEcybSEsPZkJMWzGk5Rgt-P3gpJU9nn6flASOOI2gsuSYK4qq46Qy8s1crEGQltBPbT-sFfme-dP8ZY6pd0Vj8M02Vd3AHpn7~ZBIzlZbktA__"),
                         radius: 23.r,
                       ),
                     ),
@@ -82,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.r),
                               color: Color(0xffD9E0DE),
-                              border: Border.all(color: greenColor)),
+                              border: Border.all(color: AppColors.darkGreenColor)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,

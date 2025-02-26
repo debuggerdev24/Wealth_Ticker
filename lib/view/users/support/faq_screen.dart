@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 import '../../../core/widgets/my_app_layout.dart';
 
@@ -22,7 +23,7 @@ class FaqScreen extends StatelessWidget {
               data:
                   Theme.of(context).copyWith(dividerColor: Colors.transparent),
               child: ExpansionTile(
-                iconColor: greenColor,
+                iconColor: AppColors.darkGreenColor,
                 title: Text(
                   "1. What is the stock market?",
                   style:

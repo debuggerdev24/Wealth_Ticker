@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
+import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import 'package:wealth_ticker_main/core/utils/global.dart';
@@ -33,8 +35,11 @@ class SelectPaymentScreen extends StatelessWidget {
                 border: Border.all(color: AppColors.borderColor)
               ),
               child: ListTile(
+                onTap: (){
+                  context.push(AppRoutes.confirmationSectionScreen.path);
+                },
                 contentPadding: EdgeInsets.zero,
-                leading: SVGImages(iconPath: AppAssets.creditCard),
+                leading: SVGImages(path: AppAssets.creditCard),
                 title: Text(" Wise App"),
                 trailing: IconButton(
                   onPressed: () {},
@@ -44,7 +49,6 @@ class SelectPaymentScreen extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ),
       ),

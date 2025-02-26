@@ -34,7 +34,7 @@ enum AppRoutes {
   bankDetailsScreen,
   luckyDrawManagementScreenAdmin,
   luckyDrawDetailsScreen,
-  manageParticipantsScreen, confirmWinner, winnerSelected, pastWinnersScreenAdmin, processPayoutScreen, selectPaymentScreen
+  manageParticipantsScreen, confirmWinner, winnerSelected, pastWinnersScreenAdmin, processPayoutScreen, selectPaymentScreen, confirmationSectionScreen, successPopUpScreen, failurePopupScreen, editPostScreen, userDashBoard
 }
 
 extension AppRouteExtension on AppRoutes {

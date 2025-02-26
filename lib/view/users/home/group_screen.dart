@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 
 import '../../../core/widgets/my_app_layout.dart';
@@ -55,7 +56,7 @@ class GroupScreen extends StatelessWidget {
               Text(
                 "1 Members",
                 style: textStyleW500.copyWith(
-                  color: greenColor,
+                  color: AppColors.darkGreenColor,
                   fontSize: 20.sp,
                 ),
               ),
@@ -73,7 +74,7 @@ class GroupScreen extends StatelessWidget {
                   onChanged: (value) {
                     provider.toggleSwitchNotification();
                   },
-                  activeTrackColor: greenColor,
+                  activeTrackColor: AppColors.darkGreenColor,
                 ),
               ),
               Divider(),
@@ -83,7 +84,7 @@ class GroupScreen extends StatelessWidget {
                   "1 Members",
                   style: TextStyle(color: Colors.grey.shade600),
                 ),
-                trailing: Icon(CupertinoIcons.search, color: greenColor),
+                trailing: Icon(CupertinoIcons.search, color: AppColors.darkGreenColor),
               ),
               // SizedBox(height: 26.h),
               ListTile(

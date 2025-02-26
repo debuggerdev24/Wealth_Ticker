@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import '../theme/app_colors.dart';
 import '../utils/global.dart';
 
 class MySubmitButtonFilled extends StatelessWidget {
@@ -26,7 +27,7 @@ class MySubmitButtonFilled extends StatelessWidget {
         margin: EdgeInsets.only(top: 0.h),
         //21
         decoration: BoxDecoration(
-            color: greenColor, borderRadius: BorderRadius.circular(10.r)),
+            color: AppColors.darkGreenColor, borderRadius: BorderRadius.circular(10.r)),
         child: Text(
           title,
           style: textStyleW700.copyWith(
@@ -70,14 +71,14 @@ class MySubmitButtonOutlined extends StatelessWidget {
         //21
         decoration: BoxDecoration(
             border: Border.all(
-              color: greenColor,
+              color: AppColors.darkGreenColor,
             ),
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Text(
           title,
           style: textStyleW700.copyWith(
-              fontSize: fontSize ?? 20.sp, color: greenColor),
+              fontSize: fontSize ?? 20.sp, color: AppColors.darkGreenColor),
         ),
       ),
     );

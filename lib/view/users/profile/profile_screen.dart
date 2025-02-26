@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 import '../../../core/widgets/my_button.dart';
 import '../../../core/widgets/my_textfield.dart';
@@ -23,28 +25,29 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: greenColor,
-          centerTitle: true,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              color: Colors.white,
-              icon: Icon(Icons.bookmark_outline_rounded),
-            ),
-          ],
-          title: Text(
-            "My Profile",
-            style: textStyleW700.copyWith(
-              color: Colors.white,
-              fontSize: 18.sp,
-            ),
+        backgroundColor: AppColors.darkGreenColor,
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            color: Colors.white,
+            icon: Icon(Icons.bookmark_outline_rounded),
           ),
-          leading: Padding(
-            padding: EdgeInsets.all(18.r),
-            child: SVGImages(
-              iconPath: AppAssets.editIcon,
-            ),
-          )),
+        ],
+        title: Text(
+          "My Profile",
+          style: textStyleW700.copyWith(
+            color: Colors.white,
+            fontSize: 18.sp,
+          ),
+        ),
+        leading: Padding(
+          padding: EdgeInsets.all(18.r),
+          child: SVGImages(
+            path: AppAssets.editIcon,
+          ),
+        ),
+      ),
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
@@ -81,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
                         padding: EdgeInsets.all(2),
                         elevation: 1,
                         onPressed: () async {},
-                        color: greenColor,
+                        color: AppColors.darkGreenColor,
                         shape: const CircleBorder(),
                         child: Icon(
                           Icons.photo_camera_outlined,
@@ -108,25 +111,40 @@ class ProfileScreen extends StatelessWidget {
                       title: "Full Name",
                       hintText: "Ethan Carter",
                       controller: _textFullName,
-                      prefix: Icon(CupertinoIcons.person),
+                      prefix: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 12.h,
+                        ),
+                        child: SVGImages(path: AppAssets.userIcon),
+                      ),
                     ),
                     MyTextField(
                       title: "Email",
                       hintText: "ethancarter@gmail.com",
                       controller: _textEmail,
-                      prefix: Icon(CupertinoIcons.mail),
+                      prefix: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 11.h,
+                        ),
+                        child: SVGImages(path: AppAssets.mailIcon,color: AppColors.authIconsColor),
+                      ),
                     ),
                     MyTextField(
                       title: "Mobile Number",
                       hintText: "ethancarter@gmail.com",
                       controller: _textMobileNumber,
-                      prefix: Icon(CupertinoIcons.phone),
+                      prefix: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 12.h,
+                        ),
+                        child: SVGImages(path: AppAssets.phoneIcon,color: AppColors.authIconsColor),
+                      ),
                     ),
                     MyTextField(
                       title: "Password",
                       hintText: "Enter your password",
                       controller: _textPassword,
-                      prefix: Icon(CupertinoIcons.lock),
+                      prefix: Icon(CupertinoIcons.lock,color: AppColors.authIconsColor),
                     ),
                   ],
                 ),
@@ -134,7 +152,10 @@ class ProfileScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: customTile(
-                    Icons.lock_open_outlined,
+                    SVGImages(
+                      path: AppAssets.refCodeProfileIcon,
+                      color: Color(0xff333333),
+                    ),
                     "Referral Code",
                     onTap: () {
                       context.push(AppRoutes.inviteScreen.path);
@@ -146,20 +167,38 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     customTile(
-                      Icons.logout,
+                      SVGImages(
+                        path: AppAssets.logOutIcon,
+                        color: Color(0xff333333),
+                      ),
                       "Log out",
                       onTap: () {},
                     ),
-                    customTile(CupertinoIcons.delete, "Delete Account",
-                        onTap: () {}),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.deleteBucket,
+                          colorFilter: const ColorFilter.mode(
+                              Colors.red, BlendMode.srcIn),
+                        ),
+                        14.w.horizontalSpace,
+                        Text(
+                          "Delete Account",
+                          style: TextStyle(
+                            color: Colors.red,
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
-                16.h.verticalSpace,
+                22.h.verticalSpace,
                 MySubmitButtonFilled(
                   title: "Save",
                   onPressed: () {},
                 ),
-                20.h.verticalSpace,
+                16.h.verticalSpace,
               ],
             ),
           ),
@@ -167,19 +206,22 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-  Widget customTile(var icon, String title, {required VoidCallback onTap}) {
+
+  Widget customTile(Widget icon, String title, {required VoidCallback onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: icon == CupertinoIcons.delete ? Colors.red : null),
+          // Icon(icon, color: icon == CupertinoIcons.delete ? Colors.red : null),
+          icon,
           14.w.horizontalSpace,
           Text(
             title,
             style: TextStyle(
-                color: icon == CupertinoIcons.delete ? Colors.red : null),
+                // color: icon == CupertinoIcons.delete ? Colors.red : null,
+                ),
           ),
         ],
       ),

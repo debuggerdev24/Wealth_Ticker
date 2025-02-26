@@ -7,6 +7,8 @@ import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/provider/chat_provider.dart';
 import 'package:wealth_ticker_main/view/users/home/widgets/chat_bubble.dart';
 
+import '../../../core/theme/app_colors.dart';
+
 class OneToOneChatScreen extends StatelessWidget {
   const OneToOneChatScreen({super.key});
 
@@ -31,7 +33,7 @@ class OneToOneChatScreen extends StatelessWidget {
                           child: Text(
                             "Today",
                             style: textStyleW700.copyWith(
-                              color: greenColor,
+                              color: AppColors.darkGreenColor,
                             ),
                           ),
                         ),
@@ -72,7 +74,7 @@ Widget appBarView(BuildContext context) {
   return Container(
     alignment: Alignment.bottomCenter,
     height: 100.h,
-    decoration: BoxDecoration(color: greenColor),
+    decoration: BoxDecoration(color: AppColors.darkGreenColor),
     child: Padding(
       padding: EdgeInsets.symmetric(vertical: 5.h),
       child: Row(

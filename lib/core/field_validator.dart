@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
+
 class FieldValidators {
   FieldValidators._();
 
@@ -47,15 +49,18 @@ class FieldValidators {
     return null;
   }
 
-  String? phoneNumber(String? val,int length) {
-    if (val == null || val.isEmpty) {
+  String? phoneNumber(String phoneNumber,int length) {
+    if (phoneNumber.isEmpty) {
       return "This filed is Required";
     }
 
     RegExp phonePattern = RegExp(r"^\d{length}$");
-
-    if (!phonePattern.hasMatch(val)) {
-      log("returning error - $val", name: "phone number validator");
+//!phonePattern.hasMatch(val)
+//     myLog(msg: phoneNumber);
+//     myLog(msg: phoneNumber.length.toString());
+//     myLog(msg: length.toString());
+    if (phoneNumber.length != length) {
+      log("returning error - $phoneNumber", name: "phone number validator");
       return "Phone number must be $length digits.";
     }
     log("returning normally", name: "phone number validator");

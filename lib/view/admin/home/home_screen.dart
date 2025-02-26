@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 
 import '../../../core/text_styls.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 
 class HomeScreenAdmin extends StatelessWidget {
@@ -15,7 +16,7 @@ class HomeScreenAdmin extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: greenColor,
+        statusBarColor: AppColors.darkGreenColor,
         statusBarIconBrightness:
             Brightness.light, // Light icons for dark background
       ),
@@ -30,7 +31,7 @@ class HomeScreenAdmin extends StatelessWidget {
               contentPadding: EdgeInsets.zero,
               leading: Text("Hello Daniel...",
                   style: textStyleW700.copyWith(
-                      color: greenColor, fontSize: 20.sp)),
+                      color: AppColors.darkGreenColor, fontSize: 20.sp)),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -202,7 +203,7 @@ class HomeScreenAdmin extends StatelessWidget {
                 Text(
                   "Scheduled Market Update",
                   style: textStyleW600.copyWith(
-                    color: greenColor,
+                    color: AppColors.darkGreenColor,
                     fontSize: 18.sp,
                   ),
                 ),

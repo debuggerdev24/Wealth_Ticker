@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/routes/routes.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/global.dart';
 
 
@@ -18,7 +19,7 @@ class MyDrawer extends StatelessWidget {
           children: [
             DrawerHeader(
               // padding: EdgeInsets.zero,
-              decoration: BoxDecoration(color: greenColor),
+              decoration: BoxDecoration(color: AppColors.darkGreenColor),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,

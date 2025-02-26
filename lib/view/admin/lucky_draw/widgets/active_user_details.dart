@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/my_button.dart';
 
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/global.dart';
 
 class ActiveUserDetails extends StatelessWidget {
@@ -27,7 +28,7 @@ class ActiveUserDetails extends StatelessWidget {
           padding:
               EdgeInsets.only(top: 16.h, left: 14.h, right: 10.w, bottom: 16.h),
           decoration: BoxDecoration(
-            border: Border.all(color: greenColor),
+            border: Border.all(color: AppColors.darkGreenColor),
             borderRadius: BorderRadius.circular(10.r),
           ),
           child: Column(
@@ -59,7 +60,7 @@ Widget buildUserInfoRow(IconData icon, String title, String value) {
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, color: greenColor, size: 22.sp), // Icon
+        Icon(icon, color: AppColors.darkGreenColor, size: 22.sp), // Icon
         SizedBox(width: 8.w),
         Expanded(
           child: Text(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/global.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -37,7 +38,7 @@ class ChatBubble extends StatelessWidget {
                         topLeft: Radius.circular(12.r),
                         bottomRight: Radius.circular(12.r),
                       ),
-                border: Border.all(color: greenColor, width: 1),
+                border: Border.all(color: AppColors.darkGreenColor, width: 1),
               ),
               child: Text(message),
             ),

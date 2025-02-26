@@ -63,7 +63,8 @@ class PurchasedProductPostWidget extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 22.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
-          color: Color(0xfffafafa),
+          color: Color(0xfffff8f8),//
+
           boxShadow: [
             BoxShadow(
               color: Colors.grey.shade400,

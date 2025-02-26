@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import '../theme/app_colors.dart';
 import '../utils/global.dart';
 
 class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
@@ -29,7 +30,7 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
         ),
         actions: actions,
         centerTitle: centerTitle,
-        backgroundColor: greenColor,
+        backgroundColor: AppColors.darkGreenColor,
         leading: showBackButton ?? true
             ? GestureDetector(
                 onTap: () {
@@ -40,7 +41,7 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
                   color: Colors.white,
                 ),
               )
-            : SizedBox(),
+            : leading,
         title: Text(title, style: appBarTitleStyle()),
       ),
       body: body,

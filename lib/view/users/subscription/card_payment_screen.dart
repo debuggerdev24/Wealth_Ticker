@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import '../../../core/routes/routes.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 import '../../../core/widgets/my_app_layout.dart';
 import '../../../core/widgets/my_button.dart';
@@ -161,7 +162,7 @@ class CardPaymentScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Checkbox(
-            activeColor: greenColor,
+            activeColor: AppColors.darkGreenColor,
             value: provider.isSavePaymentMethod,
             onChanged: (value) {
               providerFalse.changeStatus();
@@ -203,11 +204,11 @@ class UnderLineInputField extends StatelessWidget {
           TextField(
             controller: controller,
             textInputAction: textInputAction,
-            cursorColor: greenColor,
+            cursorColor: AppColors.darkGreenColor,
             decoration: InputDecoration(
                 hintText: hintText,
                 focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: greenColor, width: 2))),
+                    borderSide: BorderSide(color: AppColors.darkGreenColor, width: 2))),
           ),
         ],
       ),
@@ -233,11 +234,11 @@ class DateInputField extends StatelessWidget {
       textAlign: TextAlign.center,
       controller: controller,
       textInputAction: textInputAction,
-      cursorColor: greenColor,
+      cursorColor: AppColors.darkGreenColor,
       decoration: InputDecoration(
           hintText: hintText,
           focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: greenColor, width: 2))),
+              borderSide: BorderSide(color: AppColors.darkGreenColor, width: 2))),
     );
   }
 }

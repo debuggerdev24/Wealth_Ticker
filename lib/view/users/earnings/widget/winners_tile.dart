@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import 'package:wealth_ticker_main/model/user/earning_model.dart';
 
 import '../../../../core/text_styls.dart';
@@ -24,7 +25,7 @@ class WinnersTile extends StatelessWidget {
             blurRadius: 5,
           ),
         ],
-        color: Color(0xffededed),
+        color: AppColors.lightCreamColor,
       ),
       child: ListTile(
         // contentPadding: EdgeInsets.symmetric(horizontal: 10.w),

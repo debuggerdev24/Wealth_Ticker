@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/provider/admin/lucky_draw_provider.dart';
 import 'package:wealth_ticker_main/provider/admin/pay_out_provider.dart';
+import 'package:wealth_ticker_main/provider/admin/post_provider.dart';
 import 'package:wealth_ticker_main/provider/auth/auth_provider.dart';
 import 'package:wealth_ticker_main/provider/auth/on_boarding_provider.dart';
 import 'package:wealth_ticker_main/provider/chat_provider.dart';
@@ -35,6 +36,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => EarningsProvider()),
         ChangeNotifierProvider(create: (_) => LuckyDrawProvider()),
         ChangeNotifierProvider(create: (_) => PayOutProvider()),
+        ChangeNotifierProvider(create: (_) => PostProvider()),
       ],
       child: const MyApp(),
     ),
@@ -83,4 +85,3 @@ class _MyAppState extends State<MyApp> {
 // Use .sp for font sizes.
 // t k c l h
 // Use .r for border radius.
-
