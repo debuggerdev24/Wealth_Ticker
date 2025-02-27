@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import '../../../../core/text_styls.dart';
 
 class ParticipantUserTile extends StatelessWidget {
@@ -18,11 +19,11 @@ class ParticipantUserTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xffcbd6d3),
+        color: AppColors.dulGreen,
         borderRadius: BorderRadius.circular(8.r),
       ),
       padding: EdgeInsets.symmetric(
-        vertical: 5.h,
+        vertical: 1.5.h,
       ),
       child: ListTile(
         // contentPadding: EdgeInsets.zero,
@@ -42,14 +43,20 @@ class ParticipantUserTile extends StatelessWidget {
               style: textStyleW600,
             ),
             Text(
-              "$numOfPurchasedPost Posts purchased",
+              "0$numOfPurchasedPost Posts purchased",
               style: TextStyle(
                 fontSize: 10.sp,
+                color: Colors.black
               ),
             ),
           ],
         ),
-        subtitle: Text("Customer Name : $customerName"),
+        subtitle: Text(
+          "Customer Name : $customerName",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         //Chloe Young
         // trailing:
       ),

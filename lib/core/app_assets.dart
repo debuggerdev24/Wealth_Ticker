@@ -7,7 +7,7 @@ class AppAssets extends Assets {
 
  static AppAssets appAssets = AppAssets._();
 
-  static String get appLogo => "${Assets.base}/app_logo/logo.png";
+  static String get appLogo => "${Assets.base}/app_logo/appLogo.png";
   static String get appleLogo => "${Assets.base}/auth_screen/apple_logo.svg";
   static String get faceBookLogo => "${Assets.base}/auth_screen/facebook.svg";
   static String get googleLogo => "${Assets.base}/auth_screen/google.svg";
@@ -47,4 +47,9 @@ class AppAssets extends Assets {
   static String get openLockIcon => "${Assets.base}/open_lock.svg";
   static String get logOutIcon => "${Assets.base}/log_out.svg";
   static String get refCodeProfileIcon => "${Assets.base}/ref_code_profile.svg";
+  static String get whiteLock => "${Assets.base}/white_lock.svg";
+  static String get lockIcon => "${Assets.base}/lock_icon.svg";
+  static String get plusFileIcon => "${Assets.base}/plus_file_icon.svg";
+  static String get notificationIcon => "${Assets.base}/notification.svg";
+  static String get errorIcon => "${Assets.base}/error.svg";
 }

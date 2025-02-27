@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import '../../core/routes/routes.dart';
 import '../../core/utils/global.dart';
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(Duration(seconds: 3),() {
-      context.pushReplacementNamed( AppRoutes.signUpScreen.name);
+      context.pushReplacementNamed(AppRoutes.signUpScreen.name);
     },);
     super.initState();
   }
@@ -29,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: AppColors.darkGreenColor,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(10.r),
-          child: Image.asset("assets/images/app_logo/logo.png"),
+          padding: EdgeInsets.all(30.r),
+          child: Image.asset(AppAssets.appLogo),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
@@ -12,6 +13,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
 import '../../../core/widgets/my_button.dart';
 import '../../../core/widgets/my_textfield.dart';
+import '../../../provider/auth/auth_provider.dart';
 
 TextEditingController _textFullName = TextEditingController();
 TextEditingController _textEmail = TextEditingController();
@@ -23,7 +25,11 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProviderTrue =
+    Provider.of<AuthProvider>(context, listen: true);
+    AuthProvider providerFalse = Provider.of<AuthProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: AppColors.darkGreenColor,
         centerTitle: true,
@@ -96,13 +102,13 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
                 //todo name
-                7.h.verticalSpace,
+                8.h.verticalSpace,
                 Text(
                   "Ethan Carter",
                   style: textStyleW500.copyWith(
                       color: Colors.black, fontSize: 18.sp),
                 ),
-                32.h.verticalSpace,
+                28.h.verticalSpace,
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   spacing: 21.h,
@@ -113,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                       controller: _textFullName,
                       prefix: Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
+                          vertical: 13.h,
                         ),
                         child: SVGImages(path: AppAssets.userIcon),
                       ),
@@ -124,7 +130,7 @@ class ProfileScreen extends StatelessWidget {
                       controller: _textEmail,
                       prefix: Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: 11.h,
+                          vertical: 13.h,
                         ),
                         child: SVGImages(path: AppAssets.mailIcon,color: AppColors.authIconsColor),
                       ),
@@ -135,16 +141,25 @@ class ProfileScreen extends StatelessWidget {
                       controller: _textMobileNumber,
                       prefix: Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
+                          vertical: 13.h,
                         ),
                         child: SVGImages(path: AppAssets.phoneIcon,color: AppColors.authIconsColor),
                       ),
+                      suffix: myCountryCodePicker(context, providerFalse, authProviderTrue),
                     ),
                     MyTextField(
                       title: "Password",
                       hintText: "Enter your password",
                       controller: _textPassword,
-                      prefix: Icon(CupertinoIcons.lock,color: AppColors.authIconsColor),
+                      prefix: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 14.h,
+                        ),
+                        child: SVGImages(
+                          path: AppAssets.lockIcon,
+                          color: AppColors.authIconsColor,
+                        ),
+                      ),
                     ),
                   ],
                 ),

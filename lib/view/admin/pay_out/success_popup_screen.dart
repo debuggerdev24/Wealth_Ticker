@@ -37,7 +37,7 @@ class SuccessPopupScreen extends StatelessWidget {
                   SVGImages(
                     path: AppAssets.successTick,
                   ),
-                  16.h.verticalSpace,
+                  26.h.verticalSpace,
                   Text(
                     '“Payout of \$1,500 to AlexT has been successfully processed.”',
                     textAlign: TextAlign.center,

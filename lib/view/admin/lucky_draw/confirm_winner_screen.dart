@@ -41,10 +41,10 @@ class ConfirmWinner extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                      bottom: 12.h,
+                      bottom: 16.h,
                     ),
-                    height: 110.h,
-                    width: 110.w,
+                    height: 90.h,
+                    width: 90.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.r),
                       image: DecorationImage(

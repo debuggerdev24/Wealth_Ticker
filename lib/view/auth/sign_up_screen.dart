@@ -42,6 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         Provider.of<AuthProvider>(context, listen: true);
     AuthProvider providerFalse = Provider.of<AuthProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Form(
         key: _formKey,
         child: Padding(
@@ -67,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: "Full Name",
                         prefix: Padding(
                           padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
+                            vertical: 13.h,
                           ),
                           child: SVGImages(
                               path: AppAssets.userIcon,
@@ -82,13 +83,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: "Email",
                         prefix: Padding(
                           padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
+                            vertical: 13.h,
                           ),
                           child: SVGImages(
                               path: AppAssets.mailIcon,
                               color: AppColors.authIconsColor),
                         ),
-                        //Icon(CupertinoIcons.mail),
                         validator: (value) {
                           return FieldValidators().multiCheck(
                             value,
@@ -106,20 +106,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: "Mobile Number",
                         prefix: Padding(
                           padding: EdgeInsets.symmetric(
-                            vertical: 12.h,
+                            vertical: 13.h,
                           ),
-                          child: SVGImages(path: AppAssets.phoneIcon,color: AppColors.authIconsColor),
+                          child: SVGImages(
+                              path: AppAssets.phoneIcon,
+                              color: AppColors.authIconsColor),
                         ),
                         //Icon(CupertinoIcons.phone),
-                        suffix: TextButton(
-                          onPressed: () {
-                            countryPicker(context, providerFalse);
-                          },
-                          child: Text(
-                            providerTrue.countryPhoneCode,
-                            style: TextStyle(color: AppColors.darkGreenColor),
-                          ),
-                        ),
+                        suffix: myCountryCodePicker(
+                            context, providerFalse, providerTrue),
                         validator: (value) {
                           myLog(msg: value!);
                           return FieldValidators().phoneNumber(
@@ -134,9 +129,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: "Referral Code",
                         hintText: "Enter your referral code",
                         controller: _textReferralCode,
+                        suffix: referralFieldSuffix(),
                         prefix: Padding(
                           padding: EdgeInsets.symmetric(
-                            vertical: 11.h,
+                            vertical: 12.h,
                           ),
                           child: SVGImages(path: AppAssets.openLockIcon),
                         ), //Icon(Icons.lock_open_outlined),
@@ -145,7 +141,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: "Password",
                         hintText: "Enter your password",
                         controller: _textPassword,
-                        prefix: Icon(CupertinoIcons.lock,color: AppColors.authIconsColor),
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 14.h,
+                          ),
+                          child: SVGImages(
+                            path: AppAssets.lockIcon,
+                            color: AppColors.authIconsColor,
+                          ),
+                        ),
                         obscureText: providerTrue.obSecureText,
                         suffix: IconButton(
                             onPressed: () {
@@ -169,7 +173,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: "Confirm password",
                         hintText: "Enter your confirm password",
                         controller: _textConfirmPassword,
-                        prefix: Icon(CupertinoIcons.lock,color: AppColors.authIconsColor),
+                        prefix: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 14.h,
+                          ),
+                          child: SVGImages(
+                            path: AppAssets.lockIcon,
+                            color: AppColors.authIconsColor,
+                          ),
+                        ),
                         obscureText: true,
                         validator: FieldValidators().required,
                       ),
@@ -274,26 +286,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
 //   },
 // ),
 
-class ReferralFieldSuffix extends StatelessWidget {
-  const ReferralFieldSuffix({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 0,
-      alignment: Alignment.center,
-      margin: EdgeInsets.fromLTRB(0.w, 10.h, 14.h, 10.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(4),
-        border: Border.all(
-          color: Colors.grey.shade700,
-        ),
-      ),
-      child: Icon(
-        Icons.keyboard_arrow_right_rounded,
+Widget referralFieldSuffix() {
+  return Container(
+    width: 0,
+    alignment: Alignment.center,
+    margin: EdgeInsets.fromLTRB(2.w, 16.h, 14.w, 16.h),
+    padding: EdgeInsets.zero,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(4),
+      border: Border.all(
         color: Colors.grey.shade700,
       ),
-    );
-  }
+    ),
+    child: Icon(
+      size: 22.h,
+      Icons.keyboard_arrow_right_rounded,
+      color: Colors.grey.shade700,
+    ),
+  );
 }

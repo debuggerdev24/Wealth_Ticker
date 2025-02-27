@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import '../../model/user/earning_model.dart';
 
 class EarningsProvider extends ChangeNotifier {
+
+  // bool
   bool isComplete = true;
 
   List<PastWinnersModel> pastWinners = [

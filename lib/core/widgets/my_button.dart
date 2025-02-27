@@ -7,34 +7,39 @@ import '../utils/global.dart';
 class MySubmitButtonFilled extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
-  final double? width, fontSize;
+  final TextStyle? textStyle;
+  final double? width, fontSize, height;
 
   const MySubmitButtonFilled(
       {super.key,
       required this.title,
       required this.onPressed,
       this.width,
-      this.fontSize});
+      this.fontSize,
+      this.height,
+      this.textStyle});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 52.h,
+        height: height ?? 52.h,
         width: width,
         alignment: Alignment.center,
         margin: EdgeInsets.only(top: 0.h),
         //21
         decoration: BoxDecoration(
-            color: AppColors.darkGreenColor, borderRadius: BorderRadius.circular(10.r)),
+            color: AppColors.darkGreenColor,
+            borderRadius: BorderRadius.circular(10.r)),
         child: Text(
           title,
-          style: textStyleW700.copyWith(
-            //GoogleFonts.openSans
-            fontSize: fontSize ?? 20.sp,
-            color: Colors.white,
-          ),
+          style: textStyle ??
+              textStyleW700.copyWith(
+                //GoogleFonts.openSans
+                fontSize: fontSize ?? 19.sp,
+                color: Colors.white,
+              ),
         ),
       ),
     );
@@ -43,8 +48,9 @@ class MySubmitButtonFilled extends StatelessWidget {
 
 class MySubmitButtonOutlined extends StatelessWidget {
   final String title;
+  final TextStyle? textStyle;
   final VoidCallback onPressed;
-  final double? height,width, fontSize, marginTop, marginBottom, padding;
+  final double? height, width, fontSize, marginTop, marginBottom, padding;
 
   const MySubmitButtonOutlined(
       {super.key,
@@ -54,7 +60,8 @@ class MySubmitButtonOutlined extends StatelessWidget {
       this.fontSize,
       this.marginTop,
       this.marginBottom,
-      this.padding, this.height});
+      this.padding,
+      this.height, this.textStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -70,15 +77,19 @@ class MySubmitButtonOutlined extends StatelessWidget {
         ),
         //21
         decoration: BoxDecoration(
-            border: Border.all(
-              color: AppColors.darkGreenColor,
-            ),
+          border: Border.all(
+            color: AppColors.darkGreenColor,
+          ),
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Text(
           title,
-          style: textStyleW700.copyWith(
-              fontSize: fontSize ?? 20.sp, color: AppColors.darkGreenColor),
+          style: textStyle ??
+              textStyleW700.copyWith(
+                //GoogleFonts.openSans
+                fontSize: fontSize ?? 19.sp,
+                color: AppColors.darkGreenColor,
+              ),
         ),
       ),
     );

@@ -64,7 +64,6 @@ class LuckyDrawDetailsScreen extends StatelessWidget {
               MySubmitButtonFilled(
                 title: "Save",
                 onPressed: () {
-
                 },
               ),
             ],

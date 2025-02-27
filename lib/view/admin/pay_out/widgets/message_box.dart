@@ -29,7 +29,7 @@ class OutPutMessageBox extends StatelessWidget {
           Container(
             width: width,
             alignment: Alignment.center,
-            padding: EdgeInsets.fromLTRB(20.w, 22.h, 20.w, 22.h),
+            padding: EdgeInsets.fromLTRB(20.w, 26.h, 20.w, 26.h),
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(

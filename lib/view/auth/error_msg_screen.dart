@@ -15,6 +15,7 @@ class ErrorMsgScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(15.w, 72.h, 15.w, 40.h),
         child: Column(

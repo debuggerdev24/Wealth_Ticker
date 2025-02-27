@@ -6,7 +6,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import '../../core/theme/app_colors.dart';
-import '../../core/utils/global.dart';
 import '../../core/routes/routes.dart';
 import '../../core/widgets/auth_screen_text.dart';
 import '../../core/widgets/my_button.dart';
@@ -53,7 +52,7 @@ class OnBoardingScreen extends StatelessWidget {
                       ),
                       MyOnBoardingWidget(
                         img: AppAssets.onBoarding3,
-                        title: "Chat with our Team",
+                        title: "Lucky Draw Winners",
                         description:
                             "“Have any doubts? Don’t worry. Message us directly and we’ll answer all your questions”",
                         pageController: pageController,
@@ -100,11 +99,11 @@ class OnBoardingScreen extends StatelessWidget {
                           : "Next",
                   onPressed: () {
                     onBoardingProviderTrue.currentPage == 4
-                        ? context.push(AppRoutes.userDashBoard.path)
-
+                        ? context.push(AppRoutes.userRoleScreen.path)
                         : pageController.nextPage(
                             duration: const Duration(milliseconds: 500),
-                            curve: Curves.easeInOut);
+                            curve: Curves.easeInOut,
+                          );
                   },
                 ),
                 20.h.verticalSpace,
@@ -153,7 +152,8 @@ class MyOnBoardingWidget extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: textStyleW700.copyWith(color: AppColors.darkGreenColor, fontSize: 28.sp),
+          style: textStyleW700.copyWith(
+              color: AppColors.darkGreenColor, fontSize: 28.sp),
         ),
         5.h.verticalSpace,
         Text(

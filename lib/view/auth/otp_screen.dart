@@ -19,6 +19,7 @@ class OTPScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 20.h),
         child: SingleChildScrollView(

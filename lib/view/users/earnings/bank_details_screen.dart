@@ -6,6 +6,7 @@ import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/core/widgets/my_button.dart';
 import 'package:wealth_ticker_main/core/widgets/my_textfield.dart';
+import 'package:wealth_ticker_main/view/users/earnings/widget/error_widget.dart';
 import '../../../provider/auth/auth_provider.dart';
 
 TextEditingController _textCountry = TextEditingController();
@@ -40,48 +41,66 @@ class BankDetailsScreen extends StatelessWidget {
               ),
               24.h.verticalSpace,
               Column(
-                spacing: 20.h,
+                spacing: 18.h,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  MyTextField(
-                    title: "Select Country",
-                    hintText: "Choose your country",
-                    controller: _textCountry,
-                    suffix: GestureDetector(
-                      onTap: () {
-                        // countryPicker(context, providerFalse);
-                      },
-                      child: Container(
-                        height: 5.h,
-                        margin: EdgeInsets.fromLTRB(0, 8, 8, 8),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.r),
-                            border: Border.all(color: Colors.black)),
-                        child: Icon(Icons.flag),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      MyTextField(
+                        title: "Select Country",
+                        hintText: "Choose your country",
+                        controller: _textCountry,
+                        suffix: myCountryCodePicker(context, providerFalse, providerTrue)
                       ),
-                    ),
+                    ],
                   ),
-                  MyTextField(
-                    title: "Account Holder Name",
-                    hintText: "Enter your full name",
-                    controller: _textAccHolderName,
+                  Column(
+                    children: [
+                      MyTextField(
+                        title: "Account Holder Name",
+                        hintText: "Enter your full name",
+                        controller: _textAccHolderName,
+                      ),
+                      2.h.verticalSpace,
+                      CustomErrorWidget(errorMessage: "Invalid your Account Holder name"),
+                    ],
                   ),
-                  MyTextField(
-                    title: "Account Number/IBAN",
-                    hintText: "Enter your account number or IBAN",
-                    controller: _textAccHolderName,
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      MyTextField(
+                        title: "Account Number/IBAN",
+                        hintText: "Enter your account number or IBAN",
+                        controller: _textAccNumberOrIban,
+                      ),
+                      2.h.verticalSpace,
+                      CustomErrorWidget(errorMessage: "Invalid your Account number or IBAN"),
+                    ],
                   ),
-                  MyTextField(
-                    title: "Bank Name",
-                    hintText: "Enter your bank's name",
-                    controller: _textBankName,
+                  Column(
+                    children: [
+                      MyTextField(
+                        title: "Bank Name",
+                        hintText: "Enter your bank's name",
+                        controller: _textBankName,
+                      ),
+                      2.h.verticalSpace,
+                      CustomErrorWidget(errorMessage: "Invalid your Bank name"),
+                    ],
                   ),
-                  MyTextField(
-                    isOptional: true,
-                    optionShowText: "(if applicable)",
-                    title: "Branch Name",
-                    hintText: "Enter the branch name",
-                    controller: _textBranchName,
+                  Column(
+                    children: [
+                      MyTextField(
+                        isOptional: true,
+                        optionShowText: "(if applicable)",
+                        title: "Branch Name",
+                        hintText: "Enter the branch name",
+                        controller: _textBranchName,
+                      ),
+                      2.h.verticalSpace,
+                      CustomErrorWidget(errorMessage: "Invalid your Branch name"),
+                    ],
                   ),
                   MyTextField(
                     isOptional: true,
@@ -114,7 +133,9 @@ class BankDetailsScreen extends StatelessWidget {
               35.h.verticalSpace,
               MySubmitButtonFilled(
                 title: "Save Bank Details",
-                onPressed: () {},
+                onPressed: () {
+                  
+                },
               ),
             ],
           ),

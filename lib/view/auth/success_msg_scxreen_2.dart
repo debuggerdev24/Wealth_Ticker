@@ -13,6 +13,7 @@ class SuccessMsgScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(15.w, 72.h, 15.w, 40.h),
         child: Column(

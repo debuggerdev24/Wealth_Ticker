@@ -18,7 +18,8 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
       this.centerTitle = true,
       this.actions = const [SizedBox()],
       required this.body,
-      this.showBackButton = true, this.leading});
+      this.showBackButton = true,
+      this.leading});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,13 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
                 ),
               )
             : leading,
-        title: Text(title, style: appBarTitleStyle()),
+        title: Text(
+          title,
+          style: textStyleW700.copyWith(
+            color: Colors.white,
+            fontSize: 18.sp,
+          ),
+        ),
       ),
       body: body,
     );
@@ -51,8 +58,3 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-
-TextStyle appBarTitleStyle() => textStyleW700.copyWith(
-      color: Colors.white,
-      fontSize: 18.sp,
-    );

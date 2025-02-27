@@ -16,7 +16,7 @@ class WinnersTile extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 12.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8.r),
         border: Border.all(color: Color(0xffbfbfbf)),
         boxShadow: [
           BoxShadow(
@@ -25,7 +25,7 @@ class WinnersTile extends StatelessWidget {
             blurRadius: 5,
           ),
         ],
-        color: AppColors.lightCreamColor,
+        color: AppColors.lightCreamColor,//AppColors.lightCreamColor,
       ),
       child: ListTile(
         // contentPadding: EdgeInsets.symmetric(horizontal: 10.w),

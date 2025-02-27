@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import '../../model/admin/pay_out_list_model.dart';
 
 class PayOutProvider extends ChangeNotifier {
-  List<PayOutModel> payoutList = [
-    PayOutModel(
+  List<PayOutUsersModel> payoutList = [
+    PayOutUsersModel(
       amount: 1500,
       status: false,
       paymentMethods: "Wise App",
@@ -11,7 +11,7 @@ class PayOutProvider extends ChangeNotifier {
       image: "https://s3-alpha-sig.figma.com/img/1690/dcb9/87dc1bcc841b99cd8673f9851b377b59?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mGyrnuo7s3bKGcGTAFFdj7E2dAoNxe7zDF0b5gsrrhoqS-EsLDnamMpzOOjFLXdquvBwkfMt63ejLSN2EMZaj0DXQQ~2KBYC2YT8r-SFPZHCGV2fUlj4cEPWMlVQYZisGMKJXQAFDA1SyPxTkVxuodBDhU6nMd724fojN63qPv-Gnf0IOoKCud0iBzksGTy7R99MnA~szPHAgDfeCqIRmOScoemkimclc1EtWa~oZ-iPT21kuu5HM~42ojTR3kFci5nyDrO7FXvGa~uGNUxDmFoTxupsMZIgRcmo97I29TtTSLbWuETl4ft7yc4zSyxMs4ATVDL7mz9P35mwT10gQQ__",
       customerName: "AlexT",
     ),
-    PayOutModel(
+    PayOutUsersModel(
       amount: 1000,
       status: true,
       paymentMethods: "Wise App",

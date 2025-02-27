@@ -48,9 +48,12 @@ class SignInScreen extends StatelessWidget {
                       title: "Email",
                       prefix: Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: 16.h,
+                          vertical: 13.h,
                         ),
-                        child: SVGImages(path: AppAssets.mailIcon),
+                        child: SVGImages(
+                          path: AppAssets.mailIcon,
+                          color: AppColors.authIconsColor,
+                        ),
                       ),
                       validator: (value) {
                         return FieldValidators().multiCheck(
@@ -71,20 +74,31 @@ class SignInScreen extends StatelessWidget {
                       controller: _textReferrelCode,
                       suffix: GestureDetector(
                         onTap: () {},
-                        child: ReferralFieldSuffix(),
+                        child: referralFieldSuffix(),
                       ),
                       prefix: Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: 11.h,
+                          vertical: 12.h,
                         ),
-                        child: SVGImages(path: AppAssets.openLockIcon),
+                        child: SVGImages(
+                          path: AppAssets.openLockIcon,
+                          color: AppColors.authIconsColor,
+                        ),
                       ), //Icon(Icons.lock_open_outlined),
                     ),
                     MyTextField(
                       title: "Password",
                       hintText: "Enter your password",
                       controller: _textPassword,
-                      prefix: Icon(CupertinoIcons.lock),
+                      prefix: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 14.h,
+                        ),
+                        child: SVGImages(
+                          path: AppAssets.lockIcon,
+                          color: AppColors.authIconsColor,
+                        ),
+                      ),
                       textInputAction: TextInputAction.done,
                       validator: (value) {
                         return FieldValidators().multiCheck(

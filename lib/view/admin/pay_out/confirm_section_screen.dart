@@ -33,7 +33,7 @@ class ConfirmSectionScreen extends StatelessWidget {
                   SVGImages(
                     path: AppAssets.warning,
                   ),
-                  16.h.verticalSpace,
+                  26.h.verticalSpace,
                   Text(
                     '"Once processed, this action cannot be undone. Please verify the details before proceeding."',
                     textAlign: TextAlign.center,

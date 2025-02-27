@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
+import 'package:wealth_ticker_main/core/theme/app_colors.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import '../../core/routes/routes.dart';
 import '../../core/widgets/auth_screen_text.dart';
@@ -17,6 +18,7 @@ class ForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 20.h),
         child: SingleChildScrollView(
@@ -34,9 +36,11 @@ class ForgotPassword extends StatelessWidget {
                   controller: _textEmail,
                   prefix: Padding(
                     padding: EdgeInsets.symmetric(
-                      vertical: 16.h,
+                      vertical: 13.h,
                     ),
-                    child: SVGImages(path: AppAssets.mailIcon),
+                    child: SVGImages(
+                        path: AppAssets.mailIcon,
+                        color: AppColors.authIconsColor),
                   ),
                 ),
               ),

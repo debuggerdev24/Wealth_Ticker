@@ -6,10 +6,12 @@ import 'package:wealth_ticker_main/view/admin/lucky_draw/past_winners_screen.dar
 import 'package:wealth_ticker_main/view/admin/lucky_draw/winner_selected_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/confirm_section_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/failure_popup_screen.dart';
+import 'package:wealth_ticker_main/view/admin/pay_out/payout_list_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/process_payout_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/select_payment_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/success_popup_screen.dart';
 import 'package:wealth_ticker_main/view/admin/post/edit_post_screen.dart';
+import 'package:wealth_ticker_main/view/role/user_role_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/bank_details_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/week_lucky_draw_screen.dart';
 import 'package:wealth_ticker_main/view/users/my_post/post_details_screen.dart';
@@ -46,7 +48,7 @@ import '../../view/users/support/send_email_screen.dart';
 import '../../view/users/support/support_screen.dart';
 
 final GoRouter goRouter = GoRouter(
-  initialLocation: AppRoutes.adminDashBoardScreen.path, //splash
+  initialLocation: AppRoutes.splashScreen.path, //splash
   routes: <RouteBase>[
     GoRoute(
       path: AppRoutes.splashScreen.path,
@@ -247,8 +249,8 @@ final GoRouter goRouter = GoRouter(
     //   },
     // ),
     GoRoute(
-      path: AppRoutes.userDashBoard.path,
-      name: AppRoutes.userDashBoard.name,
+      path: AppRoutes.userDashBoardScreen.path,
+      name: AppRoutes.userDashBoardScreen.name,
       builder: (context, state) {
         return UserDashBoardScreen();
       },
@@ -318,6 +320,13 @@ final GoRouter goRouter = GoRouter(
       },
     ),
     GoRoute(
+      path: AppRoutes.payOutUsersScreen.path,
+      name: AppRoutes.payOutUsersScreen.name,
+      builder: (context, state) {
+        return PayoutUsersListScreen();
+      },
+    ),
+    GoRoute(
       path: AppRoutes.pastWinnersScreenAdmin.path,
       name: AppRoutes.pastWinnersScreenAdmin.name,
       builder: (context, state) {
@@ -364,6 +373,13 @@ final GoRouter goRouter = GoRouter(
       name: AppRoutes.editPostScreen.name,
       builder: (context, state) {
         return EditPostScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.userRoleScreen.path,
+      name: AppRoutes.userRoleScreen.name,
+      builder: (context, state) {
+        return UserRoleScreen();
       },
     ),
   ],

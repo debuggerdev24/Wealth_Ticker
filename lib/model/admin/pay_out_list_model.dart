@@ -1,9 +1,9 @@
-class PayOutModel {
+class PayOutUsersModel {
   late int amount;
   late bool status;
   late String paymentMethods, requestDate, image, customerName;
 
-  PayOutModel(
+  PayOutUsersModel(
       {required this.amount,
       required this.status,
       required this.paymentMethods,
@@ -11,8 +11,8 @@ class PayOutModel {
       required this.image,
       required this.customerName});
 
-  factory PayOutModel.fromJson(Map m1) {
-    return PayOutModel(
+  factory PayOutUsersModel.fromJson(Map m1) {
+    return PayOutUsersModel(
       amount: m1["amount"],
       status: m1["status"],
       paymentMethods: m1["paymentMethods"],

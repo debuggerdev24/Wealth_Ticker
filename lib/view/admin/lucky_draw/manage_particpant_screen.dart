@@ -16,16 +16,15 @@ class ManageParticipantScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LuckyDrawProvider _providerTrue =
-    Provider.of<LuckyDrawProvider>(context, listen: true);
-    LuckyDrawProvider _provider = Provider.of<LuckyDrawProvider>(context);
+    LuckyDrawProvider _providerTrue = Provider.of<LuckyDrawProvider>(context, listen: true);
+    LuckyDrawProvider provider = Provider.of<LuckyDrawProvider>(context);
     return MyAppLayOut(
       title: "Manage Participants",
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 10),
-          child: SVGImages(path: AppAssets.userCrossDelete),
-        )
+          child: SVGImages(height: 30.h,path: AppAssets.userCrossDelete),
+        ),
       ],
       body: Padding(
         padding: appPadding(),
@@ -33,12 +32,12 @@ class ManageParticipantScreen extends StatelessWidget {
           child: Column(
             spacing: 12.h,
             children: [
-              16.h.verticalSpace,
+              SizedBox(),
               ...List.generate(
                 10,
                     (index) {
-                  final user = _provider.participantUsersList[
-                  index % _provider.participantUsersList.length];
+                  final user = provider.participantUsersList[
+                  index % provider.participantUsersList.length];
                   return GestureDetector(
                     onTap: () {
                       context.push(AppRoutes.confirmWinner.path);

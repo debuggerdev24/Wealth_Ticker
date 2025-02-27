@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wealth_ticker_main/view/admin/home/home_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/payout_list_screen.dart';
 import 'package:wealth_ticker_main/view/admin/post/post_management_screen.dart';
@@ -13,9 +14,8 @@ final ValueNotifier<int> index = ValueNotifier<int>(0);
 List pages = [
   HomeScreenAdmin(),
   LuckyDrawManagementScreenAdmin(),
-  PayoutListScreen(),
+  PayoutUsersListScreen(),
   PostManagementScreen(),
-  // LuckyDrawManagementScreenAdmin(),
 ];
 
 class AdminDashboardScreen extends StatelessWidget {
@@ -27,6 +27,7 @@ class AdminDashboardScreen extends StatelessWidget {
       valueListenable: index,
       builder: (BuildContext context, int value, Widget? child) {
         return Scaffold(
+          backgroundColor: Colors.white,
           body: pages[value],
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: AppColors.darkGreenColor,

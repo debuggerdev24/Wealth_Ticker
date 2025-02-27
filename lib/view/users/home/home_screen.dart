@@ -4,9 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/my_button.dart';
+import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import 'package:wealth_ticker_main/provider/user/home_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
@@ -27,46 +29,20 @@ class HomeScreen extends StatelessWidget {
         Provider.of<HomeProvider>(context, listen: true);
     HomeProvider provider = Provider.of<HomeProvider>(context, listen: false);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.fromLTRB(12.w, 30.h, 12.w, 5.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              18.h.verticalSpace,
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Text("Welcome Daniel...",
-                    style: textStyleW700.copyWith(
-                        color: AppColors.darkGreenColor, fontSize: 20.sp)),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        context.push(AppRoutes.profileScreen.path);
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://s3-alpha-sig.figma.com/img/631a/e9d1/8913573857117663f71ac91bd6180688?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IXXFUJ-l84XxqJgy95pyOjsqAoNEGChTWDNwJlanDN3I4RxlQSJIfnNBWEwb4kGHfYOHGut188SUsG~9uTEJUyrAZtez9Akyhw3xVNDfOuSAC7FcYETVPUyou2I-azHDH5RpOjDVB3slFVNUnfUojhUbbtg6Ib8q1DSX0M-UcqqvzbM~hid784~ImURB~M9jeKT5GYtS~wImwpSkrOCinhb4Xt-bj4GK5sgF~cw5ZevEcybSEsPZkJMWzGk5Rgt-P3gpJU9nn6flASOOI2gsuSYK4qq46Qy8s1crEGQltBPbT-sFfme-dP8ZY6pd0Vj8M02Vd3AHpn7~ZBIzlZbktA__"),
-                        radius: 23.r,
-                      ),
-                    ),
-                    10.w.horizontalSpace,
-                    Container(
-                      padding: EdgeInsets.all(8.r),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                      ),
-                      child: Icon(CupertinoIcons.bell),
-                    )
-                  ],
-                ),
+              16.h.verticalSpace,
+              topUserTile(
+                context: context,
+                userName: "Welcome Daniel...",
+                image: "https://s3-alpha-sig.figma.com/img/631a/e9d1/8913573857117663f71ac91bd6180688?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IXXFUJ-l84XxqJgy95pyOjsqAoNEGChTWDNwJlanDN3I4RxlQSJIfnNBWEwb4kGHfYOHGut188SUsG~9uTEJUyrAZtez9Akyhw3xVNDfOuSAC7FcYETVPUyou2I-azHDH5RpOjDVB3slFVNUnfUojhUbbtg6Ib8q1DSX0M-UcqqvzbM~hid784~ImURB~M9jeKT5GYtS~wImwpSkrOCinhb4Xt-bj4GK5sgF~cw5ZevEcybSEsPZkJMWzGk5Rgt-P3gpJU9nn6flASOOI2gsuSYK4qq46Qy8s1crEGQltBPbT-sFfme-dP8ZY6pd0Vj8M02Vd3AHpn7~ZBIzlZbktA__",
               ),
-              25.h.verticalSpace,
+              20.h.verticalSpace,
               Text(
                 "Stock Market Analysis :",
                 style: textStyleW600.copyWith(fontSize: 18.sp),
@@ -85,7 +61,8 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.r),
                               color: Color(0xffD9E0DE),
-                              border: Border.all(color: AppColors.darkGreenColor)),
+                              border:
+                                  Border.all(color: AppColors.darkGreenColor)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
@@ -96,7 +73,8 @@ class HomeScreen extends StatelessWidget {
                               ),
                               10.h.verticalSpace,
                               Text(
-                                  "The S&P 500 closed 1.2% higher today, driven by gains in the tech and energy sectors. Watch for tomorrow's inflation data release, which could impact market sentiment."),
+                                "The S&P 500 closed 1.2% higher today, driven by gains in the tech and energy sectors. Watch for tomorrow's inflation data release, which could impact market sentiment.",
+                              ),
                             ],
                           ),
                         ),
@@ -105,22 +83,46 @@ class HomeScreen extends StatelessWidget {
                           spacing: 11.w,
                           children: [
                             Expanded(
-                              child: MySubmitButtonFilled(
-                                fontSize: 16.sp,
-                                title: "\$5.99",
-                                onPressed: () {},
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 45.h,
+                                  alignment: Alignment.center,
+                                  margin: EdgeInsets.only(top: 0.h),
+                                  //21
+                                  decoration: BoxDecoration(
+                                      color: AppColors.darkGreenColor,
+                                      borderRadius:
+                                          BorderRadius.circular(10.r)),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      SVGImages(path: AppAssets.whiteLock),
+                                      Text(
+                                        " \$6.99",
+                                        style: textStyleW600.copyWith(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                             Expanded(
                               child: MySubmitButtonOutlined(
+                                height: 45.h,
                                 title: "Pay to Access",
                                 fontSize: 16.sp,
+                                textStyle: TextStyle(
+                                    // fontWeight: FontWeight.w300,
+                                    color: AppColors.darkGreenColor),
                                 onPressed: () {
                                   context.pushNamed(
                                       AppRoutes.selectPaymentMethodScreen.name);
                                 },
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ],
@@ -129,6 +131,28 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ],
+            //   GestureDetector(
+            //       onTap: onPressed,
+            //       child: Container(
+            //         height: height ?? 52.h,
+            //         width: width,
+            //         alignment: Alignment.center,
+            //         margin: EdgeInsets.only(top: 0.h),
+            //         //21
+            //         decoration: BoxDecoration(
+            //             color: AppColors.darkGreenColor,
+            //             borderRadius: BorderRadius.circular(10.r)),
+            //         child: Text(
+            //           title,
+            //           style: textStyle ??
+            //               textStyleW700.copyWith(
+            //                 //GoogleFonts.openSans
+            //                 fontSize: fontSize ?? 20.sp,
+            //                 color: Colors.white,
+            //               ),
+            //         ),
+            //       ),
+            //     );
           ),
         ),
       ),

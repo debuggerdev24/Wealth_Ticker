@@ -25,9 +25,7 @@ class FailurePopupScreen extends StatelessWidget {
               outLinedButtonTitle: "Retry Payout",
               outlinedButtonOnTap: () {},
               filledButtonOnTap: () {
-                context.push(AppRoutes.processPayoutScreen.path);
-                // context.pushNamed(AppRoutes.processPayoutScreen.name);
-                // context.goNamed(AppRoutes.processPayoutScreen.name,);
+                // context.push(AppRoutes.processPayoutScreen.path);
 
               },
               child: Column(
@@ -36,7 +34,7 @@ class FailurePopupScreen extends StatelessWidget {
                   SVGImages(
                     path: AppAssets.failedCross,
                   ),
-                  16.h.verticalSpace,
+                  26.h.verticalSpace,
                   Text(
                     '“Payout failed for User AlexT. Please check details and try again.”',
                     textAlign: TextAlign.center,
