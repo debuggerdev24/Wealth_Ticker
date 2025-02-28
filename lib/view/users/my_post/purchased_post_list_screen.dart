@@ -19,7 +19,7 @@ class PurchasedPost extends StatelessWidget {
         Provider.of<PurchasedPostProvider>(context, listen: false);
     return MyAppLayOut(
       showBackButton: false,
-      title: "Purchased Post",
+      title: "Purchased Pos",
       body: Padding(
         padding: EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h),
         child: SingleChildScrollView(
@@ -63,7 +63,7 @@ class PurchasedProductPostWidget extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 22.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
-          color: Color(0xfffff8f8),//
+          color: Color(0xfffff8f8), //
 
           boxShadow: [
             BoxShadow(
@@ -81,38 +81,28 @@ class PurchasedProductPostWidget extends StatelessWidget {
               style: textStyleW600.copyWith(fontSize: 16.sp),
             ),
             16.h.verticalSpace,
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Short description"),
-                Text(" : "),
-                Expanded(
-                  child: Text(post.shortDes),
-                ),
-              ],
-            ),
+            _detailsRow("Short description", post.shortDes),
             12.h.verticalSpace,
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Status"),
-                Text(" : "),
-                Expanded(
-                  child: Text(post.status),
-                ),
-              ],
-            ),
+            _detailsRow("Status", post.status),
             12.h.verticalSpace,
-            Row(
-              children: [
-                Text("Purchase Date"),
-                Text(" : "),
-                Text(post.purchasedDate),
-              ],
-            ),
+            _detailsRow("Purchase Date", post.purchasedDate),
           ],
         ),
       ),
+    );
+  }
+
+  Row _detailsRow(String title, String data) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: Text(title)),
+        Text(" : "),
+        Expanded(
+          flex: 2,
+          child: Text(data),
+        ),
+      ],
     );
   }
 }

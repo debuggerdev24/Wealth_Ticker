@@ -50,7 +50,13 @@ class MySubmitButtonOutlined extends StatelessWidget {
   final String title;
   final TextStyle? textStyle;
   final VoidCallback onPressed;
-  final double? height, width, fontSize, marginTop, marginBottom, padding;
+  final double? height,
+      width,
+      borderRadius,
+      fontSize,
+      marginTop,
+      marginBottom,
+      padding;
 
   const MySubmitButtonOutlined(
       {super.key,
@@ -61,7 +67,9 @@ class MySubmitButtonOutlined extends StatelessWidget {
       this.marginTop,
       this.marginBottom,
       this.padding,
-      this.height, this.textStyle});
+      this.height,
+      this.textStyle,
+      this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +88,7 @@ class MySubmitButtonOutlined extends StatelessWidget {
           border: Border.all(
             color: AppColors.darkGreenColor,
           ),
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(borderRadius ?? 10.r),
         ),
         child: Text(
           title,

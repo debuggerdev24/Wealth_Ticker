@@ -1,9 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import 'package:wealth_ticker_main/core/theme/app_colors.dart';
+import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import 'package:wealth_ticker_main/provider/user/earning_provider.dart';
@@ -27,14 +32,16 @@ class WeekLuckyDrawScreen extends StatelessWidget {
           padding: EdgeInsets.only(
             right: 10.w,
           ),
-          child: GestureDetector(onTap: () {
-            context.push(AppRoutes.bankDetailsScreen.path);
-          },child: SVGImages(path: AppAssets.bankEdit)),
+          child: GestureDetector(
+              onTap: () {
+                context.push(AppRoutes.bankDetailsScreen.path);
+              },
+              child: SVGImages(path: AppAssets.bankEdit)),
         ),
       ],
       title: "Week's Lucky Draw",
       body: Padding(
-        padding: EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h),
+        padding: appPadding(),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,8 +100,8 @@ class WeekLuckyDrawScreen extends StatelessWidget {
                                 "Past Lucky Draw Winners :",
                                 style: textStyleW600.copyWith(fontSize: 16.sp),
                               ),
-                              TextButton(
-                                onPressed: () {
+                              GestureDetector(
+                                onTap: () {
                                   context.pushNamed(
                                       AppRoutes.pastWinnersScreen.name);
                                 },
@@ -107,7 +114,7 @@ class WeekLuckyDrawScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          // 12.h.verticalSpace,
+                          16.h.verticalSpace,
                           ...List.generate(
                             providerTrue.pastWinners.length,
                             (index) {
@@ -121,7 +128,44 @@ class WeekLuckyDrawScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          //todo show indicator here
+                          16.h.verticalSpace,
+                          Align(
+                            alignment: Alignment.center,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                CustomPaint(
+                                  size: Size(315.w, 160.h),
+                                  painter: HalfCirclePainter(48),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 60.h,
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Countdown",
+                                        style: textStyleW700.copyWith(
+                                          color: Colors.grey,
+                                          fontSize: 12.sp,
+                                        ),
+                                      ),
+                                      6.h.verticalSpace,
+                                      Text(
+                                        "02 : 45 : 30",
+                                        style: textStyleW700.copyWith(
+                                          fontSize: 40.sp,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           24.h.verticalSpace,
                           Divider(height: 0),
                           _title("Draw Amount Details :"),
@@ -177,4 +221,146 @@ Widget _detailsWidget({required String title, required String data}) {
       ],
     ),
   );
+}
+
+// class HalfCirclePainter extends CustomPainter {
+//   final double progress;
+//
+//   HalfCirclePainter(this.progress);
+//
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     final Paint backgroundPaint = Paint()
+//       ..color = Colors.grey.shade300
+//       ..style = PaintingStyle.stroke
+//       ..strokeWidth = 22
+//       ..strokeCap = StrokeCap.round;
+//
+//     final Paint progressPaint = Paint()
+//       ..color = Colors.teal.shade900
+//       ..style = PaintingStyle.stroke
+//       ..strokeWidth = 22
+//       ..strokeCap = StrokeCap.round;
+//
+//     final double startAngle = pi;
+//     final double sweepAngle = pi * (progress / 100);
+//
+//     canvas.drawArc(
+//       Rect.fromLTWH(0, 0, size.width, size.height * 2),
+//       startAngle,
+//       pi,
+//       false,
+//       backgroundPaint,
+//     );
+//
+//     // Draw progress arc
+//     canvas.drawArc(
+//       Rect.fromLTWH(0, 0, size.width, size.height * 2),
+//       startAngle,
+//       sweepAngle,
+//       false,
+//       progressPaint,
+//     );
+//
+//     // Draw percentage label inside the arc
+//     final textPainter = TextPainter(
+//       text: TextSpan(
+//         text: "${progress.toInt()}%",
+//         style: TextStyle(
+//           color: Colors.white,
+//           fontSize: 14,
+//           fontWeight: FontWeight.bold,
+//         ),
+//       ),
+//       textDirection: TextDirection.ltr,
+//     );
+//     textPainter.layout();
+//     final textOffset = Offset(
+//       size.width / 2 - textPainter.width / 2,
+//       -10, // Position inside the arc
+//     );
+//     textPainter.paint(canvas, textOffset);
+//   }
+//
+//   @override
+//   bool shouldRepaint(CustomPainter oldDelegate) => true;
+// }
+
+class HalfCirclePainter extends CustomPainter {
+  final double progress;
+
+  HalfCirclePainter(this.progress);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint backgroundPaint = Paint()
+      ..color = Colors.grey.shade300
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 19
+      ..strokeCap = StrokeCap.round;
+
+    final Paint progressPaint = Paint()
+      ..color = Colors.teal.shade900
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 19
+      ..strokeCap = StrokeCap.round;
+
+    final Paint circlePaint = Paint()
+      ..color = Colors.teal.shade900
+      ..style = PaintingStyle.fill; // Solid fill for the circle indicator
+
+    final double startAngle = pi; // Start from the left (180°)
+    final double sweepAngle = pi * (progress / 100); // Progress arc
+
+    final Rect arcRect = Rect.fromLTWH(0, 0, size.width, size.height * 2);
+
+    // Draw background arc
+    canvas.drawArc(
+      arcRect,
+      startAngle,
+      pi,
+      false,
+      backgroundPaint,
+    );
+
+    // Draw progress arc
+    canvas.drawArc(
+      arcRect,
+      startAngle,
+      sweepAngle,
+      false,
+      progressPaint,
+    );
+
+    // Calculate the endpoint for the indicator circle
+    double radius = size.width / 2;
+    double angle = startAngle + sweepAngle;
+
+    double circleX = radius + radius * cos(angle);
+    double circleY = radius + radius * sin(angle);
+
+    // Draw the indicator circle
+    canvas.drawCircle(Offset(circleX, circleY), 22, circlePaint);
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: "${progress.toInt()}%",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+
+    final textOffset = Offset(
+      circleX - textPainter.width / 2,
+      circleY - textPainter.height / 2,
+    );
+    textPainter.paint(canvas, textOffset);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

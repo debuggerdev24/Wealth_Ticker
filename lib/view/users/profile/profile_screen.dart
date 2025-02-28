@@ -25,9 +25,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthProvider authProviderTrue =
-    Provider.of<AuthProvider>(context, listen: true);
-    AuthProvider providerFalse = Provider.of<AuthProvider>(context);
+    // AuthProvider providerTrue =
+    // Provider.of<AuthProvider>(context, listen: true);
+    // AuthProvider providerFalse = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -56,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+          padding: EdgeInsets.fromLTRB(20.w,5.h,20.h,0.h),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -145,7 +145,12 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         child: SVGImages(path: AppAssets.phoneIcon,color: AppColors.authIconsColor),
                       ),
-                      suffix: myCountryCodePicker(context, providerFalse, authProviderTrue),
+                      // suffix: myCountryCodePicker(context, (country) {
+                      //   providerFalse.updateCountryPhoneCode(
+                      //     phoneCode: "+ ${country.phoneCode}",
+                      //     length: country.example.length,
+                      //   );
+                      // }, providerTrue.),
                     ),
                     MyTextField(
                       title: "Password",

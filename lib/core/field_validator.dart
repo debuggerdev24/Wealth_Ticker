@@ -9,19 +9,18 @@ class FieldValidators {
 
   factory FieldValidators() => _instance;
 
-  String? required(String? val) {
-    if (val == null || val.isEmpty) {
+  String? required(String? value, String fieldName) {
+    if (value == null || value.isEmpty) {
       log("returning error", name: "required validator");
-      return " This filed is Required";
+      return " $fieldName is required";
     }
     log("returning normally", name: "required validator");
     return null;
   }
 
   String? email(String? val) {
-    RegExp emailPattern = RegExp(
-        r"""^[a-z0-9!@#\$%^&*_(),.?\":{}|<>]+@gmail\.com$"""
-    );
+    RegExp emailPattern =
+        RegExp(r"""^[a-z0-9!@#\$%^&*_(),.?\":{}|<>]+@gmail\.com$""");
 
     if (!emailPattern.hasMatch(val ?? "")) {
       log("returning error", name: "email validator");
@@ -43,15 +42,15 @@ class FieldValidators {
 
     if (!passwordPattern.hasMatch(val)) {
       log("returning error - $val", name: "password validator");
-      return "Password must be at least 8 characters long and\ninclude an uppercase letter, a number, and a\nspecial character.";
+      return "Password must be at least 8 characters long and include an uppercase letter, a number, and a special character.";
     }
     log("returning normally", name: "password validator");
     return null;
   }
 
-  String? phoneNumber(String phoneNumber,int length) {
+  String? phoneNumber(String phoneNumber, int length) {
     if (phoneNumber.isEmpty) {
-      return "This filed is Required";
+      return "Mobile number is required";
     }
 
     RegExp phonePattern = RegExp(r"^\d{length}$");
@@ -66,7 +65,6 @@ class FieldValidators {
     log("returning normally", name: "phone number validator");
     return null;
   }
-
 
   String? maxLength(String? val, int max) {
     if (val == null || val.isEmpty) {

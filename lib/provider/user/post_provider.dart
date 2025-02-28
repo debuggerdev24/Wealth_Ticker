@@ -10,7 +10,7 @@ class PurchasedPostProvider extends ChangeNotifier {
       status: "Paid – “Unlocked",
       purchasedDate: "February 18, 2025",
       image:
-          'https://m.economictimes.com/thumb/msid-105378105,width-1600,height-900,resizemode-4,imgsize-1231415/stock-market.jpg',
+          'https://s3-alpha-sig.figma.com/img/0b8b/f2aa/0382c437219c255e78262005bac85f05?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mYvnwDtoVPXPUjValSd0T-8uV2Af3C5N9IClLEXOH7gM7dkTK4VuO7SM3xDYtKW83d5EppiNfP3yNPdNZaYLXHfguUzfnkL9qluukRgffTjXEyHc2Sqhd13-GAgGoTs~w10NBL54Oi7BGTJc0-8LpG0yplQzNDH9pHVBMf3empQw5eN4nlHsL~CnbhYcq4Myz6qXxYtrcMQZ0hwjL-fKkEaw1lnX9i9bNrVsStFM3WuWUOxVyBO0fp1~cLhsN3fRoQWP69JZlxBs95T7WCGDz--nYZCmvJVLKaGDh53aBMnJqvEqzLqtBJcfPj7f~ZQnKmc8v0cx~-e8lc2pz1oEVQ__',
       publishedDate: 'February 17, 2025',
       fullDes:
           "“Tesla reported better-than-expected Q4 earnings, driven by strong sales of its Model Y vehicles. Revenue totaled \$24.3 billion, surpassing estimates of \$22.5 billion. Additionally, Tesla's entry into new markets like Southeast Asia positions the company for sustained growth. Challenges include supply chain constraints and increasing competition from legacy automakers.”",
@@ -23,7 +23,7 @@ class PurchasedPostProvider extends ChangeNotifier {
       status: "Free – “Unlocked(Draw Ends)",
       purchasedDate: "February 11, 2025",
       image:
-          'https://m.economictimes.com/thumb/msid-105378105,width-1600,height-900,resizemode-4,imgsize-1231415/stock-market.jpg',
+          'https://s3-alpha-sig.figma.com/img/0b8b/f2aa/0382c437219c255e78262005bac85f05?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mYvnwDtoVPXPUjValSd0T-8uV2Af3C5N9IClLEXOH7gM7dkTK4VuO7SM3xDYtKW83d5EppiNfP3yNPdNZaYLXHfguUzfnkL9qluukRgffTjXEyHc2Sqhd13-GAgGoTs~w10NBL54Oi7BGTJc0-8LpG0yplQzNDH9pHVBMf3empQw5eN4nlHsL~CnbhYcq4Myz6qXxYtrcMQZ0hwjL-fKkEaw1lnX9i9bNrVsStFM3WuWUOxVyBO0fp1~cLhsN3fRoQWP69JZlxBs95T7WCGDz--nYZCmvJVLKaGDh53aBMnJqvEqzLqtBJcfPj7f~ZQnKmc8v0cx~-e8lc2pz1oEVQ__',
       publishedDate: 'February 17, 2025',
       fullDes:
           "“Tesla reported better-than-expected Q4 earnings, driven by strong sales of its Model Y vehicles. Revenue totaled \$24.3 billion, surpassing estimates of \$22.5 billion. Additionally, Tesla's entry into new markets like Southeast Asia positions the company for sustained growth. Challenges include supply chain constraints and increasing competition from legacy automakers.”",

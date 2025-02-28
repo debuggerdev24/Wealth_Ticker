@@ -8,7 +8,7 @@ class AppColors{
   static final greenColor = Colors.green;
   static final lightGreenColor = Color(0xff329687);
   static final borderColor = Color(0xff757575);
-  static final authIconsColor = Color(0xff707070);
+  static final authIconsColor = Color(0xff8d8d8d);
   static final blue = Colors.blue;
   static final teal = Color(0xff329687);
   static final dulGreen = Color(0xffcbd6d3);
@@ -16,4 +16,5 @@ class AppColors{
   static final errorBorderColor = Color(0xffcca7b0);
   static final errorTextColor = Color(0xffe83a63);
   static final errorBackgroundColor = Color(0xfffcf2f2);
+  static final hintTextColor = Color(0xff808080);
 }

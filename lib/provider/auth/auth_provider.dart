@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
 import '../../core/routes/routes.dart';
 import '../../services/api/auth_service.dart';
@@ -9,8 +8,63 @@ class AuthProvider extends ChangeNotifier {
   String countryPhoneCode = "+91";
   int phoneNumLength = 10;
   bool obSecureText = true, isLoading = false;
+  //todo -----------------------> validator for sign up
+  String fullNameError = "",
+      emailError = "",
+      mobileNumberError = "",
+      refCodeError = "",
+      passwordError = "",
+      confirmPasswordError = "";
+  //todo -----------------------> validator for sign in
+  String signInEmailError = "", signInPasswordError = "";
 
-  void updateCountryPhoneCode({required String phoneCode,required int length}){
+  //todo -----------------------> validator for forgot password
+  String forgotPassEmailError = "";
+
+
+  //todo ---------------> check validation for the sign up
+  void updateValidationStatusForSignUp({required String field, required String error}) {
+    switch (field) {
+      case "fullName":
+        fullNameError = error;
+        break;
+      case "email":
+        emailError = error;
+        break;
+      case "mobileNumber":
+        mobileNumberError = error;
+        break;
+      case "password":
+        passwordError = error;
+        break;
+      case "confirmPassword":
+        confirmPasswordError = error;
+        break;
+    }
+    notifyListeners();
+  }
+
+  //todo ---------------> check validation for the sign in
+  void updateValidationStatusForSignIn({required String field, required String error}) {
+    switch (field) {
+      case "email":
+        signInEmailError = error;
+        break;
+      case "password":
+        signInPasswordError = error;
+        break;
+    }
+    notifyListeners();
+  }
+
+  //todo ---------------> check validation for the forgot password
+  void updateValidationStatusForForgotPassword({required String error}) {
+    forgotPassEmailError = error;
+    notifyListeners();
+  }
+
+  void updateCountryPhoneCode(
+      {required String phoneCode, required int length}) {
     countryPhoneCode = phoneCode;
     phoneNumLength = length;
     notifyListeners();
@@ -86,7 +140,8 @@ class AuthProvider extends ChangeNotifier {
     try {
       isLoading = true;
       notifyListeners();
-      bool check = await AuthService.authService.forgotPasswordApi(email: email);
+      bool check =
+          await AuthService.authService.forgotPasswordApi(email: email);
       if (check && context.mounted) {
         isLoading = false;
         notifyListeners();

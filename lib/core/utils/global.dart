@@ -16,7 +16,7 @@ import '../../provider/auth/auth_provider.dart';
 import '../theme/app_colors.dart';
 
 EdgeInsets appPadding() {
-  return EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h);
+  return EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 0.h);
 }
 
 Color greenColor = Color(0xff013024);
@@ -33,8 +33,11 @@ void showToast(String msg) {
   );
 }
 
-Widget myCountryCodePicker(BuildContext context, AuthProvider providerFalse,
-    AuthProvider providerTrue) {
+Widget myCountryCodePicker(
+  BuildContext context,
+  ValueChanged<Country> onSelect,
+  String initialText,
+) {
   return GestureDetector(
     onTap: () {
       showCountryPicker(
@@ -61,58 +64,64 @@ Widget myCountryCodePicker(BuildContext context, AuthProvider providerFalse,
             ),
           ),
         ),
-        // customFlagBuilder: (country) {
-        // },
+        //todo customFlagBuilder: (country) {
+        //todo },
         onSelect: (Country country) {
           log(country.phoneCode.toString());
           log(country.countryCode.toString());
           //I/flutter (21138): 91
           // I/flutter (21138): IN
-          providerFalse.updateCountryPhoneCode(
-            phoneCode: "+ ${country.phoneCode}",
-            length: country.example.length,
-          );
+          onSelect.call(country);
+          // providerFalse.updateCountryPhoneCode(
+          //   phoneCode: "+ ${country.phoneCode}",
+          //   length: country.example.length,
+          // );
         },
       );
     },
-    child: IntrinsicWidth(
-      child: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.fromLTRB(06.w, 1.5.h, 01.5.w, 1.5.h),
-        margin: EdgeInsets.fromLTRB(0.w, 11.h, 14.w, 11.h),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(4),
-          border: Border.all(
-            color: Colors.grey.shade700,
+    child: countryPickBox(initialText),
+  );
+}
+
+IntrinsicWidth countryPickBox(String countryPhoneCode) {
+  return IntrinsicWidth(
+    child: Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.fromLTRB(06.w, 1.5.h, 01.5.w, 1.5.h),
+      margin: EdgeInsets.fromLTRB(0.w, 11.h, 14.w, 11.h),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(
+          color: Color(0xff737373),
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            countryPhoneCode,
+            style: TextStyle(color: Colors.grey.shade700),
           ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              providerTrue.countryPhoneCode,
-              style: TextStyle(color: Colors.grey.shade700),
-            ),
-            Icon(
-              Icons.keyboard_arrow_down_rounded,
-              color: Colors.grey.shade700,
-            )
-          ],
-        ),
+          Icon(
+            Icons.keyboard_arrow_down_rounded,
+            color: Color(0xff737373),
+          )
+        ],
       ),
     ),
   );
 }
 
 Widget topUserTile(
-    {required BuildContext context, required userName, required image}) {
+    {required BuildContext context, required userName, required image,required String iconPath}) {
   return ListTile(
     contentPadding: EdgeInsets.zero,
     leading: MyText(
-        data: userName,
-        style: textStyleW700.copyWith(
-            color: AppColors.darkGreenColor, fontSize: 20.sp)),
+      data: userName,
+      style: textStyleW700.copyWith(
+          color: AppColors.darkGreenColor, fontSize: 20.sp),
+    ),
     trailing: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -128,7 +137,7 @@ Widget topUserTile(
         10.w.horizontalSpace,
         SVGImages(
           height: 36.8.h,
-          path: AppAssets.notificationIcon,
+          path: iconPath,
         )
         // Container(
         //   padding: EdgeInsets.all(6.r),

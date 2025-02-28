@@ -8,6 +8,7 @@ import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
+import 'package:wealth_ticker_main/view/users/earnings/widget/error_widget.dart';
 import '../../core/field_validator.dart';
 import '../../core/routes/routes.dart';
 import '../../core/theme/app_colors.dart';
@@ -40,89 +41,146 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     AuthProvider providerTrue =
         Provider.of<AuthProvider>(context, listen: true);
-    AuthProvider providerFalse = Provider.of<AuthProvider>(context);
+    AuthProvider provider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 5.h),
+          padding: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 0.h),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 50.h),
+                SizedBox(
+                  height: 50.h,
+                ),
                 AuthTitle(title: "Sign Up"),
-                SizedBox(height: 5.h),
+                SizedBox(
+                  height: 5.h,
+                ),
                 AuthSlogan(text: "“Join now for live stock updates & chat!”"),
-                SizedBox(height: 10.h),
+                SizedBox(
+                  height: 10.h,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 22.h),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     spacing: 24.h,
                     children: [
-                      MyTextField(
-                        hintText: "Enter your fullname",
-                        controller: _textFullName,
-                        title: "Full Name",
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 13.h,
+                      //todo ---------------------------> full name
+                      Column(
+                        children: [
+                          MyTextField(
+                            hintText: "Enter your fullname",
+                            controller: _textFullName,
+                            title: "Full Name",
+                            prefix: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 13.h,
+                              ),
+                              child: SVGImages(
+                                path: AppAssets.userIcon,
+                                color: AppColors.authIconsColor,
+                              ),
+                            ),
+                            validator: (value) {
+                              provider.updateValidationStatusForSignUp(
+                                  field: "fullName",
+                                  error: FieldValidators()
+                                          .required(value, "Full name") ??
+                                      "");
+                              return null;
+                            },
                           ),
-                          child: SVGImages(
-                              path: AppAssets.userIcon,
-                              color: AppColors.authIconsColor),
-                        ),
-                        //Icon(CupertinoIcons.person),
-                        validator: FieldValidators().required,
+                          providerTrue.fullNameError.isNotEmpty
+                              ? CustomErrorWidget(
+                                  errorMessage: providerTrue.fullNameError,
+                                )
+                              : SizedBox(),
+                        ],
                       ),
-                      MyTextField(
-                        hintText: "Enter your email",
-                        controller: _textEmail,
-                        title: "Email",
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 13.h,
+                      //todo ---------------------------> email
+                      Column(
+                        children: [
+                          MyTextField(
+                            hintText: "Enter your email",
+                            controller: _textEmail,
+                            title: "Email",
+                            prefix: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 13.h,
+                              ),
+                              child: SVGImages(
+                                  path: AppAssets.mailIcon,
+                                  color: AppColors.authIconsColor),
+                            ),
+                            validator: (value) {
+                              String error = FieldValidators().multiCheck(
+                                    value,
+                                    [
+                                      (val) => FieldValidators()
+                                          .required(val, "Email"),
+                                      FieldValidators().email,
+                                    ],
+                                  ) ??
+                                  "";
+                              provider.updateValidationStatusForSignUp(
+                                  field: "email", error: error);
+                              return null;
+                            },
                           ),
-                          child: SVGImages(
-                              path: AppAssets.mailIcon,
-                              color: AppColors.authIconsColor),
-                        ),
-                        validator: (value) {
-                          return FieldValidators().multiCheck(
-                            value,
-                            [
-                              FieldValidators().required,
-                              FieldValidators().email,
-                            ],
-                          );
-                        },
+                          providerTrue.emailError.isEmpty
+                              ? SizedBox()
+                              : CustomErrorWidget(
+                                  errorMessage: providerTrue.emailError,
+                                  paddingLeft: 15.w,
+                                ),
+                        ],
                       ),
-                      MyTextField(
-                        keyboardType: TextInputType.phone,
-                        hintText: "(415) 892-5302",
-                        controller: _textPhone,
-                        title: "Mobile Number",
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 13.h,
+                      //todo ---------------------------> phone
+                      Column(
+                        children: [
+                          MyTextField(
+                            keyboardType: TextInputType.phone,
+                            hintText: "(415) 892-5302",
+                            controller: _textPhone,
+                            title: "Mobile Number",
+                            prefix: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 13.h,
+                              ),
+                              child: SVGImages(
+                                  path: AppAssets.phoneIcon,
+                                  color: AppColors.authIconsColor),
+                            ),
+                            //Icon(CupertinoIcons.phone),
+                            suffix: myCountryCodePicker(context, (country) {
+                              provider.updateCountryPhoneCode(
+                                phoneCode: "+ ${country.phoneCode}",
+                                length: country.example.length,
+                              );
+                            }, providerTrue.countryPhoneCode),
+                            validator: (value) {
+                              String error = FieldValidators().phoneNumber(
+                                    value!,
+                                    providerTrue.phoneNumLength,
+                                  ) ??
+                                  "";
+                              provider.updateValidationStatusForSignUp(
+                                  field: "mobileNumber", error: error);
+                              return null;
+                            },
                           ),
-                          child: SVGImages(
-                              path: AppAssets.phoneIcon,
-                              color: AppColors.authIconsColor),
-                        ),
-                        //Icon(CupertinoIcons.phone),
-                        suffix: myCountryCodePicker(
-                            context, providerFalse, providerTrue),
-                        validator: (value) {
-                          myLog(msg: value!);
-                          return FieldValidators().phoneNumber(
-                            value,
-                            providerTrue.phoneNumLength,
-                          );
-                        },
+                          providerTrue.mobileNumberError.isEmpty
+                              ? SizedBox()
+                              : CustomErrorWidget(
+                                  errorMessage: providerTrue.mobileNumberError,
+                                ),
+                        ],
                       ),
+                      //todo ---------------------------> ref code
                       MyTextField(
                         isOptional: true,
                         optionShowText: " (optional)",
@@ -134,56 +192,96 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           padding: EdgeInsets.symmetric(
                             vertical: 12.h,
                           ),
-                          child: SVGImages(path: AppAssets.openLockIcon),
+                          child: SVGImages(
+                              path: AppAssets.openLockIcon,
+                              color: AppColors.authIconsColor),
                         ), //Icon(Icons.lock_open_outlined),
                       ),
-                      MyTextField(
-                        title: "Password",
-                        hintText: "Enter your password",
-                        controller: _textPassword,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 14.h,
-                          ),
-                          child: SVGImages(
-                            path: AppAssets.lockIcon,
-                            color: AppColors.authIconsColor,
-                          ),
-                        ),
-                        obscureText: providerTrue.obSecureText,
-                        suffix: IconButton(
-                            onPressed: () {
-                              providerFalse.changeVisibility();
+                      //todo ---------------------------> password
+                      Column(
+                        children: [
+                          MyTextField(
+                            title: "Password",
+                            hintText: "Enter your password",
+                            controller: _textPassword,
+                            prefix: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 14.h,
+                              ),
+                              child: SVGImages(
+                                path: AppAssets.lockIcon,
+                                color: AppColors.authIconsColor,
+                              ),
+                            ),
+                            obscureText: providerTrue.obSecureText,
+                            suffix: IconButton(
+                                color: AppColors.authIconsColor,
+                                onPressed: () {
+                                  provider.changeVisibility();
+                                },
+                                icon: Icon(providerTrue.obSecureText
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined)),
+                            validator: (value) {
+                              String error = FieldValidators().multiCheck(
+                                    value,
+                                    [
+                                      (value) => FieldValidators()
+                                          .required(value, "Password"),
+                                      FieldValidators().password,
+                                    ],
+                                  ) ??
+                                  "";
+                              provider.updateValidationStatusForSignUp(
+                                field: "password",
+                                error: error,
+                              );
+                              return null;
                             },
-                            icon: Icon(providerTrue.obSecureText
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined)),
-                        validator: (value) {
-                          return FieldValidators().multiCheck(
-                            value,
-                            [
-                              FieldValidators().required,
-                              FieldValidators().password,
-                            ],
-                          );
-                        },
+                          ),
+                          providerTrue.passwordError.isEmpty
+                              ? SizedBox()
+                              : CustomErrorWidget(
+                                  errorMessage: providerTrue.passwordError,
+                                  paddingLeft: 15.w,
+                                ),
+                        ],
                       ),
-                      MyTextField(
-                        textInputAction: TextInputAction.done,
-                        title: "Confirm password",
-                        hintText: "Enter your confirm password",
-                        controller: _textConfirmPassword,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 14.h,
+                      //todo ---------------------------> confirm password
+                      Column(
+                        children: [
+                          MyTextField(
+                            textInputAction: TextInputAction.done,
+                            title: "Confirm password",
+                            hintText: "Enter your confirm password",
+                            controller: _textConfirmPassword,
+                            prefix: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 14.h,
+                              ),
+                              child: SVGImages(
+                                path: AppAssets.lockIcon,
+                                color: AppColors.authIconsColor,
+                              ),
+                            ),
+                            obscureText: true,
+                            validator: (value) {
+                              provider.updateValidationStatusForSignUp(
+                                field: "confirmPassword",
+                                error: FieldValidators()
+                                        .required(value, "Confirm password") ??
+                                    "",
+                              );
+                              return null;
+                            },
                           ),
-                          child: SVGImages(
-                            path: AppAssets.lockIcon,
-                            color: AppColors.authIconsColor,
-                          ),
-                        ),
-                        obscureText: true,
-                        validator: FieldValidators().required,
+                          providerTrue.confirmPasswordError.isEmpty
+                              ? SizedBox()
+                              : CustomErrorWidget(
+                                  errorMessage:
+                                      providerTrue.confirmPasswordError,
+                                ),
+                        ],
                       ),
                     ],
                   ),
@@ -192,7 +290,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 MySubmitButtonFilled(
                   title: "Sign Up",
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate() &&
+                        providerTrue.fullNameError.isEmpty &&
+                        providerTrue.emailError.isEmpty &&
+                        providerTrue.mobileNumberError.isEmpty &&
+                        providerTrue.passwordError.isEmpty &&
+                        providerTrue.confirmPasswordError.isEmpty) {
                       if (_textPassword.text.trim() ==
                           _textConfirmPassword.text.trim()) {
                         FocusScope.of(context).unfocus();
@@ -204,7 +307,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         //     phoneNumber: _textPhone.text.trim(),
                         //     referralCode: _textReferralCode.text.trim());
                         context.push(
-                          //pushReplacementNamed
                           AppRoutes.onBoardingScreen.path,
                         );
                         // context.pushReplacementNamed(AppRoutes.userFlowScreen.name);
@@ -223,25 +325,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: "Already have an account? ",
-                            style:
-                                TextStyle(color: Colors.grey, fontSize: 14.sp)
-                            // GoogleFonts.openSans(
-                            //     fontSize: 14.sp,
-                            //     fontWeight: FontWeight.w400,
-                            //     color: Colors.grey), //(0xFF2C2C2C)
-                            ),
+                          text: "Already have an account? ",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14.sp,
+                          ),
+                        ),
                         TextSpan(
                             text: "Login",
                             style: textStyleW700.copyWith(
-                                fontSize: 15.sp,
-                                color: AppColors.darkGreenColor)
-                            // GoogleFonts.openSans(
-                            //     fontSize: 15.sp,
-                            //   fontWeight: FontWeight.bold,
-                            //   color: greenColor,
-                            // ),
-                            ),
+                              fontSize: 15.sp,
+                              color: AppColors.darkGreenColor,
+                            )),
                       ],
                     ),
                   ),
@@ -288,21 +383,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 Widget referralFieldSuffix() {
   return Container(
-    width: 0,
-    alignment: Alignment.center,
-    margin: EdgeInsets.fromLTRB(2.w, 16.h, 14.w, 16.h),
-    padding: EdgeInsets.zero,
+    height: 16.h,
+    margin: EdgeInsets.fromLTRB(5.w, 14.h, 14.w, 14.h),
+    padding: EdgeInsets.only(bottom: 5.h),
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(4),
       border: Border.all(
-        color: Colors.grey.shade700,
+        color: Color(0xff737373),
       ),
     ),
-    child: Icon(
-      size: 22.h,
-      Icons.keyboard_arrow_right_rounded,
-      color: Colors.grey.shade700,
+    child: Stack(
+      alignment: Alignment.center,
+      children: [
+        Icon(
+          size: 22.h,
+          Icons.keyboard_arrow_right_rounded,
+          color: Color(0xff737373),
+        ),
+      ],
     ),
   );
 }

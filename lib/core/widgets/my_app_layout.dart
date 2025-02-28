@@ -42,7 +42,7 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
                   color: Colors.white,
                 ),
               )
-            : leading,
+            : leading ?? null,
         title: Text(
           title,
           style: textStyleW700.copyWith(

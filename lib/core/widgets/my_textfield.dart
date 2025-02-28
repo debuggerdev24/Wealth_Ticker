@@ -12,7 +12,7 @@ class MyTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final int? maxLine;
   final TextInputAction? textInputAction;
-  final Widget? prefix,suffix;
+  final Widget? prefix, suffix;
   final bool? isOptional, obscureText, readOnly;
   final VoidCallback? onTap;
 
@@ -30,14 +30,15 @@ class MyTextField extends StatelessWidget {
     this.textInputAction,
     this.obscureText = false,
     this.readOnly = false,
-    this.onTap, this.optionShowText,
-  }){
-    if(isOptional == true) {
+    this.onTap,
+    this.optionShowText,
+  }) {
+    if (isOptional == true) {
       assert(optionShowText != null);
     }
   }
 
-        // assert(isOptional == true && optionShowText != null);
+  // assert(isOptional == true && optionShowText != null);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -84,15 +85,21 @@ class MyTextField extends StatelessWidget {
           },
           expands: false,
           decoration: InputDecoration(
-              errorStyle: TextStyle(height: 1.2),
-              suffixIcon: suffix,
-              prefixIcon: prefix,
-              hintText: hintText,
-              hintStyle: TextStyle(fontSize: 12.sp),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.r)),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.darkGreenColor, width: 1.5))),
+            errorStyle: TextStyle(height: 1.2),
+            suffixIcon: suffix,
+            prefixIcon: prefix,
+            hintText: hintText,
+            hintStyle: TextStyle(
+              fontSize: 12.sp,
+              color: AppColors.hintTextColor,
+            ),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(5.r)),
+            focusedBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AppColors.darkGreenColor, width: 1.5),
+            ),
+          ),
         ),
       ],
     );

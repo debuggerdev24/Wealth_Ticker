@@ -1,11 +1,42 @@
 import 'package:flutter/cupertino.dart';
-
 import '../../model/user/earning_model.dart';
 
 class EarningsProvider extends ChangeNotifier {
+  String countryPhoneCode = "+91";
+  int phoneNumLength = 10;
+  String accountHolderNameError = "", accountNumberError = "", bankNameError = "", branchNameError = "";
+  bool isComplete = false,confirmation = false;
 
-  // bool
-  bool isComplete = true;
+  void updateConfirmation(){
+    confirmation = !confirmation;
+    notifyListeners();
+  }
+
+  void updateCountryPhoneCode(
+      {required String phoneCode, required int length}) {
+    countryPhoneCode = phoneCode;
+    phoneNumLength = length;
+    notifyListeners();
+  }
+
+  void updateValidationStatus({required String field, required String error}) {
+    switch (field) {
+      case "accountHolderName":
+        accountHolderNameError = error;
+        break;
+      case "accountNumber":
+        accountNumberError = error;
+        break;
+      case "bankName":
+        bankNameError = error;
+        break;
+      case "branchName":
+        branchNameError = error;
+        break;
+    }
+    notifyListeners();
+  }
+
 
   List<PastWinnersModel> pastWinners = [
     PastWinnersModel(

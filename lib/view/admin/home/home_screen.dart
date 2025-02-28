@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/model/admin/pay_out_list_model.dart';
 import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
@@ -42,11 +43,11 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin>
               16.h.verticalSpace,
               //todo make custom to this
               topUserTile(
-                context: context,
-                userName: "Hello Daniel...",
-                image:
-                    "https://s3-alpha-sig.figma.com/img/d115/5453/d46f4123c6bcd0b0db1ec2d2fd3eb9f2?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=C-kIOWDzX5fznd1Jy1K5ppiXqe9yZHyeVs9FmjTlF1Ti-4Bz9EQXkKiJnm9w8~5Cka3AMv5fVznaKyhSv7QusZx-scmOWDOiNQxCLZrn1oHjS2Vx0wKF5FnJ34O33FmPYkOfyezuALpJFkJfFGXm66L2T1in334wYBBS~-MqyMj3hQXFabcYYS2wgK2YRTmSlGerEYg-MuLNzFLN5nTgEzErr4qLNa2J3VytjzRW38QhkQxwVlQvY6b9hqgk-NOslpYFGt~ArREH84DJ3yFQOKbY~T13Bu12QXi6HPnCCkvMv~7YxyxofFc6nXBn6Kdp5BMEkL9hHi3Cg1XlvreEeA__",
-              ),
+                  context: context,
+                  userName: "Hello Daniel...",
+                  image:
+                      "https://s3-alpha-sig.figma.com/img/d115/5453/d46f4123c6bcd0b0db1ec2d2fd3eb9f2?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=C-kIOWDzX5fznd1Jy1K5ppiXqe9yZHyeVs9FmjTlF1Ti-4Bz9EQXkKiJnm9w8~5Cka3AMv5fVznaKyhSv7QusZx-scmOWDOiNQxCLZrn1oHjS2Vx0wKF5FnJ34O33FmPYkOfyezuALpJFkJfFGXm66L2T1in334wYBBS~-MqyMj3hQXFabcYYS2wgK2YRTmSlGerEYg-MuLNzFLN5nTgEzErr4qLNa2J3VytjzRW38QhkQxwVlQvY6b9hqgk-NOslpYFGt~ArREH84DJ3yFQOKbY~T13Bu12QXi6HPnCCkvMv~7YxyxofFc6nXBn6Kdp5BMEkL9hHi3Cg1XlvreEeA__",
+                  iconPath: AppAssets.notificationIcon),
               22.h.verticalSpace,
               Container(
                 width: 1.sw,

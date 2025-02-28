@@ -48,7 +48,7 @@ import '../../view/users/support/send_email_screen.dart';
 import '../../view/users/support/support_screen.dart';
 
 final GoRouter goRouter = GoRouter(
-  initialLocation: AppRoutes.splashScreen.path, //splash
+  initialLocation: AppRoutes.userDashBoardScreen.path, //splash
   routes: <RouteBase>[
     GoRoute(
       path: AppRoutes.splashScreen.path,

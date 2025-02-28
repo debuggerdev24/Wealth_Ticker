@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
-import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/model/user/post_model.dart';
-
 import '../../../core/theme/app_colors.dart';
 
 class PostDetailsScreen extends StatelessWidget {
