@@ -18,21 +18,23 @@ class InviteProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Your refferral code",
-              style: textStyleW700.copyWith(fontSize: 18.sp),
+              "Your Referral code",
+              style: textStyleW600.copyWith(fontSize: 18.sp),
             ),
-            SizedBox(height: 16.h),
+            14.h.verticalSpace,
             Text(
                 "Invite your friends to join the Wealth Tickers using your personalized referral Code."),
-            SizedBox(height: 16.h),
+            14.h.verticalSpace,
             Text(
               "Click here to see invited friends list",
               style: textStyleW700.copyWith(
-                  color: AppColors.darkGreenColor,
-                  decoration: TextDecoration.underline,
-                  decorationThickness: 2),
+                color: AppColors.darkGreenColor,
+                decoration: TextDecoration.underline,
+                decorationThickness: 2,
+
+              ),
             ),
-            SizedBox(height: 25.h),
+            25.h.verticalSpace,
             TextField(
               cursorColor: AppColors.darkGreenColor,
               decoration: InputDecoration(
@@ -47,9 +49,7 @@ class InviteProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 72.h,
-            ),
+            74.h.verticalSpace,
             Row(
               children: [
                 Expanded(
@@ -62,8 +62,7 @@ class InviteProfileScreen extends StatelessWidget {
                     child: Text(
                       "Share",
                       style: textStyleW700.copyWith(
-                          fontSize: 16.sp,
-                          color: Colors.white),
+                          fontSize: 16.sp, color: Colors.white),
                     ),
                   ),
                 ),

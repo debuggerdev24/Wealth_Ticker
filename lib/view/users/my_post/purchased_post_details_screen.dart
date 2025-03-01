@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/model/user/post_model.dart';
 import '../../../core/theme/app_colors.dart';
@@ -17,7 +18,7 @@ class PostDetailsScreen extends StatelessWidget {
       body: MyAppLayOut(
         title: "Market Update",
         body: Padding(
-          padding: EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h),
+          padding: appPadding(),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,9 +81,6 @@ Padding _detailsWidget({required String date, required String title}) {
       children: [
         Text(
           title,
-          style: textStyleW600.copyWith(
-            fontSize: 14.sp,
-          ),
         ),
         Text("   :  "),
         Expanded(child: Text(date))

@@ -17,4 +17,5 @@ class AppColors{
   static final errorTextColor = Color(0xffe83a63);
   static final errorBackgroundColor = Color(0xfffcf2f2);
   static final hintTextColor = Color(0xff808080);
+  static final greyColor = Color(0xff333333);
 }

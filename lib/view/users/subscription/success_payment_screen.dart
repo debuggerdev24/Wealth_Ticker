@@ -19,13 +19,13 @@ class SuccessPaymentScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            15.h.verticalSpace,
+            20.h.verticalSpace,
             Image.asset(
               AppAssets.successPayment,
               height: 300.h,
               width: 300.h,
             ),
-            12.h.verticalSpace,
+            22.h.verticalSpace,
             Text(
               textAlign: TextAlign.center,
               '“Thank you for your purchase! You now have full access to the post. “',
@@ -34,7 +34,7 @@ class SuccessPaymentScreen extends StatelessWidget {
             Spacer(),
             12.h.verticalSpace,
             MySubmitButtonFilled(
-              title: "Cancel",
+              title: "Next",
               onPressed: () {
                 // context.pop();
                 context.pushNamed(AppRoutes.luckyDrawScreen.name);

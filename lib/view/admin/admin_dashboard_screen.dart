@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wealth_ticker_main/view/admin/home/home_screen.dart';
 import 'package:wealth_ticker_main/view/admin/pay_out/payout_list_screen.dart';
 import 'package:wealth_ticker_main/view/admin/post/post_management_screen.dart';
+import 'package:wealth_ticker_main/view/admin/profile/admin_profile.dart';
 import '../../core/app_assets.dart';
 import '../../core/theme/app_colors.dart';
-import '../../core/utils/global.dart';
 import '../../core/widgets/svg_images.dart';
 import 'lucky_draw/management_screen.dart';
 
@@ -16,6 +15,7 @@ List pages = [
   LuckyDrawManagementScreenAdmin(),
   PayoutUsersListScreen(),
   PostManagementScreen(),
+  AdminProfileScreen()
 ];
 
 class AdminDashboardScreen extends StatelessWidget {
@@ -41,6 +41,7 @@ class AdminDashboardScreen extends StatelessWidget {
               _item(AppAssets.luckyDrawIcon, "Lucky draw"),
               _item(AppAssets.payOutIcon, "Pay Out"),
               _item(AppAssets.myPostIcon, "My Post"),
+              _item(AppAssets.profileIcon, "Profile"),
               // _item(AppAssets.staffsIcon, "Staffs"),
             ],
             onTap: (value) {

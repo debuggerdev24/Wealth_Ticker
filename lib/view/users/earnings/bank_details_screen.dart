@@ -151,6 +151,7 @@ class BankDetailsScreen extends StatelessWidget {
                       controller: _textBranchName,
                     ),
                     MyTextField(
+                      textInputAction: TextInputAction.done,
                       isOptional: true,
                       optionShowText: "(if applicable)",
                       title: "SWIFT Code",
@@ -177,8 +178,10 @@ class BankDetailsScreen extends StatelessWidget {
                           provider.updateConfirmation();
                         },
                         child: Text(
+                          // textDirection: TextDecoration.ltr,
                           '“I confirm that the bank account details entered are correct and belong to me."',
                           style: TextStyle(
+                            fontStyle: FontStyle.italic,
                             color: Color(0xff333333),
                           ),
                         ),
@@ -193,6 +196,7 @@ class BankDetailsScreen extends StatelessWidget {
                     if (_formKey.currentState!.validate()) {}
                   },
                 ),
+                20.h.verticalSpace
               ],
             ),
           ),

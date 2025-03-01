@@ -21,8 +21,8 @@ TextEditingController _textEmail = TextEditingController();
 TextEditingController _textMobileNumber = TextEditingController();
 TextEditingController _textPassword = TextEditingController();
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class AdminProfileScreen extends StatelessWidget {
+  const AdminProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,8 @@ class ProfileScreen extends StatelessWidget {
                             placeholder: AssetImage(
                                 "assets/images/auth_screen/on_b2.png"),
                             image: NetworkImage(
-                                "https://s3-alpha-sig.figma.com/img/631a/e9d1/8913573857117663f71ac91bd6180688?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IXXFUJ-l84XxqJgy95pyOjsqAoNEGChTWDNwJlanDN3I4RxlQSJIfnNBWEwb4kGHfYOHGut188SUsG~9uTEJUyrAZtez9Akyhw3xVNDfOuSAC7FcYETVPUyou2I-azHDH5RpOjDVB3slFVNUnfUojhUbbtg6Ib8q1DSX0M-UcqqvzbM~hid784~ImURB~M9jeKT5GYtS~wImwpSkrOCinhb4Xt-bj4GK5sgF~cw5ZevEcybSEsPZkJMWzGk5Rgt-P3gpJU9nn6flASOOI2gsuSYK4qq46Qy8s1crEGQltBPbT-sFfme-dP8ZY6pd0Vj8M02Vd3AHpn7~ZBIzlZbktA__"),
+                              "https://s3-alpha-sig.figma.com/img/d115/5453/d46f4123c6bcd0b0db1ec2d2fd3eb9f2?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=C-kIOWDzX5fznd1Jy1K5ppiXqe9yZHyeVs9FmjTlF1Ti-4Bz9EQXkKiJnm9w8~5Cka3AMv5fVznaKyhSv7QusZx-scmOWDOiNQxCLZrn1oHjS2Vx0wKF5FnJ34O33FmPYkOfyezuALpJFkJfFGXm66L2T1in334wYBBS~-MqyMj3hQXFabcYYS2wgK2YRTmSlGerEYg-MuLNzFLN5nTgEzErr4qLNa2J3VytjzRW38QhkQxwVlQvY6b9hqgk-NOslpYFGt~ArREH84DJ3yFQOKbY~T13Bu12QXi6HPnCCkvMv~7YxyxofFc6nXBn6Kdp5BMEkL9hHi3Cg1XlvreEeA__",
+                            ),
                             fadeInDuration: Duration(seconds: 1),
                             fadeOutDuration: Duration(milliseconds: 200),
                           ),
@@ -120,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
                   //todo name
                   8.h.verticalSpace,
                   Text(
-                    "Ethan Carter",
+                    "Daniel Reynolds",
                     style: textStyleW500.copyWith(
                         color: Colors.black, fontSize: 18.sp),
                   ),
@@ -203,33 +204,29 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   16.h.verticalSpace,
+                  customTile(
+                    SVGImages(
+                      path: AppAssets.logOutIcon,
+                      color: Color(0xff333333),
+                    ),
+                    "Log out",
+                    onTap: () {},
+                  ),
+                  16.h.verticalSpace,
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      customTile(
-                        SVGImages(
-                          path: AppAssets.logOutIcon,
-                          color: Color(0xff333333),
-                        ),
-                        "Log out",
-                        onTap: () {},
+                      SvgPicture.asset(
+                        AppAssets.deleteBucket,
+                        colorFilter: const ColorFilter.mode(
+                            Colors.red, BlendMode.srcIn),
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SvgPicture.asset(
-                            AppAssets.deleteBucket,
-                            colorFilter: const ColorFilter.mode(
-                                Colors.red, BlendMode.srcIn),
-                          ),
-                          14.w.horizontalSpace,
-                          Text(
-                            "Delete Account",
-                            style: TextStyle(
-                              color: Colors.red,
-                            ),
-                          )
-                        ],
+                      14.w.horizontalSpace,
+                      Text(
+                        "Delete Account",
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
                       )
                     ],
                   ),

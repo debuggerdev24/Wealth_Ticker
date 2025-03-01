@@ -73,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Column(
                         children: [
                           MyTextField(
-                            hintText: "Enter your fullname",
+                            hintText: "Enter your Full Name",
                             controller: _textFullName,
                             title: "Full Name",
                             prefix: Padding(
@@ -86,11 +86,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                             ),
                             validator: (value) {
+                              String error = FieldValidators().multiCheck(
+                                    value,
+                                    [
+                                      (value) =>
+                                          FieldValidators()
+                                              .required(value, "Full Name"),
+                                      FieldValidators().fullName,
+                                    ],
+                                  ) ??
+                                  "";
                               provider.updateValidationStatusForSignUp(
-                                  field: "fullName",
-                                  error: FieldValidators()
-                                          .required(value, "Full name") ??
-                                      "");
+                                  field: "fullName", error: error);
                               return null;
                             },
                           ),
@@ -113,8 +120,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 vertical: 13.h,
                               ),
                               child: SVGImages(
-                                  path: AppAssets.mailIcon,
-                                  color: AppColors.authIconsColor),
+                                path: AppAssets.mailIcon,
+                                color: AppColors.authIconsColor,
+                              ),
                             ),
                             validator: (value) {
                               String error = FieldValidators().multiCheck(

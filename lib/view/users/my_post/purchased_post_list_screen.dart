@@ -7,9 +7,10 @@ import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/model/user/post_model.dart';
 import 'package:wealth_ticker_main/provider/user/post_provider.dart';
+import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
 
-class PurchasedPost extends StatelessWidget {
-  const PurchasedPost({super.key});
+class PurchasedPostList extends StatelessWidget {
+  const PurchasedPostList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,30 +18,36 @@ class PurchasedPost extends StatelessWidget {
         Provider.of<PurchasedPostProvider>(context, listen: true);
     PurchasedPostProvider provider =
         Provider.of<PurchasedPostProvider>(context, listen: false);
-    return MyAppLayOut(
-      showBackButton: false,
-      title: "Purchased Pos",
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              20.h.verticalSpace,
-              ...List.generate(
-                providerTrue.purchasedPostList.length,
-                (index) {
-                  final post = providerTrue.purchasedPostList[index];
-                  return PurchasedProductPostWidget(
-                    post: post,
-                    onTap: () {
-                      context.pushNamed(AppRoutes.postDetailsScreen.name,
-                          extra: post);
-                    },
-                  );
-                },
-              ),
-            ],
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        index.value = 0;
+        return;
+      },
+      child: MyAppLayOut(
+        showBackButton: false,
+        title: "Purchased Pos",
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                20.h.verticalSpace,
+                ...List.generate(
+                  providerTrue.purchasedPostList.length,
+                  (index) {
+                    final post = providerTrue.purchasedPostList[index];
+                    return PurchasedProductPostWidget(
+                      post: post,
+                      onTap: () {
+                        context.pushNamed(AppRoutes.postDetailsScreen.name,
+                            extra: post);
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -96,7 +103,14 @@ class PurchasedProductPostWidget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(child: Text(title)),
+        Expanded(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
         Text(" : "),
         Expanded(
           flex: 2,

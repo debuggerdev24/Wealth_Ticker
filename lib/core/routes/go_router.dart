@@ -13,9 +13,11 @@ import 'package:wealth_ticker_main/view/admin/pay_out/success_popup_screen.dart'
 import 'package:wealth_ticker_main/view/admin/post/edit_post_screen.dart';
 import 'package:wealth_ticker_main/view/role/user_role_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/bank_details_screen.dart';
-import 'package:wealth_ticker_main/view/users/earnings/week_lucky_draw_screen.dart';
-import 'package:wealth_ticker_main/view/users/my_post/post_details_screen.dart';
-import 'package:wealth_ticker_main/view/users/subscription/lucky_draw_screen.dart';
+import 'package:wealth_ticker_main/view/users/earnings/count_down_week_lucky_draw_screen.dart';
+import 'package:wealth_ticker_main/view/users/earnings/lucky_draw_winner.dart';
+import 'package:wealth_ticker_main/view/users/my_post/purchased_post_details_screen.dart';
+import 'package:wealth_ticker_main/view/users/my_post/purchased_post_list_screen.dart';
+import 'package:wealth_ticker_main/view/users/subscription/lucky_draw_message_screen.dart';
 import 'package:wealth_ticker_main/view/users/subscription/success_payment_screen.dart';
 import 'package:wealth_ticker_main/view/users/user_dashboard_screen.dart';
 import '../../view/admin/admin_dashboard_screen.dart';
@@ -48,7 +50,7 @@ import '../../view/users/support/send_email_screen.dart';
 import '../../view/users/support/support_screen.dart';
 
 final GoRouter goRouter = GoRouter(
-  initialLocation: AppRoutes.userDashBoardScreen.path, //splash
+  initialLocation: AppRoutes.adminDashBoardScreen.path, //splash
   routes: <RouteBase>[
     GoRoute(
       path: AppRoutes.splashScreen.path,
@@ -207,8 +209,8 @@ final GoRouter goRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: AppRoutes.successPaymentScreen.path,
-      name: AppRoutes.successPaymentScreen.name,
+      path: AppRoutes.successPaymentScreenUser.path,
+      name: AppRoutes.successPaymentScreenUser.name,
       builder: (context, state) {
         return SuccessPaymentScreen();
       },
@@ -241,13 +243,13 @@ final GoRouter goRouter = GoRouter(
     //     return UserManagement();
     //   },
     // ),
-    // GoRoute(
-    //   path: AppRoutes.luckyDrawScreen.path,
-    //   name: AppRoutes.luckyDrawScreen.name,
-    //   builder: (context, state) {
-    //     return LuckyDrawScreen();
-    //   },
-    // ),
+    GoRoute(
+      path: AppRoutes.luckyDrawScreen.path,
+      name: AppRoutes.luckyDrawScreen.name,
+      builder: (context, state) {
+        return LuckyDrawMessageScreen();
+      },
+    ),
     GoRoute(
       path: AppRoutes.userDashBoardScreen.path,
       name: AppRoutes.userDashBoardScreen.name,
@@ -380,6 +382,20 @@ final GoRouter goRouter = GoRouter(
       name: AppRoutes.userRoleScreen.name,
       builder: (context, state) {
         return UserRoleScreen();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.purchasedPostListScreen.path,
+      name: AppRoutes.purchasedPostListScreen.name,
+      builder: (context, state) {
+        return PurchasedPostList();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.luckyDrawWinnerScreen.path,
+      name: AppRoutes.luckyDrawWinnerScreen.name,
+      builder: (context, state) {
+        return LuckyDrawWinnerScreen();
       },
     ),
   ],

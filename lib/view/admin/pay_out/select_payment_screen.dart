@@ -36,7 +36,7 @@ class SelectPaymentScreen extends StatelessWidget {
               ),
               child: ListTile(
                 onTap: (){
-                  context.push(AppRoutes.confirmationSectionScreen.path);
+                  context.pushNamed(AppRoutes.successPaymentScreenUser.name);
                 },
                 contentPadding: EdgeInsets.zero,
                 leading: SVGImages(path: AppAssets.creditCard),

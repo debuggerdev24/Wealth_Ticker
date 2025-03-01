@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import '../../../core/routes/routes.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/global.dart';
 import '../../../core/widgets/my_app_layout.dart';
 import '../../../core/widgets/my_button.dart';
 import '../../../provider/subscription_plan_provider.dart';
@@ -142,7 +141,7 @@ class CardPaymentScreen extends StatelessWidget {
               MySubmitButtonFilled(
                 title: "Confirm & Pay",
                 onPressed: () {
-                  context.pushNamed(AppRoutes.successPaymentScreen.name);
+                  context.pushNamed(AppRoutes.successPaymentScreenUser.name);
                 },
               )
             ],

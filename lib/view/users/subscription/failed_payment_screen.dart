@@ -18,6 +18,8 @@ class FailedPaymentScreen extends StatelessWidget {
             "“Oops! Something went wrong. We couldn't process your payment. Please try again if the issue persists.”",
         titleButton1: "Retry Payment",
         titleButton2: "Cancel",
+        onTapFirst: () {},
+        onTapSecond: () {},
       ),
     );
   }

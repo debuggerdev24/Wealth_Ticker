@@ -1,7 +1,5 @@
 import 'dart:developer';
 
-import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
-
 class FieldValidators {
   FieldValidators._();
 
@@ -15,6 +13,23 @@ class FieldValidators {
       return " $fieldName is required";
     }
     log("returning normally", name: "required validator");
+    return null;
+  }
+
+  String? fullName(String? val) {
+    RegExp namePattern = RegExp(r"^[a-zA-Z]+$"); // Allows only alphabets
+
+    if (val == null || val.isEmpty) {
+      log("returning error", name: "name validator");
+      return "Name is required.";
+    }
+
+    if (!namePattern.hasMatch(val)) {
+      log("returning error", name: "name validator");
+      return "Enter a valid name (only alphabets allowed).";
+    }
+
+    log("returning normally", name: "name validator");
     return null;
   }
 
@@ -144,9 +159,9 @@ class FieldValidators {
     return null;
   }
 
-  String? multiCheck(String? val, List<String? Function(String?)> validators) {
+  String? multiCheck(String? value, List<String? Function(String?)> validators) {
     for (var validator in validators) {
-      final result = validator(val);
+      final result = validator(value);
       if (result != null) {
         return result;
       }

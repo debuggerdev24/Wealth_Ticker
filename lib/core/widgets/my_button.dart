@@ -8,7 +8,7 @@ class MySubmitButtonFilled extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
   final TextStyle? textStyle;
-  final double? width, fontSize, height;
+  final double? width, fontSize, height, borderRadius;
 
   const MySubmitButtonFilled(
       {super.key,
@@ -17,7 +17,8 @@ class MySubmitButtonFilled extends StatelessWidget {
       this.width,
       this.fontSize,
       this.height,
-      this.textStyle});
+      this.textStyle,
+      this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +29,10 @@ class MySubmitButtonFilled extends StatelessWidget {
         width: width,
         alignment: Alignment.center,
         margin: EdgeInsets.only(top: 0.h),
-        //21
         decoration: BoxDecoration(
-            color: AppColors.darkGreenColor,
-            borderRadius: BorderRadius.circular(10.r)),
+          color: AppColors.darkGreenColor,
+          borderRadius: BorderRadius.circular(borderRadius ?? 10.r),
+        ),
         child: Text(
           title,
           style: textStyle ??

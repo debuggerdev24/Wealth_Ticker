@@ -25,7 +25,7 @@ class AppAssets extends Assets {
   static String get successPayment => "${Assets.base}/success_payment.png";
   static String get googlePaymentImage => "${Assets.base}/google.svg";
   static String get applePaymentImage => "${Assets.base}/apple.svg";
-  static String get luckyDraw => "${Assets.base}/luckyDraw.png";
+  // static String get luckyDraw => "${Assets.base}/luckyDraw.png";
   static String get homeIcon => "${Assets.base}/home.svg";
   static String get myPostIcon => "${Assets.base}/my_post.svg";
   static String get earnings => "${Assets.base}/earnings.svg";
@@ -53,4 +53,6 @@ class AppAssets extends Assets {
   static String get notificationIcon => "${Assets.base}/notification.svg";
   static String get errorIcon => "${Assets.base}/error.svg";
   static String get notificationIconUser => "${Assets.base}/notificationIconUser.svg";
+  static String get luckyDrawMessage => "${Assets.base}/lucky_draw_message.png";
+  static String get addOutlinedIcon => "${Assets.base}/add_outlined.svg";
 }

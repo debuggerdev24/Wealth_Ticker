@@ -21,7 +21,7 @@ enum AppRoutes {
   subscriptionGroupScreen,
   selectPaymentMethodScreen,
   cardPaymentScreen,
-  successPaymentScreen,
+  successPaymentScreenUser,
   failedPaymentScreen,
   oneToOneChat,
   adminDashBoardScreen,
@@ -44,7 +44,10 @@ enum AppRoutes {
   successPopUpScreen,
   failurePopupScreen,
   editPostScreen,
-  userDashBoardScreen, userRoleScreen, payOutUsersScreen
+  userDashBoardScreen,
+  userRoleScreen,
+  payOutUsersScreen,
+  purchasedPostListScreen, luckyDrawWinner, luckyDrawWinnerScreen
 }
 
 extension AppRouteExtension on AppRoutes {

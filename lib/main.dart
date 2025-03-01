@@ -85,7 +85,3 @@ class _MyAppState extends State<MyApp> {
 // Use .sp for font sizes.
 // t k c l h
 // Use .r for border radius.
-
-
-
-

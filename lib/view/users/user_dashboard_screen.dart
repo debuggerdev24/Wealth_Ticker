@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
-import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
-import 'package:wealth_ticker_main/view/users/earnings/week_lucky_draw_screen.dart';
+import 'package:wealth_ticker_main/view/users/earnings/count_down_week_lucky_draw_screen.dart';
 import 'package:wealth_ticker_main/view/users/home/home_screen.dart';
 import 'package:wealth_ticker_main/view/users/profile/profile_screen.dart';
 import '../../core/theme/app_colors.dart';
 import 'my_post/purchased_post_list_screen.dart';
 
-final ValueNotifier<int> index = ValueNotifier<int>(0);
+final ValueNotifier<int> indexTabUser = ValueNotifier<int>(0);
 
 List pages = [
   HomeScreen(),
-  PurchasedPost(),
+  PurchasedPostList(),
   WeekLuckyDrawScreen(),
   ProfileScreen(),
 ];
@@ -23,7 +22,7 @@ class UserDashBoardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<int>(
-      valueListenable: index,
+      valueListenable: indexTabUser,
       builder: (BuildContext context, int value, Widget? child) {
         return Scaffold(
           body: pages[value],
@@ -42,7 +41,7 @@ class UserDashBoardScreen extends StatelessWidget {
             ],
             onTap: (value) {
               // provider.changeTab(value);
-              index.value = value;
+              indexTabUser.value = value;
             },
           ),
         );

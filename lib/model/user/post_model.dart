@@ -1,14 +1,16 @@
 class PostModel {
-  String title, description, price;
+  String title, description;
+  double price;
+  bool isPurchased;
 
   PostModel(
-      {required this.title, required this.description, required this.price});
+      {required this.title, required this.description, required this.price,required this.isPurchased});
 
   factory PostModel.fromJson(Map m1) {
     return PostModel(
       title: m1["title"],
       description: m1["description"],
-      price: m1["price"],
+      price: m1["price"].toDouble(), isPurchased: m1["isPurchased"],
     );
   }
 }

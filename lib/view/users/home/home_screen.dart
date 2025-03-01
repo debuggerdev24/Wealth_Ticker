@@ -40,9 +40,11 @@ class HomeScreen extends StatelessWidget {
               topUserTile(
                 context: context,
                 userName: "Welcome Daniel...",
-                image: "https://s3-alpha-sig.figma.com/img/631a/e9d1/8913573857117663f71ac91bd6180688?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IXXFUJ-l84XxqJgy95pyOjsqAoNEGChTWDNwJlanDN3I4RxlQSJIfnNBWEwb4kGHfYOHGut188SUsG~9uTEJUyrAZtez9Akyhw3xVNDfOuSAC7FcYETVPUyou2I-azHDH5RpOjDVB3slFVNUnfUojhUbbtg6Ib8q1DSX0M-UcqqvzbM~hid784~ImURB~M9jeKT5GYtS~wImwpSkrOCinhb4Xt-bj4GK5sgF~cw5ZevEcybSEsPZkJMWzGk5Rgt-P3gpJU9nn6flASOOI2gsuSYK4qq46Qy8s1crEGQltBPbT-sFfme-dP8ZY6pd0Vj8M02Vd3AHpn7~ZBIzlZbktA__", iconPath: AppAssets.notificationIconUser,
+                image:
+                    "https://s3-alpha-sig.figma.com/img/631a/e9d1/8913573857117663f71ac91bd6180688?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IXXFUJ-l84XxqJgy95pyOjsqAoNEGChTWDNwJlanDN3I4RxlQSJIfnNBWEwb4kGHfYOHGut188SUsG~9uTEJUyrAZtez9Akyhw3xVNDfOuSAC7FcYETVPUyou2I-azHDH5RpOjDVB3slFVNUnfUojhUbbtg6Ib8q1DSX0M-UcqqvzbM~hid784~ImURB~M9jeKT5GYtS~wImwpSkrOCinhb4Xt-bj4GK5sgF~cw5ZevEcybSEsPZkJMWzGk5Rgt-P3gpJU9nn6flASOOI2gsuSYK4qq46Qy8s1crEGQltBPbT-sFfme-dP8ZY6pd0Vj8M02Vd3AHpn7~ZBIzlZbktA__",
+                iconPath: AppAssets.notificationIconUser,
               ),
-              20.h.verticalSpace,
+              15.h.verticalSpace,
               Text(
                 "Stock Market Analysis :",
                 style: textStyleW600.copyWith(fontSize: 18.sp),
@@ -50,6 +52,7 @@ class HomeScreen extends StatelessWidget {
               ...List.generate(
                 provider.postList.length,
                 (index) {
+                  final post = provider.postList[index];
                   return Padding(
                     padding: EdgeInsets.only(top: 20.h),
                     child: Column(
@@ -68,63 +71,90 @@ class HomeScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                "1. Market Update",
+                                post.title,
                                 style: textStyleW600.copyWith(fontSize: 16.sp),
                               ),
                               10.h.verticalSpace,
                               Text(
-                                "The S&P 500 closed 1.2% higher today, driven by gains in the tech and energy sectors. Watch for tomorrow's inflation data release, which could impact market sentiment.",
+                                '"${post.description}"', //'"The S&P 500 closed 1.2% higher today, driven by gains in the tech and energy sectors. Watch for tomorrows inflation data release, which could impact market sentiment."'
                               ),
                             ],
                           ),
                         ),
                         14.h.verticalSpace,
-                        Row(
-                          spacing: 11.w,
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  height: 45.h,
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.only(top: 0.h),
-                                  //21
-                                  decoration: BoxDecoration(
-                                      color: AppColors.darkGreenColor,
-                                      borderRadius:
-                                          BorderRadius.circular(10.r)),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      SVGImages(path: AppAssets.whiteLock),
-                                      Text(
-                                        " \$6.99",
+                        post.isPurchased
+                            ? Row(
+                                spacing: 11.w,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      height: 45.h,
+                                      alignment: Alignment.center,
+                                      margin: EdgeInsets.only(top: 0.h),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.darkGreenColor,
+                                        borderRadius:
+                                            BorderRadius.circular(6.r),
+                                      ),
+                                      child: Text(
+                                        "Purchased",
                                         style: textStyleW600.copyWith(
                                           color: Colors.white,
                                         ),
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
+                                  Expanded(child: Container())
+                                ],
+                              )
+                            : Row(
+                                spacing: 11.w,
+                                children: [
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 45.h,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: AppColors.darkGreenColor,
+                                          borderRadius:
+                                              BorderRadius.circular(6.r),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            SVGImages(
+                                                path: AppAssets.whiteLock),
+                                            Text(
+                                              "  \$${post.price.toString()}",
+                                              style: textStyleW600.copyWith(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: MySubmitButtonOutlined(
+                                      height: 45.h,
+                                      title: "Pay to Access",
+                                      fontSize: 16.sp,
+                                      borderRadius: 6.r,
+                                      textStyle: TextStyle(
+                                          // fontWeight: FontWeight.w300,
+                                          color: AppColors.darkGreenColor),
+                                      onPressed: () {
+                                        context.pushNamed(
+                                            AppRoutes.selectPaymentScreen.name);
+                                      },
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            Expanded(
-                              child: MySubmitButtonOutlined(
-                                height: 45.h,
-                                title: "Pay to Access",
-                                fontSize: 16.sp,
-                                textStyle: TextStyle(
-                                    // fontWeight: FontWeight.w300,
-                                    color: AppColors.darkGreenColor),
-                                onPressed: () {
-                                  context.pushNamed(
-                                      AppRoutes.selectPaymentMethodScreen.name);
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   );

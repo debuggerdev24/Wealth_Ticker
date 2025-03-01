@@ -3,18 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import 'package:wealth_ticker_main/core/utils/global.dart';
 
 import '../../../../core/widgets/my_button.dart';
 
 class PaymentResult extends StatelessWidget {
   final String image, message, titleButton1, titleButton2;
+  final VoidCallback onTapFirst,onTapSecond;
 
   const PaymentResult({
     super.key,
     required this.image,
     required this.message,
     required this.titleButton1,
-    required this.titleButton2,
+    required this.titleButton2, required this.onTapFirst, required this.onTapSecond,
     // this.showOnlyOneNextBtn = false,
   });
 
@@ -42,15 +44,16 @@ class PaymentResult extends StatelessWidget {
           Spacer(),
           MySubmitButtonOutlined(
             title: titleButton1,
-            onPressed: () {},
+            onPressed: onTapFirst
           ),
           12.h.verticalSpace,
           MySubmitButtonFilled(
             title: titleButton2,
-            onPressed: () {
-              // context.pop();
-              context.pushNamed(AppRoutes.failedPaymentScreen.name);
-            },
+            onPressed: onTapSecond
+            //     () {
+            //   // context.pop();
+            //   context.pushNamed(AppRoutes.failedPaymentScreen.name);
+            // },
           ),
           20.h.verticalSpace,
         ],
