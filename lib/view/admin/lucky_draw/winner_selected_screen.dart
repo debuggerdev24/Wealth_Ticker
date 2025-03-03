@@ -19,7 +19,7 @@ class WinnerSelectedScreen extends StatelessWidget {
         padding: appPadding(),
         child: Column(
           children: [
-            16.h.verticalSpace,
+            25.h.verticalSpace,
             Container(
               width: 1.sw,
               padding: EdgeInsets.symmetric(

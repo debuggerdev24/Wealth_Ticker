@@ -40,7 +40,7 @@ import '../../view/auth/success_msg_scxreen_2.dart';
 import '../../view/users/home/one_to_one_chat_screen.dart';
 import '../../view/users/invite_friends/invite_friend_screen.dart';
 import '../../view/users/notification/notification_screen.dart';
-import '../../view/users/profile/profile_screen.dart';
+import '../../view/users/profile/user_profile_screen.dart';
 import '../../view/users/subscription/card_payment_screen.dart';
 import '../../view/users/subscription/failed_payment_screen.dart';
 import '../../view/users/subscription/select_payment_screen.dart';
@@ -50,7 +50,7 @@ import '../../view/users/support/send_email_screen.dart';
 import '../../view/users/support/support_screen.dart';
 
 final GoRouter goRouter = GoRouter(
-  initialLocation: AppRoutes.adminDashBoardScreen.path, //splash
+  initialLocation: AppRoutes.userDashBoardScreen.path, //
   routes: <RouteBase>[
     GoRoute(
       path: AppRoutes.splashScreen.path,
@@ -216,10 +216,10 @@ final GoRouter goRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: AppRoutes.failedPaymentScreen.path,
-      name: AppRoutes.failedPaymentScreen.name,
+      path: AppRoutes.failedPaymentScreenUser.path,
+      name: AppRoutes.failedPaymentScreenUser.name,
       builder: (context, state) {
-        return FailedPaymentScreen();
+        return FailedPaymentScreenUser();
       },
     ),
     GoRoute(
@@ -357,8 +357,8 @@ final GoRouter goRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: AppRoutes.successPopUpScreen.path,
-      name: AppRoutes.successPopUpScreen.name,
+      path: AppRoutes.successPopUpScreenAdmin.path,
+      name: AppRoutes.successPopUpScreenAdmin.name,
       builder: (context, state) {
         return SuccessPopupScreen();
       },

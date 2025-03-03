@@ -29,20 +29,22 @@ class OutPutMessageBox extends StatelessWidget {
           Container(
             width: width,
             alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 26.h),
             padding: EdgeInsets.fromLTRB(20.w, 26.h, 20.w, 26.h),
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.grey.shade400,
-                      offset: Offset(0, 5),
-                      blurRadius: 12),
+                    color: Colors.grey.shade400,
+                    offset: Offset(0, 5),
+                    blurRadius: 12,
+                  ),
                 ],
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
                   color: Colors.grey.shade400,
                 ),
-                color: AppColors.lightCreamColor//Color(0x80d9d9d9)
-            ),
+                color: AppColors.lightCreamColor //Color(0x80d9d9d9)
+                ),
             child: child,
           ),
           Spacer(),

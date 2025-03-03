@@ -13,12 +13,12 @@ class ConfirmWinner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyAppLayOut(
-      title: "Lucky Draw Winner Selected",
+      title: " Lucky Draw Winner Selected",
       body: Padding(
         padding: appPadding(),
         child: Column(
           children: [
-            16.h.verticalSpace,
+            25.h.verticalSpace,
             Container(
               width: 1.sw,
               padding: EdgeInsets.symmetric(
@@ -65,7 +65,9 @@ class ConfirmWinner extends StatelessWidget {
             Spacer(),
             MySubmitButtonOutlined(
               title: "Cancel",
-              onPressed: () {},
+              onPressed: () {
+                context.pop();
+              },
             ),
             14.h.verticalSpace,
             MySubmitButtonFilled(

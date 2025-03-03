@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -29,17 +28,19 @@ class PostManagementScreen extends StatelessWidget {
       child: MyAppLayOut(
         showBackButton: false,
         title: "Post Management",
-        leading: Padding(
-          padding: EdgeInsets.all(19.r),
-          child: SVGImages(
-            path: AppAssets.editIcon,
-          ),
-        ),
+        // leading: Padding(
+        //   padding: EdgeInsets.all(19.r),
+        //   child: SVGImages(
+        //     path: AppAssets.editIcon,
+        //   ),
+        // ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 9),
+            padding: EdgeInsets.only(
+              right: 9.w,
+            ),
             child: SVGImages(path: AppAssets.deleteBucket),
-          )
+          ),
         ],
         body: Padding(
           padding: appPadding(),
@@ -89,29 +90,26 @@ class PostManagementScreen extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
+                            _detailsRow("Post Title", post.postTitle, true),
                             _detailsRow(
-                              title: "Post Title",
-                              value: post.postTitle,
+                              "Short Description",
+                              post.shortDes,
                             ),
                             _detailsRow(
-                              title: "Short Description",
-                              value: post.shortDes,
+                              "Status",
+                              post.status,
                             ),
                             _detailsRow(
-                              title: "Status",
-                              value: post.status,
+                              "Posted On",
+                              post.postedOn,
                             ),
                             _detailsRow(
-                              title: "Posted On",
-                              value: post.postedOn,
+                              "Lucky Draw Status",
+                              post.luckyDrawStatus,
                             ),
                             _detailsRow(
-                              title: "Lucky Draw Status",
-                              value: post.luckyDrawStatus,
-                            ),
-                            _detailsRow(
-                              title: "Purchase On ",
-                              value: post.purchaseOn,
+                              "Purchase On ",
+                              post.purchaseOn,
                             ),
                           ],
                         ),
@@ -127,10 +125,11 @@ class PostManagementScreen extends StatelessWidget {
     );
   }
 
-  Widget _detailsRow({
-    required String title,
-    required String value,
-  }) {
+  Widget _detailsRow([
+    String? title,
+    String? value,
+    bool isTitle = false,
+  ]) {
     return Padding(
       padding: EdgeInsets.only(
         bottom: 8.h,
@@ -140,20 +139,20 @@ class PostManagementScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              title,
-              style: textStyleW600.copyWith(fontSize: 16.sp),
+              title!,
+              style: TextStyle(fontSize: 16.sp),
             ),
           ),
           Text(
             "  :  ",
-            style: textStyleW700.copyWith(fontSize: 16.sp),
+            style: TextStyle(fontSize: 16.sp),
           ),
           Expanded(
             child: Text(
-              value,
+              value!,
               style: TextStyle(
                 fontSize: 16.sp,
-                fontWeight: FontWeight.w600,
+                fontWeight: isTitle ? FontWeight.w600 : FontWeight.w400,
               ),
             ),
           ),

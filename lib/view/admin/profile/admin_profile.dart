@@ -8,6 +8,10 @@ import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
+import 'package:wealth_ticker_main/provider/admin/admin_profile_provider.dart';
+import 'package:wealth_ticker_main/provider/admin/admin_profile_provider.dart';
+import 'package:wealth_ticker_main/provider/admin/admin_profile_provider.dart';
+import 'package:wealth_ticker_main/provider/admin/admin_profile_provider.dart';
 import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -26,9 +30,9 @@ class AdminProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // AuthProvider providerTrue =
-    // Provider.of<AuthProvider>(context, listen: true);
-    // AuthProvider providerFalse = Provider.of<AuthProvider>(context);
+    ProfileProvider providerTrue =
+    Provider.of<ProfileProvider>(context, listen: true);
+    ProfileProvider provider = Provider.of<ProfileProvider>(context);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
         index.value = 0;
@@ -166,12 +170,16 @@ class AdminProfileScreen extends StatelessWidget {
                               path: AppAssets.phoneIcon,
                               color: AppColors.authIconsColor),
                         ),
-                        // suffix: myCountryCodePicker(context, (country) {
-                        //   providerFalse.updateCountryPhoneCode(
-                        //     phoneCode: "+ ${country.phoneCode}",
-                        //     length: country.example.length,
-                        //   );
-                        // }, providerTrue.),
+                        suffix: myCountryCodePicker(
+                          context,
+                              (country) {
+                            provider.updateCountryPhoneCode(
+                              phoneCode: "+ ${country.phoneCode}",
+                              length: country.example.length,
+                            );
+                          },
+                          providerTrue.countryPhoneCode,
+                        ),
                       ),
                       MyTextField(
                         title: "Password",
@@ -214,7 +222,7 @@ class AdminProfileScreen extends StatelessWidget {
                   ),
                   16.h.verticalSpace,
                   Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SvgPicture.asset(
                         AppAssets.deleteBucket,
@@ -250,7 +258,6 @@ class AdminProfileScreen extends StatelessWidget {
       onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: [
           // Icon(icon, color: icon == CupertinoIcons.delete ? Colors.red : null),
           icon,

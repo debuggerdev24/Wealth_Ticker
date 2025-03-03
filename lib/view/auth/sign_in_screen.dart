@@ -55,7 +55,7 @@ class SignInScreen extends StatelessWidget {
                       Column(
                         children: [
                           MyTextField(
-                            hintText: "Enter your email",
+                            hintText: "Enter your Email",
                             controller: _textEmail,
                             title: "Email",
                             prefix: Padding(
@@ -96,7 +96,7 @@ class SignInScreen extends StatelessWidget {
                         isOptional: true,
                         optionShowText: " (optional)",
                         title: "Referral Code",
-                        hintText: "Enter your referral code",
+                        hintText: "Enter your Referral Code",
                         controller: _textReferrelCode,
                         suffix: GestureDetector(
                           onTap: () {},

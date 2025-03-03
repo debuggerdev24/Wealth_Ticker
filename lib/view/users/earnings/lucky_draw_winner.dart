@@ -19,9 +19,9 @@ class LuckyDrawWinnerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     EarningsProvider providerTrue =
-    Provider.of<EarningsProvider>(context, listen: true);
+        Provider.of<EarningsProvider>(context, listen: true);
     EarningsProvider provider =
-    Provider.of<EarningsProvider>(context, listen: false);
+        Provider.of<EarningsProvider>(context, listen: false);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
         index.value = 0;
@@ -41,7 +41,6 @@ class LuckyDrawWinnerScreen extends StatelessWidget {
                 child: SVGImages(path: AppAssets.bankEdit)),
           ),
         ],
-
         title: "Lucky Draw Winners",
         body: Padding(
           padding: appPadding(),
@@ -62,7 +61,8 @@ class LuckyDrawWinnerScreen extends StatelessWidget {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                              "https://s3-alpha-sig.figma.com/img/054c/786b/8d929ba332f2bed6ef20981d72b96fad?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=jCSGGm4ZnGSX0wAklXgs-kHtAFRB91FXSkw9ED6M46aNkhyOCf45ZAmLKIN-7Hfjep706P5YuOCkV85Afc-A7XoRPWb3BxnzHVzg7wCwW5loZpgiEaVhjrPGckCqkg2H2CMsUo~WIyxicu1kwj7KAYnyx8nCQqyG2TbFdAaxrdS4feFkuHcQkufQ7PrsM0x42Oatl5xzZ6NaAGYnXnoa8Pli57QA6KzBoQI7Ww5NfwqUznn-8qf0i1SzesOozOf-L4hGKUdUPIyUgriWfqJ2eqyJbONXaJnMKmhGbPkWfmdHJ4f33GmSz3XfXYYPPZpoD0QPOAs6XfAF6Mvb3h2Kbg__"),
+                            "https://s3-alpha-sig.figma.com/img/054c/786b/8d929ba332f2bed6ef20981d72b96fad?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PDxBUcq6JCVrFDCQnVIcfd64rygbHfBs5iXbx3JRKMiaiQdpmRbOkp5lBno27uunECzdyLY5TWBo~xYxUpUiWMnQ~9hPv6lzxcefGKh2BzwEdio8PFfitBrRMgRYsjGmmpH4A8UOuQbxBhX4A53J9ktSviEpCRzKypTYkGsnvk8jGWSIFa5JUF9L-6u0sv13HN-r04l1p-rUrAVlId5K2WgbferR7yvWonagGtE3cm3F-i-fGdeO17o~nj4wAZ5vTVerXPGQVhjNkk34O272jNueTza7IC0fnG3QhKH9TH59Pj95F3csDTxFgJm44sxbYTN7S15rM6yXKkQMHeCylA__",
+                          ),
                         ),
                       ),
                     ),
@@ -117,7 +117,7 @@ class LuckyDrawWinnerScreen extends StatelessWidget {
                     16.h.verticalSpace,
                     ...List.generate(
                       providerTrue.pastWinners.length,
-                          (index) {
+                      (index) {
                         final winner = providerTrue.pastWinners[index];
                         return WinnersTile(winner: winner);
                       },
@@ -171,4 +171,3 @@ Widget _detailsWidget({required String title, required String data}) {
     ),
   );
 }
-

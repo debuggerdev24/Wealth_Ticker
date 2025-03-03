@@ -52,9 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 50.h,
-                ),
+                50.h.verticalSpace,
                 AuthTitle(title: "Sign Up"),
                 SizedBox(
                   height: 5.h,
@@ -89,9 +87,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               String error = FieldValidators().multiCheck(
                                     value,
                                     [
-                                      (value) =>
-                                          FieldValidators()
-                                              .required(value, "Full Name"),
+                                      (value) => FieldValidators()
+                                          .required(value, "Full Name"),
                                       FieldValidators().fullName,
                                     ],
                                   ) ??
@@ -112,7 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Column(
                         children: [
                           MyTextField(
-                            hintText: "Enter your email",
+                            hintText: "Enter your Email",
                             controller: _textEmail,
                             title: "Email",
                             prefix: Padding(
@@ -188,12 +185,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                         ],
                       ),
-                      //todo ---------------------------> ref code
+                      //todo ---------------------------> referral code
                       MyTextField(
                         isOptional: true,
                         optionShowText: " (optional)",
                         title: "Referral Code",
-                        hintText: "Enter your referral code",
+                        hintText: "Enter your Referral Code",
                         controller: _textReferralCode,
                         suffix: referralFieldSuffix(),
                         prefix: Padding(
@@ -210,7 +207,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         children: [
                           MyTextField(
                             title: "Password",
-                            hintText: "Enter your password",
+                            hintText: "Enter your Password",
                             controller: _textPassword,
                             prefix: Padding(
                               padding: EdgeInsets.symmetric(
@@ -261,7 +258,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           MyTextField(
                             textInputAction: TextInputAction.done,
                             title: "Confirm password",
-                            hintText: "Enter your confirm password",
+                            hintText: "Enter your Confirm Password",
                             controller: _textConfirmPassword,
                             prefix: Padding(
                               padding: EdgeInsets.symmetric(
@@ -391,23 +388,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 Widget referralFieldSuffix() {
   return Container(
-    height: 16.h,
-    margin: EdgeInsets.fromLTRB(5.w, 14.h, 14.w, 14.h),
-    padding: EdgeInsets.only(bottom: 5.h),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(4),
-      border: Border.all(
-        color: Color(0xff737373),
-      ),
-    ),
+    height: 18,
+    width: 0,
+    alignment: Alignment.center,
+    margin: EdgeInsets.fromLTRB(5, 12, 14, 14),
+    // padding: EdgeInsets.only(bottom: 5.h),
     child: Stack(
       alignment: Alignment.center,
       children: [
-        Icon(
-          size: 22.h,
-          Icons.keyboard_arrow_right_rounded,
-          color: Color(0xff737373),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+              color: Color(0xff737373),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 6.0),
+          child: Icon(
+            Icons.keyboard_arrow_right_rounded,
+            color: Color(0xff737373),
+          ),
         ),
       ],
     ),

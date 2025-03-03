@@ -13,7 +13,7 @@ class SuccessPaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyAppLayOut(
-      title: "Complete Your Subscription",
+      title: "Purchase Successful",
       body: Padding(
         padding: EdgeInsets.fromLTRB(12.w, 2.h, 12.w, 5.h),
         child: Column(

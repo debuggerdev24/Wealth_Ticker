@@ -3,19 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
+import 'package:wealth_ticker_main/core/utils/global.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
+import 'package:wealth_ticker_main/provider/user/user_profile_provider.dart';
+import 'package:wealth_ticker_main/provider/user/user_profile_provider.dart';
+import 'package:wealth_ticker_main/provider/user/user_profile_provider.dart';
+import 'package:wealth_ticker_main/provider/user/user_profile_provider.dart';
 import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
-
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/global.dart';
-import '../../../core/widgets/my_button.dart';
 import '../../../core/widgets/my_textfield.dart';
-import '../../../provider/auth/auth_provider.dart';
 
+XFile? xFile;
 TextEditingController _textFullName = TextEditingController();
 TextEditingController _textEmail = TextEditingController();
 TextEditingController _textMobileNumber = TextEditingController();
@@ -26,9 +29,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // AuthProvider providerTrue =
-    // Provider.of<AuthProvider>(context, listen: true);
-    // AuthProvider providerFalse = Provider.of<AuthProvider>(context);
+    UserProfileProvider providerTrue =
+        Provider.of<UserProfileProvider>(context, listen: true);
+    UserProfileProvider provider = Provider.of<UserProfileProvider>(context);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
         index.value = 0;
@@ -53,12 +56,12 @@ class ProfileScreen extends StatelessWidget {
               fontSize: 18.sp,
             ),
           ),
-          leading: Padding(
-            padding: EdgeInsets.all(18.r),
-            child: SVGImages(
-              path: AppAssets.editIcon,
-            ),
-          ),
+          // leading: Padding(
+          //   padding: EdgeInsets.all(18.r),
+          //   child: SVGImages(
+          //     path: AppAssets.editIcon,
+          //   ),
+          // ),
         ),
         body: Center(
           child: Padding(
@@ -68,54 +71,58 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   20.h.verticalSpace,
                   //todo profile image ui
-                  Stack(
-                    children: [
-                      Container(
-                        height: 105.h,
-                        width: 105.w,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.grey),
-                        child: ClipOval(
-                          child: FadeInImage(
-                            fit: BoxFit.cover,
-                            placeholder: AssetImage(
-                                "assets/images/auth_screen/on_b2.png"),
-                            image: NetworkImage(
-                                "https://s3-alpha-sig.figma.com/img/631a/e9d1/8913573857117663f71ac91bd6180688?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IXXFUJ-l84XxqJgy95pyOjsqAoNEGChTWDNwJlanDN3I4RxlQSJIfnNBWEwb4kGHfYOHGut188SUsG~9uTEJUyrAZtez9Akyhw3xVNDfOuSAC7FcYETVPUyou2I-azHDH5RpOjDVB3slFVNUnfUojhUbbtg6Ib8q1DSX0M-UcqqvzbM~hid784~ImURB~M9jeKT5GYtS~wImwpSkrOCinhb4Xt-bj4GK5sgF~cw5ZevEcybSEsPZkJMWzGk5Rgt-P3gpJU9nn6flASOOI2gsuSYK4qq46Qy8s1crEGQltBPbT-sFfme-dP8ZY6pd0Vj8M02Vd3AHpn7~ZBIzlZbktA__"),
-                            fadeInDuration: Duration(seconds: 1),
-                            fadeOutDuration: Duration(milliseconds: 200),
+                  GestureDetector(
+                    onTap: () {
+                      openImagePickOptions(context, providerTrue, provider);
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 105.h,
+                          width: 105.w,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.grey),
+                          child: ClipOval(
+                            child: FadeInImage(
+                              fit: BoxFit.cover,
+                              placeholder: AssetImage(
+                                  "assets/images/auth_screen/on_b2.png"),
+                              image: FileImage(providerTrue.fileImage!),
+                              fadeInDuration: Duration(seconds: 1),
+                              fadeOutDuration: Duration(milliseconds: 200),
+                            ),
                           ),
                         ),
-                      ),
-                      //todo --------------------------> button to pick image
-                      Positioned(
-                        bottom: 0.9, // Adjust position
-                        right: 0.9, // Adjust position
-                        child: SVGImages(path: AppAssets.addOutlinedIcon),
-                        // Icon(
-                        //   Icons.add_circle_outline_rounded,
-                        //   size: 35.sp,
-                        //   color: AppColors.greyColor,
+                        //todo --------------------------> button to pick image
+                        Positioned(
+                          bottom: 0.9, // Adjust position
+                          right: 0.9, // Adjust position
+                          child: SVGImages(path: AppAssets.addOutlinedIcon),
+                          // Icon(
+                          //   Icons.add_circle_outline_rounded,
+                          //   size: 35.sp,
+                          //   color: AppColors.greyColor,
+                          // ),
+                        ),
+                        // Positioned(
+                        //   bottom: -9,
+                        //   right: -28,
+                        //   child: MaterialButton(
+                        //     height: 24.h,
+                        //     padding: EdgeInsets.all(2),
+                        //     elevation: 1,
+                        //     onPressed: () async {},
+                        //     color: AppColors.darkGreenColor,
+                        //     shape: const CircleBorder(),
+                        //     child: Icon(
+                        //       Icons.photo_camera_outlined,
+                        //       size: 12.h,
+                        //       color: Colors.white,
+                        //     ),
+                        //   ),
                         // ),
-                      ),
-                      // Positioned(
-                      //   bottom: -9,
-                      //   right: -28,
-                      //   child: MaterialButton(
-                      //     height: 24.h,
-                      //     padding: EdgeInsets.all(2),
-                      //     elevation: 1,
-                      //     onPressed: () async {},
-                      //     color: AppColors.darkGreenColor,
-                      //     shape: const CircleBorder(),
-                      //     child: Icon(
-                      //       Icons.photo_camera_outlined,
-                      //       size: 12.h,
-                      //       color: Colors.white,
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
+                      ],
+                    ),
                   ),
                   //todo name
                   8.h.verticalSpace,
@@ -137,7 +144,10 @@ class ProfileScreen extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                             vertical: 13.h,
                           ),
-                          child: SVGImages(path: AppAssets.userIcon),
+                          child: SVGImages(
+                            path: AppAssets.userIcon,
+                            color: AppColors.authIconsColor,
+                          ),
                         ),
                       ),
                       MyTextField(
@@ -155,7 +165,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       MyTextField(
                         title: "Mobile Number",
-                        hintText: "ethancarter@gmail.com",
+                        hintText: "(415) 892-5302",
                         controller: _textMobileNumber,
                         prefix: Padding(
                           padding: EdgeInsets.symmetric(
@@ -164,6 +174,16 @@ class ProfileScreen extends StatelessWidget {
                           child: SVGImages(
                               path: AppAssets.phoneIcon,
                               color: AppColors.authIconsColor),
+                        ),
+                        suffix: myCountryCodePicker(
+                          context,
+                          (country) {
+                            provider.updateCountryPhoneCode(
+                              phoneCode: "+ ${country.phoneCode}",
+                              length: country.example.length,
+                            );
+                          },
+                          providerTrue.countryPhoneCode,
                         ),
                         // suffix: myCountryCodePicker(context, (country) {
                         //   providerFalse.updateCountryPhoneCode(
@@ -212,7 +232,9 @@ class ProfileScreen extends StatelessWidget {
                           color: Color(0xff333333),
                         ),
                         "Log out",
-                        onTap: () {},
+                        onTap: () {
+                          context.goNamed(AppRoutes.signUpScreen.name);
+                        },
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
@@ -245,6 +267,70 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void openImagePickOptions(BuildContext context,
+      UserProfileProvider providerTrue, UserProfileProvider provider) {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: EdgeInsets.only(top: 18, left: 18),
+                child: Text(
+                  "Profile Photo",
+                  style: TextStyle(fontSize: 18.0),
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () async {
+                await getCameraImage();
+                if (xFile != null) {
+                  provider.uploadProfileImage(
+                    xFile!.path
+                  );
+                  Navigator.pop(context);
+                }
+              },
+              leading: const Icon(Icons.photo_camera),
+              title: const Text("Camera"),
+            ),
+            ListTile(
+              enableFeedback: true,
+              autofocus: true,
+              onTap: () async {
+                await getGalleryImage();
+                if (xFile != null) {
+                  context.pop(context);
+                }
+              },
+              leading: const Icon(Icons.photo),
+              title: const Text("Gallery"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> getCameraImage() async {
+    xFile = await ImagePicker().pickImage(
+      source: ImageSource.camera,
+      // imageQuality: 40,
+    );
+  }
+
+  Future<void> getGalleryImage() async {
+    xFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+      // imageQuality: 40,
     );
   }
 

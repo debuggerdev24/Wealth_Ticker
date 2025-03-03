@@ -17,35 +17,27 @@ class FailurePopupScreen extends StatelessWidget {
       title: "Failed Payment",
       body: Padding(
         padding: appPadding(),
-        child: Column(
-          children: [
-            18.h.verticalSpace,
-            OutPutMessageBox(
-              filledButtonTitle: "Return to PayOutList",
-              outLinedButtonTitle: "Retry Payout",
-              outlinedButtonOnTap: () {},
-              filledButtonOnTap: () {
-                // context.push(AppRoutes.processPayoutScreen.path);
-
-              },
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SVGImages(
-                    path: AppAssets.failedCross,
-                  ),
-                  26.h.verticalSpace,
-                  Text(
-                    '“Payout failed for User AlexT. Please check details and try again.”',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                ],
+        child: OutPutMessageBox(
+          filledButtonTitle: "Return to Payout List",
+          outLinedButtonTitle: "Retry Payout",
+          outlinedButtonOnTap: () {},
+          filledButtonOnTap: () {},
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SVGImages(
+                path: AppAssets.failedCross,
               ),
-            ),
-          ],
+              26.h.verticalSpace,
+              Text(
+                '“Payout failed for User AlexT. Please check details and try again.”',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18.sp,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

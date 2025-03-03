@@ -19,43 +19,60 @@ class SuccessPopupScreen extends StatelessWidget {
       title: "Success",
       body: Padding(
         padding: appPadding(),
-        child: Column(
-          children: [
-            18.h.verticalSpace,
-            OutPutMessageBox(
-              outLinedButtonTitle: "Done",
-              filledButtonTitle: "Return to Payout List",
-              outlinedButtonOnTap: () {
-                context.push(AppRoutes.failurePopupScreen.path);
-              },
-              filledButtonOnTap: () {
-                context.push(AppRoutes.successPopUpScreen.path);
-              },
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SVGImages(
-                    path: AppAssets.successTick,
-                  ),
-                  26.h.verticalSpace,
-                  Text(
-                    '“Payout of \$1,500 to AlexT has been successfully processed.”',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                  10.h.verticalSpace,
-                  Text(
-                    "(Redirects to the Payout List after a few seconds.)",
-                    style: textStyleW600.copyWith(
-                      fontSize: 12.sp,
-                    ),
-                  )
-                ],
+        child: OutPutMessageBox(
+          outLinedButtonTitle: "Done",
+          filledButtonTitle: "Return to Payout List",
+          outlinedButtonOnTap: () {
+            context.push(AppRoutes.failurePopupScreen.path);
+          },
+          filledButtonOnTap: () {
+            context.pushNamed(AppRoutes.successPopUpScreenAdmin.name);
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SVGImages(
+                path: AppAssets.successTick,
               ),
-            )
-          ],
+              26.h.verticalSpace,
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: TextStyle(
+                    fontFamily: "Open Sans",
+                    fontSize: 18.sp,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '“Payout of ',
+                      style: TextStyle(
+                        color: Colors.black
+                      ),
+                    ),
+                    TextSpan(
+                      text: "\$1,500 to AlexT",
+                      style: textStyleW600.copyWith(
+                        color: Colors.black
+                      ),
+                    ),
+                    TextSpan(
+                      text: ' has been successfully processed.”',
+                      style: TextStyle(
+                        color: Colors.black
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              10.h.verticalSpace,
+              Text(
+                "(Redirects to the Payout List after a few seconds.)",
+                style: textStyleW600.copyWith(
+                  fontSize: 12.sp,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

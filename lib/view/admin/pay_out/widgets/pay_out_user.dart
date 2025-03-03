@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wealth_ticker_main/core/formatter.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/theme/app_colors.dart';
@@ -40,9 +41,9 @@ class PayOutUserPending extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
+                            offset: Offset(0, 2),
                             color: Colors.grey.shade600,
-                            blurRadius: 5
-                        )
+                            blurRadius: 5)
                       ],
                     ),
                     child: CircleAvatar(
@@ -55,13 +56,12 @@ class PayOutUserPending extends StatelessWidget {
                   Text(
                     user.customerName,
                     style: textStyleW700.copyWith(
-                      fontSize: 16.sp,
-                    ),
-                  )
+                        fontSize: 16.sp, color: AppColors.darkGreenColor),
+                  ),
                 ],
               ),
               10.h.verticalSpace,
-              _detailsRow(title: "Amount", value: user.amount.toString()),
+              _detailsRow(title: "Amount", value: formatCurrency(user.amount)),
               _detailsRow(
                   title: "Status",
                   value: user.status ? "Processed" : "Pending"),
@@ -73,6 +73,7 @@ class PayOutUserPending extends StatelessWidget {
         MySubmitButtonOutlined(
           width: 0.4.sw,
           height: 44.h,
+          borderRadius: 4.r,
           title: "Process Payout",
           textStyle: textStyleW600,
           fontSize: 13.sp,
@@ -108,7 +109,7 @@ class PayOutUserPending extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              value,
+              "\$$value",
               style: TextStyle(fontSize: 16.sp),
             ),
           ),
@@ -153,9 +154,7 @@ class PayOutUserProcessed extends StatelessWidget {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.shade600,
-                                blurRadius: 5
-                            )
+                                color: Colors.grey.shade600, blurRadius: 5)
                           ],
                         ),
                         child: CircleAvatar(
@@ -187,6 +186,7 @@ class PayOutUserProcessed extends StatelessWidget {
             MySubmitButtonOutlined(
               width: 0.4.sw,
               height: 44.h,
+              borderRadius: 4.r,
               title: "Process Payout",
               textStyle: textStyleW600,
               fontSize: 14.sp,
@@ -212,7 +212,10 @@ class PayOutUserProcessed extends StatelessWidget {
             ),
             child: Text(
               "Completed",
-              style: textStyleW700.copyWith(color: Colors.white),
+              style: textStyleW700.copyWith(
+                color: Colors.white,
+                fontSize: 12.sp,
+              ),
             ),
           ),
         ),

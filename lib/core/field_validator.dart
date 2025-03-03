@@ -26,7 +26,7 @@ class FieldValidators {
 
     if (!namePattern.hasMatch(val)) {
       log("returning error", name: "name validator");
-      return "Enter a valid name (only alphabets allowed).";
+      return "Enter a valid name (Only alphabets allowed).";
     }
 
     log("returning normally", name: "name validator");

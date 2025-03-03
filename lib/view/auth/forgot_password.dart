@@ -45,24 +45,27 @@ class ForgotPassword extends StatelessWidget {
                       MyTextField(
                         textInputAction: TextInputAction.done,
                         title: "Email",
-                        hintText: "Enter your email",
+                        hintText: "Enter your Email",
                         controller: _textEmail,
                         prefix: Padding(
                           padding: EdgeInsets.symmetric(
                             vertical: 13.h,
                           ),
                           child: SVGImages(
-                              path: AppAssets.mailIcon,
-                              color: AppColors.authIconsColor),
+                            path: AppAssets.mailIcon,
+                            color: AppColors.authIconsColor,
+                          ),
                         ),
                         validator: (value) {
                           String error = FieldValidators().multiCheck(
-                            value,
-                            [
-                              (val) => FieldValidators().required(val, "Email"),
-                              FieldValidators().email,
-                            ],
-                          ) ?? "";
+                                value,
+                                [
+                                  (val) =>
+                                      FieldValidators().required(val, "Email"),
+                                  FieldValidators().email,
+                                ],
+                              ) ??
+                              "";
                           provider.updateValidationStatusForForgotPassword(
                               error: error);
                           return null;
@@ -79,7 +82,8 @@ class ForgotPassword extends StatelessWidget {
                   title: "Send",
                   onPressed: () {
                     // context.pushNamed(AppRoutes.otpScreen.name);
-                    if(_formKey.currentState!.validate() && providerTrue.forgotPassEmailError.isEmpty){
+                    if (_formKey.currentState!.validate() &&
+                        providerTrue.forgotPassEmailError.isEmpty) {
                       context.pushNamed(AppRoutes.otpScreen.name);
                     }
                   },

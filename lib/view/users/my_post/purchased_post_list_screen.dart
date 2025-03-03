@@ -25,7 +25,7 @@ class PurchasedPostList extends StatelessWidget {
       },
       child: MyAppLayOut(
         showBackButton: false,
-        title: "Purchased Pos",
+        title: "Purchased Post",
         body: Padding(
           padding: EdgeInsets.fromLTRB(12.w, 4.h, 12.w, 5.h),
           child: SingleChildScrollView(
@@ -71,7 +71,6 @@ class PurchasedProductPostWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
           color: Color(0xfffff8f8), //
-
           boxShadow: [
             BoxShadow(
               color: Colors.grey.shade400,
@@ -88,7 +87,7 @@ class PurchasedProductPostWidget extends StatelessWidget {
               style: textStyleW600.copyWith(fontSize: 16.sp),
             ),
             16.h.verticalSpace,
-            _detailsRow("Short description", post.shortDes),
+            _detailsRow("Short Description", post.shortDes),
             12.h.verticalSpace,
             _detailsRow("Status", post.status),
             12.h.verticalSpace,

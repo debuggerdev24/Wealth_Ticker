@@ -17,34 +17,29 @@ class ConfirmSectionScreen extends StatelessWidget {
       title: "Confirm Section",
       body: Padding(
         padding: appPadding(),
-        child: Column(
-          children: [
-            18.h.verticalSpace,
-            OutPutMessageBox(
-              filledButtonTitle: "Confirm & Process Payout",
-              outLinedButtonTitle: "Cancel",
-              outlinedButtonOnTap: () {},
-              filledButtonOnTap: () {
-                context.push(AppRoutes.successPopUpScreen.path);
-              },
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SVGImages(
-                    path: AppAssets.warning,
-                  ),
-                  26.h.verticalSpace,
-                  Text(
-                    '"Once processed, this action cannot be undone. Please verify the details before proceeding."',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                ],
+        child: OutPutMessageBox(
+          filledButtonTitle: "Confirm & Process Payout",
+          outLinedButtonTitle: "Cancel",
+          outlinedButtonOnTap: () {},
+          filledButtonOnTap: () {
+            context.push(AppRoutes.successPopUpScreenAdmin.path);
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SVGImages(
+                path: AppAssets.warning,
               ),
-            )
-          ],
+              26.h.verticalSpace,
+              Text(
+                '"Once processed, this action cannot be undone. Please verify the details before proceeding."',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18.sp,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

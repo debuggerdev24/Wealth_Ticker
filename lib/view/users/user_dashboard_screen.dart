@@ -3,7 +3,7 @@ import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import 'package:wealth_ticker_main/view/users/earnings/count_down_week_lucky_draw_screen.dart';
 import 'package:wealth_ticker_main/view/users/home/home_screen.dart';
-import 'package:wealth_ticker_main/view/users/profile/profile_screen.dart';
+import 'package:wealth_ticker_main/view/users/profile/user_profile_screen.dart';
 import '../../core/theme/app_colors.dart';
 import 'my_post/purchased_post_list_screen.dart';
 

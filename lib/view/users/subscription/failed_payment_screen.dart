@@ -4,13 +4,13 @@ import 'package:wealth_ticker_main/view/users/subscription/widgets/payment_resul
 
 import '../../../core/widgets/my_app_layout.dart';
 
-class FailedPaymentScreen extends StatelessWidget {
-  const FailedPaymentScreen({super.key});
+class FailedPaymentScreenUser extends StatelessWidget {
+  const FailedPaymentScreenUser({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MyAppLayOut(
-      title: "Complete Your Subscription",
+      title: "Purchase Failed",
       body: PaymentResult(
         image: AppAssets.failedPayment,
         //"assets/images/failed_payment.png",

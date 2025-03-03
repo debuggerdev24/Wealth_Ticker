@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,6 @@ import 'package:wealth_ticker_main/provider/user/earning_provider.dart';
 import 'package:wealth_ticker_main/view/users/earnings/widget/error_widget.dart';
 import '../../../provider/auth/auth_provider.dart';
 
-TextEditingController _textCountry = TextEditingController();
 TextEditingController _textAccHolderName = TextEditingController();
 TextEditingController _textAccNumberOrIban = TextEditingController();
 TextEditingController _textBankName = TextEditingController();
@@ -55,10 +55,50 @@ class BankDetailsScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     MyTextField(
+                      onTap: () {
+                        showCountryPicker(
+                          context: context,
+                          showPhoneCode: true,
+                          countryListTheme: CountryListThemeData(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(
+                                18.r,
+                              ),
+                              topRight: Radius.circular(
+                                18.r,
+                              ),
+                            ),
+                            inputDecoration: InputDecoration(
+                              hintText: "Search Country...",
+                              hintStyle:
+                                  TextStyle(fontSize: 14, color: Colors.grey),
+                              prefixIcon: Icon(CupertinoIcons.search,
+                                  color: Colors.grey.shade700),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 14),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(
+                                    color: AppColors.darkGreenColor,
+                                    width: 1.5),
+                              ),
+                            ),
+                          ),
+                          onSelect: (Country country) {
+                            provider.updateCountryPhoneCode(
+                              phoneCode: "+ ${country.phoneCode}",
+                              length: country.example.length,
+                            );
+                          },
+                        );
+                      },
                       readOnly: true,
                       title: "Select Country",
-                      hintText: "Choose your country",
-                      controller: _textCountry,
+                      hintText: "Choose your Country",
+                      controller: providerTrue.textCountry,
                       suffix: myCountryCodePicker(
                         context,
                         (country) {
@@ -74,15 +114,20 @@ class BankDetailsScreen extends StatelessWidget {
                       children: [
                         MyTextField(
                           title: "Account Holder Name",
-                          hintText: "Enter your full name",
+                          hintText: "Enter Account Holder Name",
                           controller: _textAccHolderName,
                           validator: (value) {
+                            String error = FieldValidators().multiCheck(
+                                  value,
+                                  [
+                                    (value) => FieldValidators()
+                                        .required(value, "Account Holder Name"),
+                                    FieldValidators().fullName,
+                                  ],
+                                ) ??
+                                "";
                             provider.updateValidationStatus(
-                              field: "accountHolderName",
-                              error: FieldValidators()
-                                      .required(value, "Account holder name") ??
-                                  "",
-                            );
+                                field: "accountHolderName", error: error);
                             return null;
                           },
                         ),
@@ -100,7 +145,7 @@ class BankDetailsScreen extends StatelessWidget {
                       children: [
                         MyTextField(
                           title: "Account Number/IBAN",
-                          hintText: "Enter your account number or IBAN",
+                          hintText: "Enter your Account Number or IBAN",
                           controller: _textAccNumberOrIban,
                           validator: (value) {
                             String error = FieldValidators()
@@ -123,7 +168,7 @@ class BankDetailsScreen extends StatelessWidget {
                       children: [
                         MyTextField(
                           title: "Bank Name",
-                          hintText: "Enter your bank's name",
+                          hintText: "Enter your Bank's Name",
                           controller: _textBankName,
                           validator: (value) {
                             provider.updateValidationStatus(
@@ -147,7 +192,7 @@ class BankDetailsScreen extends StatelessWidget {
                       isOptional: true,
                       optionShowText: "(if applicable)",
                       title: "Branch Name",
-                      hintText: "Enter the branch name",
+                      hintText: "Enter the Branch name",
                       controller: _textBranchName,
                     ),
                     MyTextField(
@@ -155,23 +200,34 @@ class BankDetailsScreen extends StatelessWidget {
                       isOptional: true,
                       optionShowText: "(if applicable)",
                       title: "SWIFT Code",
-                      hintText: "Enter SWIFT/BIC code",
+                      hintText: "Enter SWIFT/BIC Code",
                       controller: _textSwiftCode,
                     ),
                   ],
                 ),
-                18.h.verticalSpace,
+                20.h.verticalSpace,
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Checkbox(
-                      tristate: true,
-                      value: providerTrue.confirmation,
-                      activeColor: AppColors.darkGreenColor,
-                      onChanged: (value) {
-                        provider.updateConfirmation();
-                      },
+                    SizedBox(
+                      height: 20.h,
+                      width: 20.w,
+                      child: Checkbox(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Color(0xff333333),
+                            width: 2.w,
+                          ),
+                          borderRadius: BorderRadius.circular(5.r),
+                        ),
+                        value: providerTrue.confirmation,
+                        activeColor: AppColors.darkGreenColor,
+                        onChanged: (value) {
+                          provider.updateConfirmation();
+                        },
+                      ),
                     ),
+                    15.w.horizontalSpace,
                     Expanded(
                       child: GestureDetector(
                         onTap: () {

@@ -5,12 +5,10 @@ import 'package:pinput/pinput.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import '../../core/routes/routes.dart';
 import '../../core/theme/app_colors.dart';
-import '../../core/utils/global.dart';
 import '../../core/widgets/auth_screen_text.dart';
 import '../../core/widgets/my_button.dart';
 
 TextEditingController textEmail = TextEditingController();
-
 TextEditingController otpController = TextEditingController();
 
 class OTPScreen extends StatelessWidget {
@@ -42,7 +40,7 @@ class OTPScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.r),
+                      borderRadius: BorderRadius.circular(05.r),
                       border: Border.all(color: Colors.grey.shade400),
                     ),
                   ),

@@ -30,16 +30,22 @@ class SelectPaymentScreen extends StatelessWidget {
             ),
             20.h.verticalSpace,
             Container(
-              padding: EdgeInsets.only(left: 16.w),
+              padding: EdgeInsets.only(
+                left: 16.w,
+              ),
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.borderColor)
+                border: Border.all(
+                  color: AppColors.borderColor,
+                ),
               ),
               child: ListTile(
-                onTap: (){
+                onTap: () {
                   context.pushNamed(AppRoutes.successPaymentScreenUser.name);
                 },
                 contentPadding: EdgeInsets.zero,
-                leading: SVGImages(path: AppAssets.creditCard),
+                leading: SVGImages(
+                  path: AppAssets.creditCard,
+                ),
                 title: Text(" Wise App"),
                 trailing: IconButton(
                   onPressed: () {},

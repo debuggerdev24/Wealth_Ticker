@@ -13,7 +13,7 @@ class LuckyDrawMessageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyAppLayOut(
-      title: "Complete Your Subscription",
+      title: "Lucky Draw",
       body: PaymentResult(
         image: AppAssets.luckyDrawMessage,
         //"assets/images/failed_payment.png",
@@ -24,7 +24,10 @@ class LuckyDrawMessageScreen extends StatelessWidget {
           indexTabUser.value = 1;
           context.goNamed(AppRoutes.userDashBoardScreen.name);
         },
-        onTapSecond: () {},
+        onTapSecond: () {
+          context.pushNamed(AppRoutes.failedPaymentScreenUser.name);
+
+        },
       ),
     );
   }

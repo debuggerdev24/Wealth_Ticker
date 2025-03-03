@@ -17,6 +17,7 @@ class LuckyDrawDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyAppLayOut(
+      leadingWidth: 44.w,
       title: "Lucky Draw Details",
       body: Padding(
         padding: appPadding(),

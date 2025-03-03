@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/theme/app_colors.dart';
-import '../utils/global.dart';
 
 class MyTextField extends StatelessWidget {
+
   final String title, hintText;
   final String? optionShowText;
   final TextEditingController controller;
@@ -70,8 +70,9 @@ class MyTextField extends StatelessWidget {
         ),
         11.h.verticalSpace,
         TextFormField(
-          style: TextStyle(fontFamily: "Open Sans"),
+          controller: controller,
           onTap: onTap,
+          style: TextStyle(fontFamily: "Open Sans"),
           readOnly: readOnly!,
           obscureText: obscureText!,
           textInputAction: textInputAction ?? TextInputAction.next,

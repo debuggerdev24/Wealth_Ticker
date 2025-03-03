@@ -23,6 +23,7 @@ class PayoutUsersListScreen extends StatelessWidget {
         return;
       },
       child: MyAppLayOut(
+        leadingWidth: 39.w,
         title: "Payout List",
         showBackButton: false,
         body: Padding(

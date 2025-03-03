@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import '../../model/user/earning_model.dart';
 
 class EarningsProvider extends ChangeNotifier {
+  TextEditingController textCountry = TextEditingController(text: "+91");
+
   String countryPhoneCode = "+91";
   int phoneNumLength = 10;
   String accountHolderNameError = "", accountNumberError = "", bankNameError = "", branchNameError = "";
   bool isComplete = false,confirmation = false;
+
 
   void updateConfirmation(){
     confirmation = !confirmation;
@@ -14,6 +17,7 @@ class EarningsProvider extends ChangeNotifier {
 
   void updateCountryPhoneCode(
       {required String phoneCode, required int length}) {
+    textCountry.text = phoneCode;
     countryPhoneCode = phoneCode;
     phoneNumLength = length;
     notifyListeners();

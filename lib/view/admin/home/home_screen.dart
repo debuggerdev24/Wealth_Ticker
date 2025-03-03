@@ -36,7 +36,7 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin>
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.fromLTRB(12.w, 30.h, 12.w, 5.h),
+        padding: EdgeInsets.fromLTRB(12.w, 30.h, 12.w, 0.h),
         child: SingleChildScrollView(
           child: Column(
             children: [

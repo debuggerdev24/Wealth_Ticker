@@ -9,7 +9,8 @@ import '../../../../model/admin/lucky_draw_model.dart';
 
 class WinnersTile extends StatelessWidget {
   final PastWinnersModel winner;
-  const WinnersTile({super.key,required this.winner});
+
+  const WinnersTile({super.key, required this.winner});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,9 @@ class WinnersTile extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 12.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: Color(0xffbfbfbf)),
+        border: Border.all(
+          color: Color(0xffbfbfbf),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade300,
@@ -25,13 +28,13 @@ class WinnersTile extends StatelessWidget {
             blurRadius: 5,
           ),
         ],
-        color: AppColors.lightCreamColor,//AppColors.lightCreamColor,
+        color: AppColors.lightCreamColor, //AppColors.lightCreamColor,
       ),
       child: ListTile(
         // contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
         leading: CircleAvatar(
           backgroundImage: NetworkImage(
-              "https://s3-alpha-sig.figma.com/img/c21c/6896/8665826d72baf80960d2bc4f8f56741e?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=YLyDK6mXohxlYIYwdjDdSz3i2-tbp8uerjg1cbFO2nt2dqfCizKju9zpYCMdvBF26AqkSCXoGyZzRiVRIWcqOMKm6tGaJ93gKPxYAzr1gTbIqkg1VWZIyu1muQXbmWOtdJKQ7k0-vYKucKKKwLQjPSDeZAzX4Qbgz0IfeePByRmt25j-OYSQvRulR3L6WCTy2spC5lEEGKAa3-CW2WYvLY2rVf3hlYWGTbEYs2kVH0n72tHbbZOV~t2xM2XVE0qQBg8NuzCUtSLnPDhnH~-KP2xqEXewizI4w0U9UDRX2Cj1SVSiWtKI7XJcEKv7NiImsvodTVjAr~0F81Vhn1DhUg__"),
+              "https://s3-alpha-sig.figma.com/img/c21c/6896/8665826d72baf80960d2bc4f8f56741e?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HKS~R55VEfvHbJKKuosHG2qgDYxpC9RmrWaFpiVszXb7lLf1SCnAN0D6mcC-BXFSZDrk3BdwaVzVgEYHeZAAitN7ak-Ex3-yr9wjDvX8dNiuqj7GHUPJyVHpWSooSmQsLv4NYJ9ZAt5tnIMyCyEIo6rImMv~9XCpoKzHKIHwCbn0mD7UsQccJCqGCi0lqVGOZFcGD36sa2aJCgssppFDjKZoEulhfU~T4HPM4LDd8QWB~9msFATx1f9VqfcIFJYYDwlBte~XbCqIk87LV9pn-NLVx50R2ods4E~zzd3GFag4wnMFvuFslTWxndNpfZnhI58eZgWIiydih0zlYK6D-A__"),
         ),
         title: Text(winner.name),
         subtitle: Text(winner.date),

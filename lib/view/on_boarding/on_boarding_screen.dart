@@ -24,10 +24,11 @@ class OnBoardingScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.fromLTRB(10.w, 30.h, 10.w, 5.h),
+        padding: EdgeInsets.fromLTRB(10.w, 30.h, 10.w, 0.h),
         child: Stack(
           children: [
             Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
                   child: PageView(
@@ -54,12 +55,12 @@ class OnBoardingScreen extends StatelessWidget {
                         img: AppAssets.onBoarding3,
                         title: "Lucky Draw Winners",
                         description:
-                            "“Have any doubts? Don’t worry. Message us directly and we’ll answer all your questions”",
+                            "\"Congrats to this week's winners! Stay tuned for the next draw.\"",
                         pageController: pageController,
                       ),
                       MyOnBoardingWidget(
                         img: AppAssets.onBoarding4,
-                        title: "Custom Watchlists & Alerts",
+                        title: "Custom Watch lists \n& Alerts",
                         description:
                             "“Get instant alerts for our favorite stocks.”",
                         pageController: pageController,
@@ -85,12 +86,13 @@ class OnBoardingScreen extends StatelessWidget {
                         curve: Curves.easeInOut);
                   },
                   effect: WormEffect(
-                      dotHeight: 12.h,
-                      dotWidth: 12.w,
+                      spacing: 4.w,
+                      dotHeight: 7.h,
+                      dotWidth: 7.w,
                       type: WormType.thin,
                       activeDotColor: AppColors.darkGreenColor),
                 ),
-                70.h.verticalSpace,
+                115.h.verticalSpace,
                 MySubmitButtonFilled(
                   title: onBoardingProviderTrue.currentPage == 0
                       ? "Get Started"
@@ -106,12 +108,12 @@ class OnBoardingScreen extends StatelessWidget {
                           );
                   },
                 ),
-                20.h.verticalSpace,
+                22.h.verticalSpace,
               ],
             ),
             //todo -----------> Skip button
             Padding(
-              padding: EdgeInsets.only(top: 8.h, right: 2.w),
+              padding: EdgeInsets.only(top: 14.h, right: 2.w),
               child: Align(
                 alignment: Alignment.topRight,
                 child: AuthSlogan(

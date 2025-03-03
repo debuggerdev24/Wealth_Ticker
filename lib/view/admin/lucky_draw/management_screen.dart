@@ -65,7 +65,7 @@ class LuckyDrawManagementScreenAdmin extends StatelessWidget {
                     ),
                     Expanded(
                       child: MyText(
-                        data:"Sunday, Feb 25, 2025",
+                        data: "Sunday, Feb 25, 2025",
                         style: textStyleW600.copyWith(
                             color: Colors.red, fontSize: 18.sp),
                       ),
@@ -95,7 +95,10 @@ class LuckyDrawManagementScreenAdmin extends StatelessWidget {
                           blurRadius: 5,
                         ),
                       ],
-                      border: Border.all(),
+                      border: Border.all(
+                        width: 1.2,
+                        color: AppColors.darkGreenColor,
+                      ),
                       borderRadius: BorderRadius.circular(12.r),
                       color: Color(0xffe6ebe9),
                     ),
@@ -219,5 +222,3 @@ class LuckyDrawManagementScreenAdmin extends StatelessWidget {
     );
   }
 }
-
-

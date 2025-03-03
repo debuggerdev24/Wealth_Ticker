@@ -44,10 +44,8 @@ class PostDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 16.h.verticalSpace,
-                _detailsWidget(
-                    date: post.publishedDate, title: "Published Date"),
-                _detailsWidget(
-                    date: post.purchasedDate, title: "Purchase Date"),
+                _detailsWidget("Published Date", post.publishedDate, true),
+                _detailsWidget("Purchase Date", post.purchasedDate, true),
                 10.h.verticalSpace,
                 _postDetailsTitle("Full Analysis :"),
                 12.h.verticalSpace,
@@ -58,13 +56,18 @@ class PostDetailsScreen extends StatelessWidget {
                 20.h.verticalSpace,
                 _postDetailsTitle("Key Takeaways :"),
                 12.h.verticalSpace,
-                _detailsWidget(date: post.revenueGrowth, title: "Revenue growth"),
                 _detailsWidget(
-                    date: "15.3% (industry average: 8%).",
-                    title: "Net profit margin"),
+                  "Revenue Growth",
+                  post.revenueGrowth,
+                ),
                 _detailsWidget(
-                    date: "Increased market share in EV sector.",
-                    title: "Revenue growth"),
+                  "Net profit margin",
+                  "15.3% (industry average: 8%).",
+                ),
+                _detailsWidget(
+                  "2025 outlook",
+                  "Increased market share in EV sector.",
+                ),
               ],
             ),
           ),
@@ -74,16 +77,24 @@ class PostDetailsScreen extends StatelessWidget {
   }
 }
 
-Padding _detailsWidget({required String date, required String title}) {
+Padding _detailsWidget([String? title, String? data, bool? isBold = false]) {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 9.h),
+    padding: EdgeInsets.symmetric(
+      vertical: 9.h,
+    ),
     child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title,
+          title!,
+          style: isBold! ? textStyleW600 : null,
         ),
         Text("   :  "),
-        Expanded(child: Text(date))
+        Expanded(
+          child: Text(
+            data!,
+          ),
+        )
       ],
     ),
   );
@@ -92,6 +103,7 @@ Padding _detailsWidget({required String date, required String title}) {
 Text _postDetailsTitle(title) {
   return Text(
     title,
-    style: textStyleW600.copyWith(fontSize: 18.sp, color: AppColors.darkGreenColor),
+    style: textStyleW600.copyWith(
+        fontSize: 18.sp, color: AppColors.darkGreenColor),
   );
 }

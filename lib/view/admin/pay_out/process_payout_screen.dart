@@ -28,7 +28,7 @@ class ProcessPayoutScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 18.h),
               child: MyTextField(
-                title: "Username",
+                title: "User Name",
                 hintText: "AlexT",
                 controller: _textUserName,
               ),
@@ -56,7 +56,7 @@ class ProcessPayoutScreen extends StatelessWidget {
               controller: _textRequestDate,
             ),
             MySubmitButtonFilled(
-              title: "Add Payment details",
+              title: "Add Payment Details",
               onPressed: () {
                 context.push(AppRoutes.selectPaymentScreen.path);
               },

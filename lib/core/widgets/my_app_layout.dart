@@ -10,6 +10,7 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
   final bool? centerTitle, showBackButton;
   final Widget body;
   final Widget? leading;
+  final double? leadingWidth;
   final List<Widget>? actions;
 
   const MyAppLayOut(
@@ -19,13 +20,14 @@ class MyAppLayOut extends StatelessWidget implements PreferredSizeWidget {
       this.actions = const [SizedBox()],
       required this.body,
       this.showBackButton = true,
-      this.leading});
+      this.leading, this.leadingWidth});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leadingWidth: leadingWidth ?? 40.w,
         iconTheme: IconThemeData(
           color: Colors.white,
         ),
