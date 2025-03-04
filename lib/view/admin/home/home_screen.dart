@@ -202,7 +202,7 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin>
                   ),
                   GestureDetector(
                     onTap: () {
-                      index.value = 2;
+                      indexTabAdmin.value = 2;
                       // context.pushNamed(AppRoutes.payOutUsersScreen.name);
                     },
                     child: Text(

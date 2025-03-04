@@ -16,15 +16,15 @@ class FieldValidators {
     return null;
   }
 
-  String? fullName(String? val) {
+  String? fullName([String? val, bool checkRequired = true]) {
     RegExp namePattern = RegExp(r"^[a-zA-Z]+$"); // Allows only alphabets
 
-    if (val == null || val.isEmpty) {
+    if ((val == null || val.isEmpty) && checkRequired) {
       log("returning error", name: "name validator");
       return "Name is required.";
     }
 
-    if (!namePattern.hasMatch(val)) {
+    if (!namePattern.hasMatch(val!) && val.isNotEmpty) {
       log("returning error", name: "name validator");
       return "Enter a valid name (Only alphabets allowed).";
     }
@@ -33,11 +33,11 @@ class FieldValidators {
     return null;
   }
 
-  String? email(String? val) {
+  String? email([String? val, bool checkRequired = true]) {
     RegExp emailPattern =
         RegExp(r"""^[a-z0-9!@#\$%^&*_(),.?\":{}|<>]+@gmail\.com$""");
 
-    if (!emailPattern.hasMatch(val ?? "")) {
+    if (!emailPattern.hasMatch(val!) && val.isNotEmpty) {
       log("returning error", name: "email validator");
       return "Enter valid Email.";
     }
@@ -63,8 +63,12 @@ class FieldValidators {
     return null;
   }
 
-  String? phoneNumber(String phoneNumber, int length) {
-    if (phoneNumber.isEmpty) {
+  String? phoneNumber(
+      [String? phoneNumber,
+      int? length,
+      bool? checkR,
+      bool checkRequired = true]) {
+    if (phoneNumber!.isEmpty && checkRequired) {
       return "Mobile number is required";
     }
 
@@ -159,7 +163,8 @@ class FieldValidators {
     return null;
   }
 
-  String? multiCheck(String? value, List<String? Function(String?)> validators) {
+  String? multiCheck(
+      String? value, List<String? Function(String?)> validators) {
     for (var validator in validators) {
       final result = validator(value);
       if (result != null) {

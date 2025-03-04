@@ -26,7 +26,7 @@ class LuckyDrawManagementScreenAdmin extends StatelessWidget {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
-        index.value = 0;
+        indexTabAdmin.value = 0;
         return;
       },
       child: MyAppLayOut(

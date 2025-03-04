@@ -35,7 +35,7 @@ class AdminProfileScreen extends StatelessWidget {
     ProfileProvider provider = Provider.of<ProfileProvider>(context);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
-        index.value = 0;
+        indexTabAdmin.value = 0;
         return;
       },
       child: Scaffold(

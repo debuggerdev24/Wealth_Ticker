@@ -13,6 +13,7 @@ import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import 'package:wealth_ticker_main/provider/user/earning_provider.dart';
 import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
+import 'package:wealth_ticker_main/view/users/user_dashboard_screen.dart';
 
 import '../../../core/app_assets.dart';
 
@@ -27,7 +28,7 @@ class WeekLuckyDrawScreen extends StatelessWidget {
         Provider.of<EarningsProvider>(context, listen: false);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
-        index.value = 0;
+        indexTabUser.value = 0;
         return;
       },
       child: MyAppLayOut(

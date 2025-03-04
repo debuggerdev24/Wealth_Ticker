@@ -51,6 +51,8 @@ dependencies:
   url_launcher: ^6.3.1
   intl: ^0.20.2
   image_picker: ^1.1.2
+  animate_do: ^4.2.0
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:

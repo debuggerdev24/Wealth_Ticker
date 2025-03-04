@@ -8,6 +8,7 @@ import 'package:wealth_ticker_main/core/widgets/my_app_layout.dart';
 import 'package:wealth_ticker_main/model/user/post_model.dart';
 import 'package:wealth_ticker_main/provider/user/post_provider.dart';
 import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
+import 'package:wealth_ticker_main/view/users/user_dashboard_screen.dart';
 
 class PurchasedPostList extends StatelessWidget {
   const PurchasedPostList({super.key});
@@ -20,7 +21,7 @@ class PurchasedPostList extends StatelessWidget {
         Provider.of<PurchasedPostProvider>(context, listen: false);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
-        index.value = 0;
+        indexTabUser.value = 0;
         return;
       },
       child: MyAppLayOut(

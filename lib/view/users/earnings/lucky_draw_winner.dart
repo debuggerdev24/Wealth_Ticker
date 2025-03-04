@@ -11,6 +11,7 @@ import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
 import 'package:wealth_ticker_main/provider/user/earning_provider.dart';
 import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
 import 'package:wealth_ticker_main/view/users/earnings/widget/winners_tile.dart';
+import 'package:wealth_ticker_main/view/users/user_dashboard_screen.dart';
 import '../../../core/app_assets.dart';
 
 class LuckyDrawWinnerScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class LuckyDrawWinnerScreen extends StatelessWidget {
         Provider.of<EarningsProvider>(context, listen: false);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
-        index.value = 0;
+        indexTabUser.value = 0;
         return;
       },
       child: MyAppLayOut(

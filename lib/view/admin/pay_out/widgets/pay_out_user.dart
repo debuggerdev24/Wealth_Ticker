@@ -61,7 +61,7 @@ class PayOutUserPending extends StatelessWidget {
                 ],
               ),
               10.h.verticalSpace,
-              _detailsRow(title: "Amount", value: formatCurrency(user.amount)),
+              _detailsRow(title: "Amount", value: "\$${formatCurrency(user.amount)}"),
               _detailsRow(
                   title: "Status",
                   value: user.status ? "Processed" : "Pending"),
@@ -109,7 +109,7 @@ class PayOutUserPending extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              "\$$value",
+              value,
               style: TextStyle(fontSize: 16.sp),
             ),
           ),

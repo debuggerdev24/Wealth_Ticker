@@ -55,4 +55,5 @@ class AppAssets extends Assets {
   static String get notificationIconUser => "${Assets.base}/notificationIconUser.svg";
   static String get luckyDrawMessage => "${Assets.base}/lucky_draw_message.png";
   static String get addOutlinedIcon => "${Assets.base}/add_outlined.svg";
+  static String get userProfileIcon => "${Assets.base}/userProfile.jpg";
 }

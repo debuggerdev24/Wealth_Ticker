@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
 import 'package:wealth_ticker_main/core/theme/app_colors.dart';
@@ -13,30 +15,39 @@ class CustomErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(seconds: 1),
-      curve: Curves.bounceOut,
-      margin: EdgeInsets.only(top: 5.sp),
-      padding:
-          EdgeInsets.only(top: 14.h, bottom: 14.h, left: paddingLeft ?? 15.5.w),
-      decoration: BoxDecoration(
-          color: AppColors.errorBackgroundColor,
-          borderRadius: BorderRadius.circular(7.r),
-          border: Border.all(color: AppColors.errorBorderColor)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SVGImages(
-            path: AppAssets.errorIcon,
-          ),
-          15.sp.horizontalSpace,
-          Expanded(
-            child: Text(
-              errorMessage,
-              style: TextStyle().copyWith(color: AppColors.errorTextColor),
+    return FadeInDown(
+      from: 30.0,
+      animate: true,
+      curve: Curves.fastOutSlowIn,
+      key: ValueKey(errorMessage),
+      duration: Duration(milliseconds: 400),
+      child: AnimatedContainer(
+        duration: Duration(seconds: 1),
+        curve: Curves.bounceOut,
+        margin: EdgeInsets.only(
+          top: 5.sp,
+        ),
+        padding: EdgeInsets.only(
+            top: 14.h, bottom: 14.h, left: paddingLeft ?? 15.5.w),
+        decoration: BoxDecoration(
+            color: AppColors.errorBackgroundColor,
+            borderRadius: BorderRadius.circular(7.r),
+            border: Border.all(color: AppColors.errorBorderColor)),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SVGImages(
+              path: AppAssets.errorIcon,
             ),
-          )
-        ],
+            15.sp.horizontalSpace,
+            Expanded(
+              child: Text(
+                errorMessage,
+                style: TextStyle().copyWith(color: AppColors.errorTextColor),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

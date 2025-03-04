@@ -92,7 +92,6 @@ class _MyAppState extends State<MyApp> {
 
 
 
-// -> Worked on creating a user notification screen UI.
 // -> Worked on fixing the DropDown issue on the reports Screen.
 // -> Worked on fixing the alignment issue on the Report Detail Screen.
 // -> Worked on fixing the font issue on the Service & Price Screen.
