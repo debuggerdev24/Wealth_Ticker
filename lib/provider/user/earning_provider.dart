@@ -1,25 +1,28 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import '../../model/user/earning_model.dart';
 
 class EarningsProvider extends ChangeNotifier {
   TextEditingController textCountry = TextEditingController(text: "+91");
 
-  String countryPhoneCode = "+91";
+  String countryPhoneCode = "+91",countryFlag = "🇮🇳";
+  Country _country = CountryService().findByPhoneCode("91")!;
   int phoneNumLength = 10;
   String accountHolderNameError = "", accountNumberError = "", bankNameError = "", branchNameError = "";
   bool isComplete = false,confirmation = false;
 
+  Country get country => _country;
+  int get phoneNumLen => _country.example.length;
 
   void updateConfirmation(){
     confirmation = !confirmation;
     notifyListeners();
   }
 
-  void updateCountryPhoneCode(
-      {required String phoneCode, required int length}) {
-    textCountry.text = phoneCode;
-    countryPhoneCode = phoneCode;
-    phoneNumLength = length;
+  void updateCountry(
+      Country country) {
+    textCountry.text = "+ ${country.phoneCode}";
+    _country = country;
     notifyListeners();
   }
 

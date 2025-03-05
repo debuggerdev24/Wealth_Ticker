@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
+import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
 import 'package:wealth_ticker_main/core/field_validator.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
@@ -183,7 +184,8 @@ class ProfileScreen extends StatelessWidget {
                                     color: AppColors.authIconsColor),
                               ),
                               validator: (value) {
-                                String error = FieldValidators().email(value,false) ?? "";
+                                String error =
+                                    FieldValidators().email(value, false) ?? "";
                                 provider.updateValidationStatus(
                                   field: "email",
                                   error: error,
@@ -195,48 +197,49 @@ class ProfileScreen extends StatelessWidget {
                                 ? SizedBox()
                                 : CustomErrorWidget(
                                     errorMessage: providerTrue.emailError,
-                            ),
+                                  ),
                           ],
                         ),
-                        MyTextField(
-                          title: "Mobile Number",
-                          hintText: "(415) 892-5302",
-                          controller: _textMobileNumber,
-                          prefix: Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 13.h,
+                        Column(
+                          children: [
+                            MyTextField(
+                              title: "Mobile Number",
+                              hintText: "(415) 892-5302",
+                              controller: _textMobileNumber,
+                              prefix: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 13.h,
+                                ),
+                                child: SVGImages(
+                                    path: AppAssets.phoneIcon,
+                                    color: AppColors.authIconsColor),
+                              ),
+                              suffix: myCountryCodePicker(
+                                context,
+                                provider.updateCountry,
+                                providerTrue.country.flagEmoji,
+                              ),
+                              validator: (value) {
+                                String error = FieldValidators().phoneNumber(value!,
+                                        providerTrue.phoneNumLen, false) ??
+                                    "";
+                                provider.updateValidationStatus(
+                                    field: "mobileNumber", error: error);
+                                return null;
+                              },
+                              // suffix: myCountryCodePicker(context, (country) {
+                              //   providerFalse.updateCountryPhoneCode(
+                              //     phoneCode: "+ ${country.phoneCode}",
+                              //     length: country.example.length,
+                              //   );
+                              // }, providerTrue.),
                             ),
-                            child: SVGImages(
-                                path: AppAssets.phoneIcon,
-                                color: AppColors.authIconsColor),
-                          ),
-                          suffix: myCountryCodePicker(
-                            context,
-                            (country) {
-                              provider.updateCountryPhoneCode(
-                                phoneCode: "+ ${country.phoneCode}",
-                                length: country.example.length,
-                              );
-                            },
-                            providerTrue.countryPhoneCode,
-                          ),
-                          validator: (value) {
-                            String error = FieldValidators().phoneNumber(
-                              value!,
-                              providerTrue.phoneNumLength,
-                              false
-                            ) ??
-                                "";
-                            provider.updateValidationStatus(
-                                field: "mobileNumber", error: error);
-                            return null;
-                          },
-                          // suffix: myCountryCodePicker(context, (country) {
-                          //   providerFalse.updateCountryPhoneCode(
-                          //     phoneCode: "+ ${country.phoneCode}",
-                          //     length: country.example.length,
-                          //   );
-                          // }, providerTrue.),
+                            providerTrue.mobileNumberError.isEmpty
+                                ? SizedBox()
+                                : CustomErrorWidget(
+                              errorMessage: providerTrue.mobileNumberError,
+                            ),
+                          ],
                         ),
                         MyTextField(
                           readOnly: true,

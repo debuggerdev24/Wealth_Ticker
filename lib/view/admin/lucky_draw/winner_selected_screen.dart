@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
+import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/my_button.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -19,7 +20,7 @@ class WinnerSelectedScreen extends StatelessWidget {
         padding: appPadding(),
         child: Column(
           children: [
-            25.h.verticalSpace,
+            28.h.verticalSpace,
             Container(
               width: 1.sw,
               padding: EdgeInsets.symmetric(
@@ -55,11 +56,38 @@ class WinnerSelectedScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    '"Congratulations! Zoe Martin has been selected as the lucky draw winner. The prize amount will be processed soon."',
+                  RichText(
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.sp),
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '"Congratulations! ',
+                          style: textStyleW400.copyWith(
+                            fontSize: 18.sp,
+                            color: AppColors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "Zoe Martin",
+                          style: textStyleW700.copyWith(
+                              fontSize: 18.sp, color: Colors.black),
+                        ),
+                        TextSpan(
+                          text:
+                          '  has been selected as the lucky draw winner. The prize amount will be processed soon."',
+                          style: textStyleW400.copyWith(
+                            fontSize: 18.sp,
+                            color: AppColors.black,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                  // Text(
+                  //   '"Congratulations! Zoe Martin has been selected as the lucky draw winner. The prize amount will be processed soon."',
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(fontSize: 18.sp),
+                  // ),
                 ],
               ),
             ),

@@ -70,8 +70,7 @@ class BankDetailsScreen extends StatelessWidget {
                             ),
                             inputDecoration: InputDecoration(
                               hintText: "Search Country...",
-                              hintStyle:
-                                  TextStyle(fontSize: 14, color: Colors.grey),
+                              hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                               prefixIcon: Icon(CupertinoIcons.search,
                                   color: Colors.grey.shade700),
                               contentPadding: EdgeInsets.symmetric(
@@ -87,12 +86,7 @@ class BankDetailsScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onSelect: (Country country) {
-                            provider.updateCountryPhoneCode(
-                              phoneCode: "+ ${country.phoneCode}",
-                              length: country.example.length,
-                            );
-                          },
+                          onSelect: provider.updateCountry
                         );
                       },
                       readOnly: true,
@@ -101,13 +95,8 @@ class BankDetailsScreen extends StatelessWidget {
                       controller: providerTrue.textCountry,
                       suffix: myCountryCodePicker(
                         context,
-                        (country) {
-                          provider.updateCountryPhoneCode(
-                            phoneCode: "+ ${country.phoneCode}",
-                            length: country.example.length,
-                          );
-                        },
-                        providerTrue.countryPhoneCode,
+                        provider.updateCountry,
+                        providerTrue.country.flagEmoji,
                       ),
                     ),
                     Column(

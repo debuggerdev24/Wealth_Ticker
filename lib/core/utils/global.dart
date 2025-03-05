@@ -36,7 +36,7 @@ void showToast(String msg) {
 Widget myCountryCodePicker(
   BuildContext context,
   ValueChanged<Country> onSelect,
-  String initialText,
+  String countryFlag,
 ) {
   return GestureDetector(
     onTap: () {
@@ -79,11 +79,11 @@ Widget myCountryCodePicker(
         },
       );
     },
-    child: countryPickBox(initialText),
+    child: countryPickBox(countryFlag),
   );
 }
 
-IntrinsicWidth countryPickBox(String countryPhoneCode) {
+IntrinsicWidth countryPickBox(String countryFlag) {
   return IntrinsicWidth(
     child: Container(
       alignment: Alignment.center,
@@ -99,9 +99,10 @@ IntrinsicWidth countryPickBox(String countryPhoneCode) {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // Image.network("https://flagcdn.com/w320/$countryFlag.png",height: 12.h),
           Text(
-            countryPhoneCode,
-            style: TextStyle(color: Colors.grey.shade700),
+            countryFlag,
+            style: TextStyle(fontSize: 20.sp),
           ),
           Icon(
             Icons.keyboard_arrow_down_rounded,

@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
@@ -8,6 +9,11 @@ class AuthProvider extends ChangeNotifier {
   String countryPhoneCode = "+91";
   int phoneNumLength = 10;
   bool obSecureText = true, isLoading = false;
+
+  Country _country = CountryService().findByPhoneCode("91")!;
+  Country get country => _country;
+  int get phoneNumLen => _country.example.length;
+
   //todo -----------------------> validator for sign up
   String fullNameError = "",
       emailError = "",
@@ -63,10 +69,9 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateCountryPhoneCode(
-      {required String phoneCode, required int length}) {
-    countryPhoneCode = phoneCode;
-    phoneNumLength = length;
+  void updateCountry(
+      Country country) {
+    _country = country;
     notifyListeners();
   }
 

@@ -50,7 +50,7 @@ import '../../view/users/support/send_email_screen.dart';
 import '../../view/users/support/support_screen.dart';
 
 final GoRouter goRouter = GoRouter(
-  initialLocation: AppRoutes.adminDashBoardScreen.path, //
+  initialLocation: AppRoutes.userRoleScreen.path, //
   routes: <RouteBase>[
     GoRoute(
       path: AppRoutes.splashScreen.path,

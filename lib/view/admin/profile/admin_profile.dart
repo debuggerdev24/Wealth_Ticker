@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_ticker_main/core/app_assets.dart';
+import 'package:wealth_ticker_main/core/field_validator.dart';
 import 'package:wealth_ticker_main/core/routes/routes.dart';
 import 'package:wealth_ticker_main/core/text_styls.dart';
 import 'package:wealth_ticker_main/core/widgets/svg_images.dart';
@@ -13,6 +14,7 @@ import 'package:wealth_ticker_main/provider/admin/admin_profile_provider.dart';
 import 'package:wealth_ticker_main/provider/admin/admin_profile_provider.dart';
 import 'package:wealth_ticker_main/provider/admin/admin_profile_provider.dart';
 import 'package:wealth_ticker_main/view/admin/admin_dashboard_screen.dart';
+import 'package:wealth_ticker_main/view/users/earnings/widget/error_widget.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/global.dart';
@@ -25,14 +27,17 @@ TextEditingController _textEmail = TextEditingController();
 TextEditingController _textMobileNumber = TextEditingController();
 TextEditingController _textPassword = TextEditingController();
 
+GlobalKey<FormState> _formKey = GlobalKey();
+
+
 class AdminProfileScreen extends StatelessWidget {
   const AdminProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ProfileProvider providerTrue =
-    Provider.of<ProfileProvider>(context, listen: true);
-    ProfileProvider provider = Provider.of<ProfileProvider>(context);
+    AdminProfileProvider providerTrue =
+        Provider.of<AdminProfileProvider>(context, listen: true);
+    AdminProfileProvider provider = Provider.of<AdminProfileProvider>(context);
     return PopScope(
       onPopInvokedWithResult: (didPop, result) {
         indexTabAdmin.value = 0;
@@ -45,7 +50,11 @@ class AdminProfileScreen extends StatelessWidget {
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  showToast("Profile Saved Successfully");
+                }
+              },
               color: Colors.white,
               icon: Icon(Icons.bookmark_outline_rounded),
             ),
@@ -64,187 +73,247 @@ class AdminProfileScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.h, 0.h),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  20.h.verticalSpace,
-                  //todo profile image ui
-                  Stack(
-                    children: [
-                      Container(
-                        height: 105.h,
-                        width: 105.w,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.grey),
-                        child: ClipOval(
-                          child: FadeInImage(
-                            fit: BoxFit.cover,
-                            placeholder: AssetImage(
-                                "assets/images/auth_screen/on_b2.png"),
-                            image: NetworkImage(
-                              "https://s3-alpha-sig.figma.com/img/d115/5453/d46f4123c6bcd0b0db1ec2d2fd3eb9f2?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=C-kIOWDzX5fznd1Jy1K5ppiXqe9yZHyeVs9FmjTlF1Ti-4Bz9EQXkKiJnm9w8~5Cka3AMv5fVznaKyhSv7QusZx-scmOWDOiNQxCLZrn1oHjS2Vx0wKF5FnJ34O33FmPYkOfyezuALpJFkJfFGXm66L2T1in334wYBBS~-MqyMj3hQXFabcYYS2wgK2YRTmSlGerEYg-MuLNzFLN5nTgEzErr4qLNa2J3VytjzRW38QhkQxwVlQvY6b9hqgk-NOslpYFGt~ArREH84DJ3yFQOKbY~T13Bu12QXi6HPnCCkvMv~7YxyxofFc6nXBn6Kdp5BMEkL9hHi3Cg1XlvreEeA__",
+        body: Form(
+          key: _formKey,
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.h, 0.h),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    20.h.verticalSpace,
+                    //todo profile image ui
+                    Stack(
+                      children: [
+                        Container(
+                          height: 105.h,
+                          width: 105.w,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.grey),
+                          child: ClipOval(
+                            child: FadeInImage(
+                              fit: BoxFit.cover,
+                              placeholder: AssetImage(
+                                  "assets/images/auth_screen/on_b2.png"),
+                              image: NetworkImage(
+                                "https://s3-alpha-sig.figma.com/img/d115/5453/d46f4123c6bcd0b0db1ec2d2fd3eb9f2?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=C-kIOWDzX5fznd1Jy1K5ppiXqe9yZHyeVs9FmjTlF1Ti-4Bz9EQXkKiJnm9w8~5Cka3AMv5fVznaKyhSv7QusZx-scmOWDOiNQxCLZrn1oHjS2Vx0wKF5FnJ34O33FmPYkOfyezuALpJFkJfFGXm66L2T1in334wYBBS~-MqyMj3hQXFabcYYS2wgK2YRTmSlGerEYg-MuLNzFLN5nTgEzErr4qLNa2J3VytjzRW38QhkQxwVlQvY6b9hqgk-NOslpYFGt~ArREH84DJ3yFQOKbY~T13Bu12QXi6HPnCCkvMv~7YxyxofFc6nXBn6Kdp5BMEkL9hHi3Cg1XlvreEeA__",
+                              ),
+                              fadeInDuration: Duration(seconds: 1),
+                              fadeOutDuration: Duration(milliseconds: 200),
                             ),
-                            fadeInDuration: Duration(seconds: 1),
-                            fadeOutDuration: Duration(milliseconds: 200),
                           ),
                         ),
-                      ),
-                      //todo --------------------------> button to pick image
-                      Positioned(
-                        bottom: 0.9, // Adjust position
-                        right: 0.9, // Adjust position
-                        child: SVGImages(path: AppAssets.addOutlinedIcon),
-                        // Icon(
-                        //   Icons.add_circle_outline_rounded,
-                        //   size: 35.sp,
-                        //   color: AppColors.greyColor,
+                        //todo --------------------------> button to pick image
+                        Positioned(
+                          bottom: 0.9, // Adjust position
+                          right: 0.9, // Adjust position
+                          child: SVGImages(path: AppAssets.addOutlinedIcon),
+                          // Icon(
+                          //   Icons.add_circle_outline_rounded,
+                          //   size: 35.sp,
+                          //   color: AppColors.greyColor,
+                          // ),
+                        ),
+                        // Positioned(
+                        //   bottom: -9,
+                        //   right: -28,
+                        //   child: MaterialButton(
+                        //     height: 24.h,
+                        //     padding: EdgeInsets.all(2),
+                        //     elevation: 1,
+                        //     onPressed: () async {},
+                        //     color: AppColors.darkGreenColor,
+                        //     shape: const CircleBorder(),
+                        //     child: Icon(
+                        //       Icons.photo_camera_outlined,
+                        //       size: 12.h,
+                        //       color: Colors.white,
+                        //     ),
+                        //   ),
                         // ),
-                      ),
-                      // Positioned(
-                      //   bottom: -9,
-                      //   right: -28,
-                      //   child: MaterialButton(
-                      //     height: 24.h,
-                      //     padding: EdgeInsets.all(2),
-                      //     elevation: 1,
-                      //     onPressed: () async {},
-                      //     color: AppColors.darkGreenColor,
-                      //     shape: const CircleBorder(),
-                      //     child: Icon(
-                      //       Icons.photo_camera_outlined,
-                      //       size: 12.h,
-                      //       color: Colors.white,
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                  //todo name
-                  8.h.verticalSpace,
-                  Text(
-                    "Daniel Reynolds",
-                    style: textStyleW500.copyWith(
-                        color: Colors.black, fontSize: 18.sp),
-                  ),
-                  28.h.verticalSpace,
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 21.h,
-                    children: [
-                      MyTextField(
-                        title: "Full Name",
-                        hintText: "Ethan Carter",
-                        controller: _textFullName,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 13.h,
-                          ),
-                          child: SVGImages(path: AppAssets.userIcon),
+                      ],
+                    ),
+                    //todo name
+                    8.h.verticalSpace,
+                    Text(
+                      "Daniel Reynolds",
+                      style: textStyleW500.copyWith(
+                          color: Colors.black, fontSize: 18.sp),
+                    ),
+                    28.h.verticalSpace,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 21.h,
+                      children: [
+                        Column(
+                          children: [
+                            MyTextField(
+                              title: "Full Name",
+                              hintText: "Ethan Carter",
+                              controller: _textFullName,
+                              prefix: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 13.h,
+                                ),
+                                child: SVGImages(
+                                  path: AppAssets.userIcon,
+                                  color: AppColors.authIconsColor,
+                                ),
+                              ),
+                              validator: (value) {
+                                String error =
+                                    FieldValidators().fullName(value!, false) ??
+                                        "";
+                                provider.updateValidationStatus(
+                                    field: "fullName", error: error);
+                                return null;
+                              },
+                            ),
+                            providerTrue.fullNameError.isEmpty
+                                ? SizedBox()
+                                : CustomErrorWidget(
+                                errorMessage: providerTrue.fullNameError),
+                          ],
                         ),
-                      ),
-                      MyTextField(
-                        title: "Email",
-                        hintText: "ethancarter@gmail.com",
-                        controller: _textEmail,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 13.h,
-                          ),
-                          child: SVGImages(
-                              path: AppAssets.mailIcon,
-                              color: AppColors.authIconsColor),
+                        Column(
+                          children: [
+                            MyTextField(
+                              title: "Email",
+                              hintText: "ethancarter@gmail.com",
+                              controller: _textEmail,
+                              prefix: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 13.h,
+                                ),
+                                child: SVGImages(
+                                    path: AppAssets.mailIcon,
+                                    color: AppColors.authIconsColor),
+                              ),
+                              validator: (value) {
+                                String error =
+                                    FieldValidators().email(value, false) ?? "";
+                                provider.updateValidationStatus(
+                                  field: "email",
+                                  error: error,
+                                );
+                                return null;
+                              },
+                            ),
+                            providerTrue.emailError.isEmpty
+                                ? SizedBox()
+                                : CustomErrorWidget(
+                              errorMessage: providerTrue.emailError,
+                            ),
+                          ],
                         ),
-                      ),
-                      MyTextField(
-                        title: "Mobile Number",
-                        hintText: "ethancarter@gmail.com",
-                        controller: _textMobileNumber,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 13.h,
-                          ),
-                          child: SVGImages(
-                              path: AppAssets.phoneIcon,
-                              color: AppColors.authIconsColor),
+                        Column(
+                          children: [
+                            MyTextField(
+                              title: "Mobile Number",
+                              hintText: "(415) 892-5302",
+                              controller: _textMobileNumber,
+                              prefix: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 13.h,
+                                ),
+                                child: SVGImages(
+                                    path: AppAssets.phoneIcon,
+                                    color: AppColors.authIconsColor),
+                              ),
+                              suffix: myCountryCodePicker(
+                                context,
+                                provider.updateCountry,
+                                providerTrue.country.flagEmoji,
+                              ),
+                              validator: (value) {
+                                String error = FieldValidators().phoneNumber(value!,
+                                    providerTrue.phoneNumLen, false) ??
+                                    "";
+                                provider.updateValidationStatus(
+                                    field: "mobileNumber", error: error);
+                                return null;
+                              },
+                              // suffix: myCountryCodePicker(context, (country) {
+                              //   providerFalse.updateCountryPhoneCode(
+                              //     phoneCode: "+ ${country.phoneCode}",
+                              //     length: country.example.length,
+                              //   );
+                              // }, providerTrue.),
+                            ),
+                            providerTrue.mobileNumberError.isEmpty
+                                ? SizedBox()
+                                : CustomErrorWidget(
+                              errorMessage: providerTrue.mobileNumberError,
+                            ),
+                          ],
                         ),
-                        suffix: myCountryCodePicker(
-                          context,
-                              (country) {
-                            provider.updateCountryPhoneCode(
-                              phoneCode: "+ ${country.phoneCode}",
-                              length: country.example.length,
-                            );
-                          },
-                          providerTrue.countryPhoneCode,
-                        ),
-                      ),
-                      MyTextField(
-                        title: "Password",
-                        hintText: "Enter your password",
-                        controller: _textPassword,
-                        prefix: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 14.h,
-                          ),
-                          child: SVGImages(
-                            path: AppAssets.lockIcon,
-                            color: AppColors.authIconsColor,
+                        MyTextField(
+                          readOnly: true,
+                          obscureText: true,
+                          title: "Password",
+                          hintText: "Enter your password",
+                          controller: _textPassword,
+                          prefix: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 14.h,
+                            ),
+                            child: SVGImages(
+                              path: AppAssets.lockIcon,
+                              color: AppColors.authIconsColor,
+                            ),
                           ),
                         ),
+                      ],
+                    ),
+                    14.h.verticalSpace,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: customTile(
+                        SVGImages(
+                          path: AppAssets.refCodeProfileIcon,
+                          color: Color(0xff333333),
+                        ),
+                        "Referral Code",
+                        onTap: () {
+                          context.push(AppRoutes.inviteScreen.path);
+                        },
                       ),
-                    ],
-                  ),
-                  14.h.verticalSpace,
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: customTile(
+                    ),
+                    16.h.verticalSpace,
+                    customTile(
                       SVGImages(
-                        path: AppAssets.refCodeProfileIcon,
+                        path: AppAssets.logOutIcon,
                         color: Color(0xff333333),
                       ),
-                      "Referral Code",
-                      onTap: () {
-                        context.push(AppRoutes.inviteScreen.path);
-                      },
+                      "Log out",
+                      onTap: () {},
                     ),
-                  ),
-                  16.h.verticalSpace,
-                  customTile(
-                    SVGImages(
-                      path: AppAssets.logOutIcon,
-                      color: Color(0xff333333),
-                    ),
-                    "Log out",
-                    onTap: () {},
-                  ),
-                  16.h.verticalSpace,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset(
-                        AppAssets.deleteBucket,
-                        colorFilter: const ColorFilter.mode(
-                            Colors.red, BlendMode.srcIn),
-                      ),
-                      14.w.horizontalSpace,
-                      Text(
-                        "Delete Account",
-                        style: TextStyle(
-                          color: Colors.red,
+                    16.h.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.deleteBucket,
+                          colorFilter:
+                              const ColorFilter.mode(Colors.red, BlendMode.srcIn),
                         ),
-                      )
-                    ],
-                  ),
-                  28.h.verticalSpace,
-                  // MySubmitButtonFilled(
-                  //   title: "Save",
-                  //   onPressed: () {},
-                  // ),
-                  // 16.h.verticalSpace,
-                ],
+                        14.w.horizontalSpace,
+                        Text(
+                          "Delete Account",
+                          style: TextStyle(
+                            color: Colors.red,
+                          ),
+                        )
+                      ],
+                    ),
+                    28.h.verticalSpace,
+                    // MySubmitButtonFilled(
+                    //   title: "Save",
+                    //   onPressed: () {},
+                    // ),
+                    // 16.h.verticalSpace,
+                  ],
+                ),
               ),
             ),
           ),

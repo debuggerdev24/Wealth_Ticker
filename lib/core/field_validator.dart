@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:wealth_ticker_main/core/extension/my_extensions.dart';
+
 class FieldValidators {
   FieldValidators._();
 
@@ -46,8 +48,8 @@ class FieldValidators {
     return null;
   }
 
-  String? password(String? val) {
-    if (val == null || val.isEmpty) {
+  String? password([String? val, bool checkRequired = true]) {
+    if ((val == null || val.isEmpty) && checkRequired) {
       return null;
     }
 
@@ -55,7 +57,7 @@ class FieldValidators {
       r"""^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%^&*(),.?":{}|<>])(?=.*[a-zA-Z0-9!@#\$%^&*(),.?":{}|<>]).{8,}$""",
     );
 
-    if (!passwordPattern.hasMatch(val)) {
+    if (!passwordPattern.hasMatch(val!) && val.isNotEmpty) {
       log("returning error - $val", name: "password validator");
       return "Password must be at least 8 characters long and include an uppercase letter, a number, and a special character.";
     }
@@ -66,18 +68,20 @@ class FieldValidators {
   String? phoneNumber(
       [String? phoneNumber,
       int? length,
-      bool? checkR,
       bool checkRequired = true]) {
+    myLog(msg: checkRequired.toString());
     if (phoneNumber!.isEmpty && checkRequired) {
       return "Mobile number is required";
     }
 
     RegExp phonePattern = RegExp(r"^\d{length}$");
+
 //!phonePattern.hasMatch(val)
 //     myLog(msg: phoneNumber);
 //     myLog(msg: phoneNumber.length.toString());
 //     myLog(msg: length.toString());
-    if (phoneNumber.length != length) {
+
+    if (phoneNumber.length != length && phoneNumber.isNotEmpty) {
       log("returning error - $phoneNumber", name: "phone number validator");
       return "Phone number must be $length digits.";
     }

@@ -161,12 +161,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   color: AppColors.authIconsColor),
                             ),
                             //Icon(CupertinoIcons.phone),
-                            suffix: myCountryCodePicker(context, (country) {
-                              provider.updateCountryPhoneCode(
-                                phoneCode: "+ ${country.phoneCode}",
-                                length: country.example.length,
-                              );
-                            }, providerTrue.countryPhoneCode),
+                            suffix: myCountryCodePicker(
+                              context,
+                              providerTrue.updateCountry,
+                              providerTrue.country.flagEmoji,
+                            ),
                             validator: (value) {
                               String error = FieldValidators().phoneNumber(
                                     value!,

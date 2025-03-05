@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-// final textStyleW400 = TextStyle(
-//   fontFamily: "Open Sans",
-//   fontWeight: FontWeight.w400,
-// );
+final textStyleW400 = TextStyle(
+  fontFamily: "Open Sans",
+  fontWeight: FontWeight.w400,
+);
 
 final textStyleW500 = TextStyle(
   fontFamily: "Open Sans",

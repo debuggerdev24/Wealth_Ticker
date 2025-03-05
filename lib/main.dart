@@ -39,7 +39,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => LuckyDrawProvider()),
         ChangeNotifierProvider(create: (_) => PayOutProvider()),
         ChangeNotifierProvider(create: (_) => PostProvider()),
-        ChangeNotifierProvider(create: (_) => ProfileProvider()),
+        ChangeNotifierProvider(create: (_) => AdminProfileProvider()),
         ChangeNotifierProvider(create: (_) => UserProfileProvider()),
       ],
       child: const MyApp(),
@@ -85,14 +85,9 @@ class _MyAppState extends State<MyApp> {
         },
       );
 }
+
 //Use .w and .h for width and height.
 // Use .sp for font sizes.
 // t k c l h
 // Use .r for border radius.
 
-
-
-// -> Worked on fixing the DropDown issue on the reports Screen.
-// -> Worked on fixing the alignment issue on the Report Detail Screen.
-// -> Worked on fixing the font issue on the Service & Price Screen.
-// -> Worked on app testing and fixing UI issues.
